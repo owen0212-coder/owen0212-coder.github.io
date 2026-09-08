@@ -95,12 +95,43 @@
   }
 
   .stamp {
+    position: relative;
     font-family: "Space Mono", monospace;
     font-size: 11.5px;
     color: var(--ink-faint);
     border: 1px dashed var(--border);
     padding: 5px 10px;
     border-radius: 100px;
+    transform: rotate(-2.5deg);
+  }
+
+  .stamp::before, .stamp::after {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    z-index: 2;
+  }
+
+  .stamp::before {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle at 32% 28%, #ffd9d9 0%, #f0a3a3 28%, #d1544f 62%, #7d2723 100%);
+    box-shadow:
+      0 3px 5px rgba(15, 23, 36, 0.4),
+      inset 0 -2px 2px rgba(0, 0, 0, 0.25),
+      inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  }
+
+  .stamp::after {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    margin-left: -5px;
+    margin-top: 2px;
+    background: rgba(255, 255, 255, 0.85);
   }
 
   /* ---------- hero ---------- */
@@ -192,40 +223,56 @@
     transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
   }
 
-  .card::before {
+  .card::before, .card::after {
     content: "";
     position: absolute;
-    top: -7px;
+    top: -10px;
     left: 50%;
-    transform: translateX(-50%);
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #b9c8d8, var(--ink-faint) 60%, #56697d 100%);
-    box-shadow: 0 2px 3px rgba(20, 30, 45, 0.3);
     z-index: 2;
   }
 
+  .card::before {
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle at 32% 28%, #e4ebf1 0%, #b9c8d8 28%, var(--ink-faint) 62%, #45566a 100%);
+    box-shadow:
+      0 4px 6px rgba(15, 23, 36, 0.4),
+      inset 0 -2px 2px rgba(0, 0, 0, 0.25),
+      inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  }
+
+  .card::after {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-left: -6px;
+    margin-top: 3px;
+    background: rgba(255, 255, 255, 0.85);
+    filter: blur(0.2px);
+  }
+
   .card:has(.status.building)::before {
-    background: radial-gradient(circle at 35% 30%, #9cccf0, var(--accent) 60%, #1d4d73 100%);
+    background: radial-gradient(circle at 32% 28%, #dcefff 0%, #9cccf0 28%, var(--accent) 62%, #163e5c 100%);
   }
 
   .card:has(.status.paused)::before {
-    background: radial-gradient(circle at 35% 30%, #aed3ba, var(--accent-2) 60%, #3c6249 100%);
+    background: radial-gradient(circle at 32% 28%, #e0f2e6 0%, #aed3ba 28%, var(--accent-2) 62%, #2f4f3a 100%);
   }
 
   .card:has(.status.shipped)::before {
-    background: radial-gradient(circle at 35% 30%, #95dbac, #4E9C6B 60%, #2f6b45 100%);
+    background: radial-gradient(circle at 32% 28%, #dcf7e4 0%, #95dbac 28%, #4E9C6B 62%, #244f32 100%);
   }
 
   .card:nth-child(1) { transform: rotate(-2deg); }
-  .card:nth-child(1)::before { left: 46%; }
+  .card:nth-child(1)::before, .card:nth-child(1)::after { left: 46%; }
   .card:nth-child(2) { transform: rotate(1.6deg); }
-  .card:nth-child(2)::before { left: 54%; }
+  .card:nth-child(2)::before, .card:nth-child(2)::after { left: 54%; }
   .card:nth-child(3) { transform: rotate(-1.4deg); }
-  .card:nth-child(3)::before { left: 48%; }
+  .card:nth-child(3)::before, .card:nth-child(3)::after { left: 48%; }
   .card:nth-child(4) { transform: rotate(2deg); }
-  .card:nth-child(4)::before { left: 52%; }
+  .card:nth-child(4)::before, .card:nth-child(4)::after { left: 52%; }
 
   .card:hover {
     transform: translateY(-3px) rotate(0deg);
