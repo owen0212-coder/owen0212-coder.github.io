@@ -103,7 +103,7 @@
     padding: 5px 10px;
     border-radius: 100px;
     transform: rotate(-2.5deg);
-    transform-origin: calc(100% - 6px) -2px;
+    transform-origin: calc(100% - 3px) -3px;
   }
 
   .stamp .pin-icon {
@@ -227,24 +227,32 @@
     color: var(--ink-faint);
     filter: drop-shadow(2px 5px 4px rgba(15, 23, 36, 0.45));
     pointer-events: none;
+    transition: transform 0.15s ease;
   }
 
   .card:has(.status.building) .pin-icon { color: var(--accent); }
   .card:has(.status.paused) .pin-icon { color: var(--accent-2); }
   .card:has(.status.shipped) .pin-icon { color: #4E9C6B; }
 
-  .card:nth-child(1) { transform-origin: 20px 9px; transform: rotate(-2deg); }
+  .card:nth-child(1) { transform-origin: 20px -1px; transform: rotate(-2deg); }
   .card:nth-child(1) .pin-icon { left: 10px; transform: rotate(2deg); }
-  .card:nth-child(2) { transform-origin: calc(100% - 20px) 9px; transform: rotate(1.6deg); }
+  .card:nth-child(2) { transform-origin: calc(100% - 20px) -1px; transform: rotate(1.6deg); }
   .card:nth-child(2) .pin-icon { right: 10px; transform: rotate(-1.6deg); }
-  .card:nth-child(3) { transform-origin: calc(100% - 20px) 9px; transform: rotate(-1.4deg); }
+  .card:nth-child(3) { transform-origin: calc(100% - 20px) -1px; transform: rotate(-1.4deg); }
   .card:nth-child(3) .pin-icon { right: 10px; transform: rotate(1.4deg); }
-  .card:nth-child(4) { transform-origin: 20px 9px; transform: rotate(2deg); }
+  .card:nth-child(4) { transform-origin: 20px -1px; transform: rotate(2deg); }
   .card:nth-child(4) .pin-icon { left: 10px; transform: rotate(-2deg); }
 
   .card:hover {
     transform: translateY(-3px) rotate(0deg);
     box-shadow: 0 16px 22px rgba(20, 30, 45, 0.2), 0 2px 0 var(--border);
+  }
+
+  /* the pin's counter-rotation only cancels the card's resting tilt - once
+     the card straightens on hover there is nothing left to cancel, so the
+     pin needs its own matching reset or it would visibly twitch */
+  .card:hover .pin-icon {
+    transform: rotate(0deg);
   }
 
   .status {
@@ -325,6 +333,7 @@
     .board { grid-template-columns: 1fr; }
     .card { transform: none !important; }
     .card:hover { transform: translateY(-2px) !important; }
+    .pin-icon { transform: rotate(0deg) !important; }
     .contact-row { flex-direction: column; align-items: flex-start; }
   }
 
