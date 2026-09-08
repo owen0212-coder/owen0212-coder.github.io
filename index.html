@@ -108,12 +108,13 @@
 
   .stamp .pin-icon {
     position: absolute;
-    top: -19px;
-    right: -4px;
-    width: 20px;
-    height: 28px;
+    top: -12px;
+    right: -6px;
+    width: 18px;
+    height: 18px;
+    color: #C0473C;
     transform: rotate(2.5deg);
-    filter: drop-shadow(1px 4px 3px rgba(15, 23, 36, 0.4));
+    filter: drop-shadow(2px 4px 3px rgba(15, 23, 36, 0.4));
     pointer-events: none;
   }
 
@@ -213,27 +214,32 @@
   }
 
   /* pin sits at a fixed point on the board; the card is what tilts around it,
-     so each card's rotation pivots on its own pin instead of its own center,
-     and the pin itself counter-rotates to stay upright no matter how the
-     card underneath it is angled. the needle overlaps down into the card's
-     own top edge so it reads as driven through the paper, not floating on it */
+     so each card's rotation pivots on its own pin instead of its own center.
+     seen from directly above, the pin itself never rotates (it counter-rotates
+     to cancel the card's own tilt) so the highlight always falls from the same
+     fixed direction no matter how the card underneath is angled */
   .pin-icon {
     position: absolute;
-    top: -18px;
-    width: 22px;
-    height: 31px;
+    top: -11px;
+    width: 20px;
+    height: 20px;
     z-index: 3;
-    filter: drop-shadow(1px 5px 3px rgba(15, 23, 36, 0.5));
+    color: var(--ink-faint);
+    filter: drop-shadow(2px 5px 4px rgba(15, 23, 36, 0.45));
     pointer-events: none;
   }
 
-  .card:nth-child(1) { transform-origin: 21px 4px; transform: rotate(-2deg); }
+  .card:has(.status.building) .pin-icon { color: var(--accent); }
+  .card:has(.status.paused) .pin-icon { color: var(--accent-2); }
+  .card:has(.status.shipped) .pin-icon { color: #4E9C6B; }
+
+  .card:nth-child(1) { transform-origin: 20px 9px; transform: rotate(-2deg); }
   .card:nth-child(1) .pin-icon { left: 10px; transform: rotate(2deg); }
-  .card:nth-child(2) { transform-origin: calc(100% - 21px) 4px; transform: rotate(1.6deg); }
+  .card:nth-child(2) { transform-origin: calc(100% - 20px) 9px; transform: rotate(1.6deg); }
   .card:nth-child(2) .pin-icon { right: 10px; transform: rotate(-1.6deg); }
-  .card:nth-child(3) { transform-origin: calc(100% - 21px) 4px; transform: rotate(-1.4deg); }
+  .card:nth-child(3) { transform-origin: calc(100% - 20px) 9px; transform: rotate(-1.4deg); }
   .card:nth-child(3) .pin-icon { right: 10px; transform: rotate(1.4deg); }
-  .card:nth-child(4) { transform-origin: 21px 4px; transform: rotate(2deg); }
+  .card:nth-child(4) { transform-origin: 20px 9px; transform: rotate(2deg); }
   .card:nth-child(4) .pin-icon { left: 10px; transform: rotate(-2deg); }
 
   .card:hover {
@@ -331,35 +337,27 @@
 <header class="top">
   <div class="wrap">
     <span class="mark">OWEN'S PROJECT SHED</span>
-    <span class="stamp"><svg class="pin-icon" viewBox="0 0 24 34" aria-hidden="true"><use href="#pushpin-icon"></use></svg>est. 2026</span>
+    <span class="stamp"><svg class="pin-icon" viewBox="0 0 28 28" aria-hidden="true"><use href="#pushpin-icon"></use></svg>est. 2026</span>
   </div>
 </header>
 
 <main>
   <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
     <defs>
-      <radialGradient id="pinHeadGrad" cx="32%" cy="26%" r="78%">
-        <stop offset="0%" stop-color="#ffffff"/>
-        <stop offset="28%" stop-color="#f4aca6"/>
-        <stop offset="62%" stop-color="#cf463d"/>
-        <stop offset="100%" stop-color="#711d18"/>
+      <!-- birds-eye pushpin: currentColor gives each instance its own color,
+           this radial overlay does the curvature shading on top of any color -->
+      <radialGradient id="pinDome" cx="36%" cy="30%" r="75%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.65)"/>
+        <stop offset="35%" stop-color="rgba(255,255,255,0)"/>
+        <stop offset="78%" stop-color="rgba(0,0,0,0)"/>
+        <stop offset="100%" stop-color="rgba(0,0,0,0.42)"/>
       </radialGradient>
-      <linearGradient id="pinNeedleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#7d8288"/>
-        <stop offset="42%" stop-color="#f2f4f5"/>
-        <stop offset="58%" stop-color="#d7dadd"/>
-        <stop offset="100%" stop-color="#54585d"/>
-      </linearGradient>
-      <radialGradient id="pinRimShadow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="rgba(10,10,10,0.4)"/>
-        <stop offset="100%" stop-color="rgba(10,10,10,0)"/>
-      </radialGradient>
-      <symbol id="pushpin-icon" viewBox="0 0 24 34">
-        <ellipse cx="12.3" cy="23.5" rx="5.6" ry="2.1" fill="url(#pinRimShadow)"/>
-        <path d="M8.7 14.6 L15.3 14.6 L12.5 33 L11.6 33 Z" fill="url(#pinNeedleGrad)"/>
-        <circle cx="12" cy="10" r="9.6" fill="url(#pinHeadGrad)"/>
-        <circle cx="12" cy="10" r="9.6" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="0.5"/>
-        <ellipse cx="8.4" cy="6.2" rx="3.1" ry="2.1" fill="rgba(255,255,255,0.85)"/>
+      <symbol id="pushpin-icon" viewBox="0 0 28 28">
+        <circle cx="14" cy="14" r="12" fill="currentColor"/>
+        <circle cx="14" cy="14" r="12" fill="url(#pinDome)"/>
+        <circle cx="14" cy="14" r="12" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="0.6"/>
+        <ellipse cx="9.8" cy="9" rx="3.6" ry="2.4" fill="rgba(255,255,255,0.55)"/>
+        <circle cx="14" cy="14" r="1.7" fill="rgba(20,18,16,0.55)"/>
       </symbol>
     </defs>
   </svg>
@@ -383,25 +381,25 @@
       </div>
       <div class="board">
         <a class="card" href="#" aria-disabled="true">
-          <svg class="pin-icon" viewBox="0 0 24 34" aria-hidden="true"><use href="#pushpin-icon"></use></svg>
+          <svg class="pin-icon" viewBox="0 0 28 28" aria-hidden="true"><use href="#pushpin-icon"></use></svg>
           <span class="status idea"><span class="swatch"></span>Idea</span>
           <div class="card-name">Untitled</div>
           <div class="card-desc">Needs a name, a plan, and probably a weekend.</div>
         </a>
         <a class="card" href="lsef-dashboard.html">
-          <svg class="pin-icon" viewBox="0 0 24 34" aria-hidden="true"><use href="#pushpin-icon"></use></svg>
+          <svg class="pin-icon" viewBox="0 0 28 28" aria-hidden="true"><use href="#pushpin-icon"></use></svg>
           <span class="status building"><span class="swatch"></span>Building</span>
           <div class="card-name">LSEF Portfolio</div>
           <div class="card-desc">Holdings and sector allocation for my personal investment fund.</div>
         </a>
         <a class="card" href="#" aria-disabled="true">
-          <svg class="pin-icon" viewBox="0 0 24 34" aria-hidden="true"><use href="#pushpin-icon"></use></svg>
+          <svg class="pin-icon" viewBox="0 0 28 28" aria-hidden="true"><use href="#pushpin-icon"></use></svg>
           <span class="status paused"><span class="swatch"></span>Paused</span>
           <div class="card-name">Untitled</div>
           <div class="card-desc">Started strong, taking a nap for now.</div>
         </a>
         <a class="card" href="#" aria-disabled="true">
-          <svg class="pin-icon" viewBox="0 0 24 34" aria-hidden="true"><use href="#pushpin-icon"></use></svg>
+          <svg class="pin-icon" viewBox="0 0 28 28" aria-hidden="true"><use href="#pushpin-icon"></use></svg>
           <span class="status shipped"><span class="swatch"></span>Shipped</span>
           <div class="card-name">Untitled</div>
           <div class="card-desc">Done and out in the world — swap in the link.</div>
