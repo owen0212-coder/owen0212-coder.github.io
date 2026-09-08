@@ -1,0 +1,355 @@
+<title>Owen's Project Shed</title>
+<meta name="description" content="Owen's running log of whatever he's building right now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=Space+Mono:wght@400;700&display=swap">
+
+<style>
+  :root {
+    --bg: #EAF2FB;
+    --surface: #FFFFFF;
+    --ink: #1C2B3B;
+    --ink-soft: #52657A;
+    --ink-faint: #8CA0B4;
+    --accent: #2E6DA4;
+    --accent-2: #5B8A72;
+    --accent-soft: #DCEAF7;
+    --accent-2-soft: #E4EFE8;
+    --border: #CCDCEC;
+    --focus: #2E6DA4;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101A24;
+      --surface: #17232F;
+      --ink: #E7EEF5;
+      --ink-soft: #9FB1C2;
+      --ink-faint: #62748A;
+      --accent: #6FB3EC;
+      --accent-2: #86BE9F;
+      --accent-soft: #1C2E3F;
+      --accent-2-soft: #1D2E27;
+      --border: #253A4C;
+      --focus: #6FB3EC;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #101A24;
+    --surface: #17232F;
+    --ink: #E7EEF5;
+    --ink-soft: #9FB1C2;
+    --ink-faint: #62748A;
+    --accent: #6FB3EC;
+    --accent-2: #86BE9F;
+    --accent-soft: #1C2E3F;
+    --accent-2-soft: #1D2E27;
+    --border: #253A4C;
+    --focus: #6FB3EC;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent-soft); color: var(--ink); }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- header ---------- */
+
+  header.top {
+    padding: 36px 0 0;
+  }
+
+  .top .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .mark {
+    font-family: "Space Mono", monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+  }
+
+  .stamp {
+    font-family: "Space Mono", monospace;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    border: 1px dashed var(--border);
+    padding: 5px 10px;
+    border-radius: 100px;
+    transform: rotate(-1deg);
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero {
+    padding: 56px 0 44px;
+  }
+
+  h1 {
+    font-family: "Baloo 2", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.3rem, 6vw, 3.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+
+  h1 .pop {
+    color: var(--accent);
+  }
+
+  h1 .pop2 {
+    color: var(--accent-2);
+  }
+
+  .lede {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+
+  .lede strong { color: var(--ink); font-weight: 500; }
+
+  /* ---------- section shell ---------- */
+
+  section { padding: 20px 0 52px; }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 26px;
+    flex-wrap: wrap;
+  }
+
+  .section-head h2 {
+    font-family: "Baloo 2", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .legend {
+    display: flex;
+    gap: 14px;
+    font-family: "Space Mono", monospace;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    flex-wrap: wrap;
+  }
+
+  .legend span { display: inline-flex; align-items: center; gap: 5px; }
+
+  .legend .swatch { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* ---------- project board ---------- */
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 148px;
+    text-decoration: none;
+    box-shadow: 0 2px 0 var(--border);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+
+  .card:nth-child(1) { transform: rotate(-0.3deg); }
+  .card:nth-child(2) { transform: rotate(0.25deg); }
+  .card:nth-child(3) { transform: rotate(0.2deg); }
+  .card:nth-child(4) { transform: rotate(-0.25deg); }
+
+  .card:hover {
+    transform: translateY(-3px) rotate(0deg);
+    box-shadow: 0 8px 0 var(--border);
+    background: var(--accent-soft);
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    align-self: flex-start;
+  }
+
+  .status .swatch { width: 7px; height: 7px; border-radius: 50%; }
+
+  .status.idea .swatch { background: var(--ink-faint); }
+  .status.building .swatch { background: var(--accent); }
+  .status.paused .swatch { background: var(--accent-2); }
+  .status.shipped .swatch { background: #4E9C6B; }
+
+  .card-name {
+    font-family: "Baloo 2", system-ui, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ink-faint);
+  }
+
+  .card-desc {
+    font-size: 0.92rem;
+    color: var(--ink-faint);
+    margin-top: auto;
+  }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    padding: 8px 0 56px;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    padding-top: 30px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .contact-links a {
+    font-family: "Space Mono", monospace;
+    font-size: 13px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .contact-links a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .footer-note {
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 600px) {
+    .board { grid-template-columns: 1fr; }
+    .card { transform: none !important; }
+    .card:hover { transform: translateY(-2px) !important; }
+    .contact-row { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    .card { transform: none !important; }
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <span class="mark">OWEN'S PROJECT SHED</span>
+    <span class="stamp">est. 2026</span>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>A little <span class="pop">shed</span> for whatever I'm <span class="pop2">building</span>.</h1>
+      <p class="lede">This used to try to be a resume. Now it's just where I keep track of stuff I'm making — <strong>side projects, half-baked ideas, things I'll probably abandon</strong> — with links out once any of them turn into something real.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What's on the bench</h2>
+        <div class="legend">
+          <span><span class="swatch" style="background:var(--ink-faint)"></span>idea</span>
+          <span><span class="swatch" style="background:var(--accent)"></span>building</span>
+          <span><span class="swatch" style="background:var(--accent-2)"></span>paused</span>
+          <span><span class="swatch" style="background:#4E9C6B"></span>shipped</span>
+        </div>
+      </div>
+      <div class="board">
+        <a class="card" href="#" aria-disabled="true">
+          <span class="status idea"><span class="swatch"></span>Idea</span>
+          <div class="card-name">Untitled</div>
+          <div class="card-desc">Needs a name, a plan, and probably a weekend.</div>
+        </a>
+        <a class="card" href="lsef-dashboard.html">
+          <span class="status building"><span class="swatch"></span>Building</span>
+          <div class="card-name">LSEF Portfolio</div>
+          <div class="card-desc">Holdings and sector allocation for my personal investment fund.</div>
+        </a>
+        <a class="card" href="#" aria-disabled="true">
+          <span class="status paused"><span class="swatch"></span>Paused</span>
+          <div class="card-name">Untitled</div>
+          <div class="card-desc">Started strong, taking a nap for now.</div>
+        </a>
+        <a class="card" href="#" aria-disabled="true">
+          <span class="status shipped"><span class="swatch"></span>Shipped</span>
+          <div class="card-name">Untitled</div>
+          <div class="card-desc">Done and out in the world — swap in the link.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="contact-row">
+        <div class="contact-links">
+          <a href="mailto:owen0212@gmail.com">say hi</a>
+          <a href="#" aria-disabled="true">LinkedIn ↗</a>
+        </div>
+        <span class="footer-note">updated whenever something's worth adding</span>
+      </div>
+    </div>
+  </footer>
+</main>

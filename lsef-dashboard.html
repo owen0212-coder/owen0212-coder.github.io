@@ -1,0 +1,1037 @@
+<title>LSEF Portfolio Snapshot</title>
+<meta name="description" content="Private holdings snapshot for the LSEF portfolio, refreshed by pasting a new script run.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+
+<style>
+  :root {
+    --bg: #EAF2FB;
+    --surface: #FFFFFF;
+    --surface-2: #F3F8FD;
+    --ink: #1C2B3B;
+    --ink-soft: #52657A;
+    --ink-faint: #8CA0B4;
+    --accent: #2E6DA4;
+    --accent-soft: #DCEAF7;
+    --border: #CCDCEC;
+    --good: #1D7A4C;
+    --bad: #C23B3B;
+    --good-soft: #E1F2E8;
+    --bad-soft: #FBE7E7;
+    --focus: #2E6DA4;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101A24;
+      --surface: #17232F;
+      --surface-2: #132030;
+      --ink: #E7EEF5;
+      --ink-soft: #9FB1C2;
+      --ink-faint: #62748A;
+      --accent: #6FB3EC;
+      --accent-soft: #1C2E3F;
+      --border: #253A4C;
+      --good: #38A375;
+      --bad: #E85D4F;
+      --good-soft: #16281F;
+      --bad-soft: #2E1C1A;
+      --focus: #6FB3EC;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #101A24;
+    --surface: #17232F;
+    --surface-2: #132030;
+    --ink: #E7EEF5;
+    --ink-soft: #9FB1C2;
+    --ink-faint: #62748A;
+    --accent: #6FB3EC;
+    --accent-soft: #1C2E3F;
+    --border: #253A4C;
+    --good: #38A375;
+    --bad: #E85D4F;
+    --good-soft: #16281F;
+    --bad-soft: #2E1C1A;
+    --focus: #6FB3EC;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .num { font-family: "Space Mono", monospace; font-variant-numeric: tabular-nums; }
+
+  /* ---------- header ---------- */
+
+  header.top { padding: 34px 0 0; }
+
+  .top .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  h1 {
+    font-family: "Baloo 2", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.7rem, 4vw, 2.2rem);
+    margin: 0 0 4px;
+  }
+
+  .subtitle { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+
+  .snapshot-badge {
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 7px 14px;
+    white-space: nowrap;
+  }
+
+  .snapshot-badge strong { color: var(--ink); }
+
+  /* ---------- stat tiles ---------- */
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 36px 0 0;
+  }
+
+  .stat {
+    background: var(--surface);
+    padding: 24px 26px 22px;
+  }
+
+  .stat-label {
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+
+  .stat-value {
+    font-family: "Space Mono", monospace;
+    font-size: 1.35rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- sections ---------- */
+
+  section { padding: 36px 0 0; }
+  section:last-of-type { padding-bottom: 36px; }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .section-head h2 {
+    font-family: "Baloo 2", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .section-note {
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- table ---------- */
+
+  .table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+
+  table { width: 100%; border-collapse: collapse; min-width: 640px; background: var(--surface); }
+
+  thead th {
+    text-align: right;
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-2);
+  }
+
+  thead th:first-child, thead th:nth-child(2) { text-align: left; }
+
+  tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    text-align: right;
+    font-size: 0.92rem;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  tbody td:first-child, tbody td:nth-child(2) { text-align: left; }
+
+  .ticker { font-family: "Space Mono", monospace; font-weight: 700; font-size: 0.86rem; }
+  .name { color: var(--ink-soft); font-size: 0.86rem; }
+
+  .pl-good { color: var(--good); }
+  .pl-bad { color: var(--bad); }
+
+  .pl-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.86rem;
+  }
+
+  .pl-pill.good { background: var(--good-soft); color: var(--good); }
+  .pl-pill.bad { background: var(--bad-soft); color: var(--bad); }
+
+  .currency-tag {
+    font-family: "Space Mono", monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    margin-left: 4px;
+  }
+
+  /* ---------- footer note ---------- */
+
+  .refresh-note {
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+
+  .refresh-note code {
+    font-family: "Space Mono", monospace;
+    background: var(--surface-2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    color: var(--ink);
+  }
+
+  footer { padding: 8px 0 56px; }
+
+  .footer-note {
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    border-top: 1px dashed var(--border);
+    padding-top: 20px;
+  }
+
+  /* ---------- allocation donut ---------- */
+
+  :root {
+    --series-semis: #1F4E79;
+    --series-cash: #B8935A;
+    --series-energy: #4C8577;
+    --series-emerging: #7B7590;
+    --series-software: #5C6670;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --series-semis: #5B9BD5;
+      --series-cash: #D9B173;
+      --series-energy: #6FAFA0;
+      --series-emerging: #A79FC0;
+      --series-software: #A8B0BA;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --series-semis: #5B9BD5;
+    --series-cash: #D9B173;
+    --series-energy: #6FAFA0;
+    --series-emerging: #A79FC0;
+    --series-software: #A8B0BA;
+  }
+
+  .allocation-layout {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 32px;
+    align-items: center;
+  }
+
+  .donut-wrap { position: relative; width: 220px; height: 220px; margin: 0 auto; }
+  .donut-wrap svg { width: 100%; height: 100%; }
+  .donut-wrap path { stroke: var(--surface); stroke-width: 2; cursor: pointer; transition: opacity 0.15s ease, filter 0.15s ease; }
+  .donut-wrap path:hover { filter: brightness(1.06); }
+  .donut-wrap path.dim { opacity: 0.35; }
+
+  .donut-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .donut-center .amount {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-size: 1.05rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .donut-center .label {
+    font-family: "Space Mono", monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-top: 2px;
+  }
+
+  .alloc-table { min-width: 0; display: flex; flex-direction: column; }
+  .alloc-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: baseline;
+    gap: 16px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+  .alloc-row:last-child { border-bottom: none; }
+  .alloc-row.dim { opacity: 0.4; }
+
+  .alloc-name {
+    min-width: 0;
+    font-size: 0.92rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .alloc-swatch {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 3px;
+    margin-right: 8px;
+    flex: none;
+  }
+
+  .alloc-tickers {
+    display: block;
+    color: var(--ink-faint);
+    font-size: 0.76rem;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .alloc-val {
+    text-align: right;
+    font-family: "Space Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-soft);
+    font-size: 0.86rem;
+    white-space: nowrap;
+  }
+
+  .alloc-pct {
+    text-align: right;
+    font-family: "Space Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    font-size: 0.9rem;
+    min-width: 48px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .allocation-layout { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- rationale modal ---------- */
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 20, 30, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .modal-backdrop.open { opacity: 1; pointer-events: auto; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    width: 100%;
+    max-width: 460px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 22px 24px;
+    transform: translateY(6px);
+    transition: transform 0.15s ease;
+  }
+
+  .modal-backdrop.open .modal { transform: translateY(0); }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-header h3 {
+    font-family: "Baloo 2", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .modal-swatch { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+
+  .modal-close {
+    background: none;
+    border: none;
+    color: var(--ink-faint);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+  }
+
+  .modal-close:hover { background: var(--surface-2); color: var(--ink); }
+
+  .modal-holding { padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .modal-holding:last-child { border-bottom: none; padding-bottom: 2px; }
+
+  .modal-holding-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+
+  .modal-ticker { font-family: "Space Mono", monospace; font-weight: 700; font-size: 0.88rem; }
+  .modal-name { color: var(--ink-faint); font-size: 0.8rem; }
+
+  .modal-rationale { font-size: 0.86rem; color: var(--ink-soft); line-height: 1.5; }
+  .modal-rationale.placeholder { color: var(--ink-faint); font-style: italic; }
+
+  /* ---------- since-inception hero ---------- */
+
+  .inception-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px 28px;
+    margin: 36px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+  }
+
+  .inception-headline { display: flex; flex-direction: column; gap: 6px; }
+
+  .inception-label {
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .inception-return {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .inception-return.good { color: var(--good); }
+  .inception-return.bad { color: var(--bad); }
+
+  .inception-sub {
+    font-family: "Space Mono", monospace;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .inception-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .inception-meta-item { display: flex; flex-direction: column; gap: 5px; }
+
+  .inception-meta-label {
+    font-family: "Space Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .inception-meta-value {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 560px) {
+    .inception-card { flex-direction: column; align-items: flex-start; }
+    .inception-meta { gap: 22px; }
+  }
+
+  /* ---------- trend chart ---------- */
+
+  .trend-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px 16px;
+  }
+
+  .trend-empty {
+    color: var(--ink-faint);
+    font-size: 0.9rem;
+    padding: 28px 4px 20px;
+  }
+
+  .trend-delta {
+    font-family: "Space Mono", monospace;
+    font-size: 0.85rem;
+  }
+
+  #trend-svg { width: 100%; height: auto; display: block; overflow: visible; }
+  #trend-svg text { font-family: "Space Mono", monospace; fill: var(--ink-faint); font-size: 11px; }
+  #trend-svg .gridline { stroke: var(--border); stroke-width: 1; }
+  #trend-svg .trend-line { fill: none; stroke: var(--accent); stroke-width: 2; }
+  #trend-svg .trend-area { fill: var(--accent); opacity: 0.08; }
+  #trend-svg .trend-point { fill: var(--surface); stroke: var(--accent); stroke-width: 2; }
+  #trend-svg .trend-point.end { fill: var(--accent); }
+  #trend-svg .crosshair { stroke: var(--ink-faint); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0; }
+
+  .trend-tooltip {
+    position: absolute;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: "Space Mono", monospace;
+    font-size: 11.5px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -100%);
+    white-space: nowrap;
+    z-index: 2;
+  }
+
+  .trend-wrap { position: relative; }
+
+  @media (max-width: 480px) {
+    .stats { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div>
+      <h1>LSEF Portfolio Snapshot</h1>
+      <p class="subtitle">Holdings and sector allocation for my investment fund.</p>
+    </div>
+    <span class="snapshot-badge">as of <strong>Sep 8, 2026 · 16:31</strong></span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="inception-card">
+      <div class="inception-headline">
+        <span class="inception-label">Since inception</span>
+        <span class="inception-return good">+20.2%</span>
+        <span class="inception-sub">+HK$10,101.77</span>
+      </div>
+      <div class="inception-meta">
+        <div class="inception-meta-item">
+          <span class="inception-meta-label">Starting capital</span>
+          <span class="inception-meta-value">HK$50,000.00</span>
+        </div>
+        <div class="inception-meta-item">
+          <span class="inception-meta-label">Current value</span>
+          <span class="inception-meta-value">HK$60,101.77</span>
+        </div>
+        <div class="inception-meta-item">
+          <span class="inception-meta-label">Inception</span>
+          <span class="inception-meta-value">Jun 2, 2026</span>
+        </div>
+        <div class="inception-meta-item">
+          <span class="inception-meta-label">Days active</span>
+          <span class="inception-meta-value">98</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats" style="margin-top: 16px;">
+      <div class="stat">
+        <div class="stat-label">Total assets</div>
+        <div class="stat-value">HK$60,101.77</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Market value</div>
+        <div class="stat-value">HK$49,958.22</div>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-head">
+        <h2>Allocation by sector</h2>
+        <span class="section-note">HKD-equivalent, ~7.80 USD/HKD</span>
+      </div>
+      <div class="trend-card">
+        <div class="allocation-layout">
+          <div class="donut-wrap" id="donut-wrap">
+            <div class="donut-center">
+              <div class="amount">HK$60,102</div>
+              <div class="label">Total</div>
+            </div>
+          </div>
+          <div class="alloc-table" id="alloc-table"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Total assets over time</h2>
+        <span class="section-note" id="trend-delta-note"></span>
+      </div>
+      <div class="trend-card trend-wrap" id="trend-container">
+        <div class="trend-empty" id="trend-empty">Trend builds from here — paste your next snapshot and this fills in with a line showing change over time.</div>
+        <div class="trend-tooltip" id="trend-tooltip"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Positions — USD</h2>
+        <span class="section-note">12 holdings</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th>Name</th>
+              <th>Qty</th>
+              <th>Cost</th>
+              <th>Market val.</th>
+              <th>P/L %</th>
+              <th>P/L $</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="ticker">SNDK</td><td class="name">SanDisk</td>
+              <td class="num">1</td><td class="num">1,355.00</td><td class="num">1,743.00</td>
+              <td><span class="pl-pill good">▲ 28.63%</span></td><td class="num pl-good">+388.00</td>
+            </tr>
+            <tr>
+              <td class="ticker">CEG</td><td class="name">Constellation Energy</td>
+              <td class="num">4</td><td class="num">268.07</td><td class="num">1,202.80</td>
+              <td><span class="pl-pill good">▲ 12.17%</span></td><td class="num pl-good">+130.51</td>
+            </tr>
+            <tr>
+              <td class="ticker">MU</td><td class="name">Micron Technology</td>
+              <td class="num">1</td><td class="num">899.85</td><td class="num">1,023.95</td>
+              <td><span class="pl-pill good">▲ 13.79%</span></td><td class="num pl-good">+124.10</td>
+            </tr>
+            <tr>
+              <td class="ticker">WDC</td><td class="name">Western Digital</td>
+              <td class="num">1</td><td class="num">730.00</td><td class="num">469.20</td>
+              <td><span class="pl-pill bad">▼ 35.73%</span></td><td class="num pl-bad">−260.80</td>
+            </tr>
+            <tr>
+              <td class="ticker">GLW</td><td class="name">Corning</td>
+              <td class="num">2</td><td class="num">167.00</td><td class="num">307.64</td>
+              <td><span class="pl-pill bad">▼ 7.89%</span></td><td class="num pl-bad">−26.36</td>
+            </tr>
+            <tr>
+              <td class="ticker">MRVL</td><td class="name">Marvell Technology</td>
+              <td class="num">1</td><td class="num">259.94</td><td class="num">222.08</td>
+              <td><span class="pl-pill bad">▼ 14.56%</span></td><td class="num pl-bad">−37.86</td>
+            </tr>
+            <tr>
+              <td class="ticker">SKHY</td><td class="name">SK hynix</td>
+              <td class="num">1</td><td class="num">140.00</td><td class="num">180.23</td>
+              <td><span class="pl-pill good">▲ 28.74%</span></td><td class="num pl-good">+40.23</td>
+            </tr>
+            <tr>
+              <td class="ticker">QCOM</td><td class="name">Qualcomm</td>
+              <td class="num">1</td><td class="num">165.00</td><td class="num">169.84</td>
+              <td><span class="pl-pill good">▲ 2.93%</span></td><td class="num pl-good">+4.84</td>
+            </tr>
+            <tr>
+              <td class="ticker">ORCL</td><td class="name">Oracle</td>
+              <td class="num">1</td><td class="num">211.50</td><td class="num">163.04</td>
+              <td><span class="pl-pill bad">▼ 22.91%</span></td><td class="num pl-bad">−48.46</td>
+            </tr>
+            <tr>
+              <td class="ticker">ZETA</td><td class="name">Zeta Global</td>
+              <td class="num">5</td><td class="num">20.73</td><td class="num">154.25</td>
+              <td><span class="pl-pill good">▲ 48.82%</span></td><td class="num pl-good">+50.60</td>
+            </tr>
+            <tr>
+              <td class="ticker">IONQ</td><td class="name">IonQ</td>
+              <td class="num">3</td><td class="num">55.00</td><td class="num">121.41</td>
+              <td><span class="pl-pill bad">▼ 26.42%</span></td><td class="num pl-bad">−43.59</td>
+            </tr>
+            <tr>
+              <td class="ticker">AMAT</td><td class="name">Applied Materials</td>
+              <td class="num">0.1621</td><td class="num">555.03</td><td class="num">74.27</td>
+              <td><span class="pl-pill bad">▼ 17.45%</span></td><td class="num pl-bad">−15.70</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Positions — HKD</h2>
+        <span class="section-note">1 holding</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th>Name</th>
+              <th>Qty</th>
+              <th>Cost</th>
+              <th>Market val.</th>
+              <th>P/L %</th>
+              <th>P/L</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="ticker">09880</td><td class="name">UBTECH Robotics</td>
+              <td class="num">50</td><td class="num">116.80</td><td class="num">4,230.00</td>
+              <td><span class="pl-pill bad">▼ 27.57%</span></td>
+              <td class="num pl-bad">−1,610.00<span class="currency-tag">HKD</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="wrap"></div>
+  </footer>
+</main>
+
+<div class="modal-backdrop" id="rationale-backdrop">
+  <div class="modal" id="rationale-modal" role="dialog" aria-modal="true"></div>
+</div>
+
+<script>
+(function () {
+  const cs = getComputedStyle(document.documentElement);
+  const v = (name) => cs.getPropertyValue(name).trim();
+
+  const sectors = [
+    { key: 'semis', label: 'Tech Hardware', valueHkd: 32684, colorVar: '--series-semis', holdings: [
+      { ticker: 'WDC',  name: 'Western Digital' },
+      { ticker: 'SNDK', name: 'SanDisk' },
+      { ticker: 'SKHY', name: 'SK hynix' },
+      { ticker: 'MU',   name: 'Micron Technology' },
+      { ticker: 'QCOM', name: 'Qualcomm' },
+      { ticker: 'MRVL', name: 'Marvell Technology' },
+      { ticker: 'AMAT', name: 'Applied Materials' },
+      { ticker: 'GLW',  name: 'Corning' },
+    ]},
+    { key: 'cash', label: 'Cash', valueHkd: 10144, colorVar: '--series-cash', holdings: [
+      { ticker: 'HKD', name: 'HKD cash' },
+      { ticker: 'USD', name: 'USD cash' },
+    ]},
+    { key: 'energy', label: 'Energy', valueHkd: 9382, colorVar: '--series-energy', holdings: [
+      { ticker: 'CEG', name: 'Constellation Energy' },
+    ]},
+    { key: 'emerging', label: 'Emerging Tech', valueHkd: 5177, colorVar: '--series-emerging', holdings: [
+      { ticker: '09880', name: 'UBTECH Robotics' },
+      { ticker: 'IONQ',  name: 'IonQ' },
+    ]},
+    { key: 'software', label: 'Software', valueHkd: 2475, colorVar: '--series-software', holdings: [
+      { ticker: 'ZETA', name: 'Zeta Global' },
+      { ticker: 'ORCL', name: 'Oracle' },
+    ]},
+  ];
+  sectors.forEach(s => { s.tickers = s.holdings.map(h => h.ticker).join(', '); });
+
+  const total = sectors.reduce((s, x) => s + x.valueHkd, 0);
+  const R = 100, C = 110, innerR = 62;
+  const wrap = document.getElementById('donut-wrap');
+  const tableEl = document.getElementById('alloc-table');
+
+  function arcPath(startAngle, endAngle) {
+    const toXY = (r, a) => [C + r * Math.cos(a), C + r * Math.sin(a)];
+    const [x1, y1] = toXY(R, startAngle), [x2, y2] = toXY(R, endAngle);
+    const [ix1, iy1] = toXY(innerR, endAngle), [ix2, iy2] = toXY(innerR, startAngle);
+    const large = (endAngle - startAngle) > Math.PI ? 1 : 0;
+    return `M ${x1} ${y1} A ${R} ${R} 0 ${large} 1 ${x2} ${y2} L ${ix1} ${iy1} A ${innerR} ${innerR} 0 ${large} 0 ${ix2} ${iy2} Z`;
+  }
+
+  let angle = -Math.PI / 2;
+  let svg = `<svg viewBox="0 0 ${C * 2} ${C * 2}">`;
+  sectors.forEach((s) => {
+    const frac = s.valueHkd / total;
+    const next = angle + frac * Math.PI * 2;
+    svg += `<path d="${arcPath(angle, next)}" fill="${v(s.colorVar)}" data-key="${s.key}"/>`;
+    angle = next;
+  });
+  svg += '</svg>';
+  wrap.innerHTML = svg + wrap.innerHTML;
+
+  let rows = '';
+  sectors.forEach((s) => {
+    const pct = ((s.valueHkd / total) * 100).toFixed(1);
+    rows += `<div class="alloc-row" data-key="${s.key}">
+      <div class="alloc-name"><span class="alloc-swatch" style="background:${v(s.colorVar)}"></span>${s.label}<span class="alloc-tickers">${s.tickers}</span></div>
+      <div class="alloc-val">HK$${s.valueHkd.toLocaleString('en-US')}</div>
+      <div class="alloc-pct">${pct}%</div>
+    </div>`;
+  });
+  tableEl.innerHTML = rows;
+
+  function setHover(key) {
+    wrap.querySelectorAll('path').forEach(p => p.classList.toggle('dim', key && p.dataset.key !== key));
+    tableEl.querySelectorAll('.alloc-row').forEach(r => r.classList.toggle('dim', key && r.dataset.key !== key));
+  }
+  wrap.querySelectorAll('path').forEach(p => {
+    p.addEventListener('mouseenter', () => setHover(p.dataset.key));
+    p.addEventListener('mouseleave', () => setHover(null));
+  });
+  tableEl.querySelectorAll('.alloc-row').forEach(r => {
+    r.addEventListener('mouseenter', () => setHover(r.dataset.key));
+    r.addEventListener('mouseleave', () => setHover(null));
+  });
+
+  // ---- click-to-open rationale modal ----
+  const backdrop = document.getElementById('rationale-backdrop');
+  const modal = document.getElementById('rationale-modal');
+  let rationaleMap = {};
+
+  function openModal(key) {
+    const s = sectors.find(x => x.key === key);
+    if (!s) return;
+    let html = `<div class="modal-header">
+      <h3><span class="modal-swatch" style="background:${v(s.colorVar)}"></span>${s.label}</h3>
+      <button class="modal-close" id="rationale-close" aria-label="Close">✕</button>
+    </div>`;
+    s.holdings.forEach(h => {
+      const text = rationaleMap[h.ticker];
+      html += `<div class="modal-holding">
+        <div class="modal-holding-head"><span class="modal-ticker">${h.ticker}</span><span class="modal-name">${h.name}</span></div>
+        <div class="modal-rationale${text ? '' : ' placeholder'}">${text || 'No rationale added yet.'}</div>
+      </div>`;
+    });
+    modal.innerHTML = html;
+    backdrop.classList.add('open');
+    document.getElementById('rationale-close').addEventListener('click', closeModal);
+  }
+
+  function closeModal() { backdrop.classList.remove('open'); }
+
+  backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  wrap.querySelectorAll('path').forEach(p => p.addEventListener('click', () => openModal(p.dataset.key)));
+  tableEl.querySelectorAll('.alloc-row').forEach(r => r.addEventListener('click', () => openModal(r.dataset.key)));
+
+  // Rationale text is edited directly here (no database) so the page can be shared publicly.
+  rationaleMap = {
+    // e.g. 'CEG': 'Bought into nuclear as an AI-datacenter power play.',
+  };
+})();
+</script>
+
+<script>
+(function () {
+  const container = document.getElementById('trend-container');
+  const emptyEl = document.getElementById('trend-empty');
+  const tooltip = document.getElementById('trend-tooltip');
+  const deltaNote = document.getElementById('trend-delta-note');
+
+  // Snapshot history is edited directly here (no database) so the page can be shared publicly.
+  const snapshotHistory = [
+    { date: '2026-06-02', totalAssetsHkd: 50000 },
+    { date: '2026-09-08', totalAssetsHkd: 60101.77 },
+  ];
+
+  function fmtMoney(n) {
+    return 'HK$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  }
+  function fmtDate(d) {
+    const dt = new Date(d + 'T00:00:00');
+    return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+
+  function render(points) {
+    if (points.length < 2) {
+      emptyEl.style.display = 'block';
+      return;
+    }
+    emptyEl.style.display = 'none';
+
+    const latest = points[points.length - 1];
+    const prev = points[points.length - 2];
+    const delta = latest.totalAssetsHkd - prev.totalAssetsHkd;
+    const sign = delta >= 0 ? '▲' : '▼';
+    const cls = delta >= 0 ? 'pl-good' : 'pl-bad';
+    deltaNote.innerHTML = '<span class="trend-delta ' + cls + '">' + sign + ' ' + fmtMoney(Math.abs(delta)) + ' since last update</span>';
+
+    const W = 860, H = 220, padL = 60, padR = 16, padT = 16, padB = 28;
+    const values = points.map(p => p.totalAssetsHkd);
+    const min = Math.min(...values), max = Math.max(...values);
+    const span = (max - min) || 1;
+    const yMin = min - span * 0.15, yMax = max + span * 0.15;
+
+    const x = i => padL + (i / (points.length - 1)) * (W - padL - padR);
+    const y = v => padT + (1 - (v - yMin) / (yMax - yMin)) * (H - padT - padB);
+
+    let svg = '<svg id="trend-svg" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet">';
+
+    // gridlines + y labels (3 bands)
+    for (let g = 0; g <= 2; g++) {
+      const v = yMin + (g / 2) * (yMax - yMin);
+      const yy = y(v);
+      svg += '<line class="gridline" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + yy + '" y2="' + yy + '"/>';
+      svg += '<text x="' + (padL - 10) + '" y="' + (yy + 4) + '" text-anchor="end">' + fmtMoney(v) + '</text>';
+    }
+
+    // area + line
+    const linePts = points.map((p, i) => x(i) + ',' + y(p.totalAssetsHkd)).join(' ');
+    const areaPts = linePts + ' ' + x(points.length - 1) + ',' + y(yMin) + ' ' + x(0) + ',' + y(yMin);
+    svg += '<polygon class="trend-area" points="' + areaPts + '"/>';
+    svg += '<polyline class="trend-line" points="' + linePts + '"/>';
+
+    // points + x labels (first, last, and midpoint if room)
+    points.forEach((p, i) => {
+      const isEnd = i === points.length - 1;
+      svg += '<circle class="trend-point' + (isEnd ? ' end' : '') + '" cx="' + x(i) + '" cy="' + y(p.totalAssetsHkd) + '" r="' + (isEnd ? 5 : 3.5) + '"/>';
+      if (i === 0 || i === points.length - 1 || (points.length > 4 && i === Math.floor(points.length / 2))) {
+        svg += '<text x="' + x(i) + '" y="' + (H - 6) + '" text-anchor="middle">' + fmtDate(p.date) + '</text>';
+      }
+    });
+
+    svg += '<line class="crosshair" id="trend-crosshair" x1="0" x2="0" y1="' + padT + '" y2="' + (H - padB) + '"/>';
+    svg += '</svg>';
+
+    container.innerHTML = svg + tooltip.outerHTML;
+    const svgEl = container.querySelector('#trend-svg');
+    const crosshair = container.querySelector('#trend-crosshair');
+    const tip = container.querySelector('#trend-tooltip');
+
+    svgEl.addEventListener('mousemove', (e) => {
+      const rect = svgEl.getBoundingClientRect();
+      const relX = ((e.clientX - rect.left) / rect.width) * W;
+      let nearest = 0, best = Infinity;
+      points.forEach((p, i) => {
+        const d = Math.abs(x(i) - relX);
+        if (d < best) { best = d; nearest = i; }
+      });
+      const p = points[nearest];
+      crosshair.setAttribute('x1', x(nearest));
+      crosshair.setAttribute('x2', x(nearest));
+      crosshair.style.opacity = 1;
+      tip.style.opacity = 1;
+      tip.style.left = ((x(nearest) / W) * rect.width) + 'px';
+      tip.style.top = ((y(p.totalAssetsHkd) / H) * rect.height) + 'px';
+      tip.textContent = fmtDate(p.date) + '  ' + fmtMoney(p.totalAssetsHkd);
+    });
+    svgEl.addEventListener('mouseleave', () => {
+      crosshair.style.opacity = 0;
+      tip.style.opacity = 0;
+    });
+  }
+
+  const points = snapshotHistory
+    .slice()
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .filter(d => typeof d.totalAssetsHkd === 'number');
+  render(points);
+})();
+</script>
