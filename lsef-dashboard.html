@@ -602,6 +602,32 @@
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; }
   }
+
+  /* ---------- scroll reveal ---------- */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s cubic-bezier(.2,.7,.3,1), transform 0.7s cubic-bezier(.2,.7,.3,1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  main > .wrap > section.reveal:nth-of-type(1) { transition-delay: 0s; }
+  main > .wrap > section.reveal:nth-of-type(2) { transition-delay: 0.05s; }
+  main > .wrap > section.reveal:nth-of-type(3) { transition-delay: 0.05s; }
+  main > .wrap > section.reveal:nth-of-type(4) { transition-delay: 0.05s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
 </style>
 
 <header class="top">
@@ -616,7 +642,7 @@
 
 <main>
   <div class="wrap">
-    <div class="inception-card">
+    <div class="inception-card reveal">
       <div class="inception-headline">
         <span class="inception-label">Since inception</span>
         <span class="inception-return good">+20.2%</span>
@@ -642,7 +668,7 @@
       </div>
     </div>
 
-    <div class="stats" style="margin-top: 16px;">
+    <div class="stats reveal" style="margin-top: 16px;">
       <div class="stat">
         <div class="stat-label">Total assets</div>
         <div class="stat-value">HK$60,101.77</div>
@@ -653,7 +679,7 @@
       </div>
     </div>
 
-    <section>
+    <section class="reveal">
       <div class="section-head">
         <h2>Allocation by sector</h2>
         <span class="section-note">HKD-equivalent, ~7.80 USD/HKD</span>
@@ -671,7 +697,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="reveal">
       <div class="section-head">
         <h2>Total assets over time</h2>
         <span class="section-note" id="trend-delta-note"></span>
@@ -682,7 +708,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="reveal">
       <div class="section-head">
         <h2>Positions — USD</h2>
         <span class="section-note">12 holdings</span>
@@ -766,7 +792,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="reveal">
       <div class="section-head">
         <h2>Positions — HKD</h2>
         <span class="section-note">1 holding</span>
@@ -1034,4 +1060,25 @@
     .filter(d => typeof d.totalAssetsHkd === 'number');
   render(points);
 })();
+</script>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
 </script>
