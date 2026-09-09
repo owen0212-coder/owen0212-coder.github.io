@@ -316,6 +316,37 @@
   .card.card-fishing { --project-color: var(--project-gold); }
   .card.card-portfolio { --project-color: var(--project-green); }
 
+  .project-heading {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr);
+    align-items: center;
+    gap: 11px;
+  }
+
+  .project-heading-text { display: grid; gap: 3px; }
+
+  .project-mark {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: var(--project-color);
+    color: var(--surface);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), 0 3px 0 color-mix(in srgb, var(--project-color) 24%, transparent);
+  }
+
+  .project-mark svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
   .card:not([aria-disabled="true"]) .status,
   .card:not([aria-disabled="true"]) .card-name,
   .card:not([aria-disabled="true"]) .card-desc {
@@ -449,6 +480,27 @@
         <ellipse cx="9.8" cy="9" rx="3.6" ry="2.4" fill="rgba(255,255,255,0.55)"/>
         <circle cx="14" cy="14" r="1.7" fill="rgba(20,18,16,0.55)"/>
       </symbol>
+      <!-- Project icons: Lucide fish-symbol and chart-pie (https://lucide.dev).
+      ISC License
+      Copyright (c) 2026 Lucide Icons and Contributors
+      Permission to use, copy, modify, and/or distribute this software for any
+      purpose with or without fee is hereby granted, provided that the above
+      copyright notice and this permission notice appear in all copies.
+      THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+      WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+      MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+      ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+      WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+      ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+      OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+      -->
+      <symbol id="project-fish" viewBox="0 0 24 24">
+        <path d="M2 16s9-15 20-4C11 23 2 8 2 8"/>
+      </symbol>
+      <symbol id="project-allocation" viewBox="0 0 24 24">
+        <path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/>
+        <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+      </symbol>
     </defs>
   </svg>
   <section class="hero">
@@ -472,14 +524,24 @@
       <div class="board">
         <a class="card card-fishing" href="rod-to-riches/">
           <svg class="pin-icon" viewBox="0 0 28 28" aria-hidden="true"><use href="#pushpin-icon"></use></svg>
-          <span class="status building"><span class="swatch"></span>Building · Play v0.1</span>
-          <div class="card-name">Rod to Riches</div>
+          <div class="project-heading">
+            <span class="project-mark" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#project-fish"></use></svg></span>
+            <div class="project-heading-text">
+              <span class="status building"><span class="swatch"></span>Building · Play v0.1</span>
+              <div class="card-name">Rod to Riches</div>
+            </div>
+          </div>
           <div class="card-desc"><strong>Catch fish. Invest. Stock markets (planned).</strong> Start with a rod and build your fishing empire. <em>Basically my dream life.</em></div>
         </a>
         <a class="card card-portfolio" href="lsef-dashboard.html">
           <svg class="pin-icon" viewBox="0 0 28 28" aria-hidden="true"><use href="#pushpin-icon"></use></svg>
-          <span class="status building"><span class="swatch"></span>Building</span>
-          <div class="card-name">LSEF Portfolio</div>
+          <div class="project-heading">
+            <span class="project-mark" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#project-allocation"></use></svg></span>
+            <div class="project-heading-text">
+              <span class="status building"><span class="swatch"></span>Building</span>
+              <div class="card-name">LSEF Portfolio</div>
+            </div>
+          </div>
           <div class="card-desc">Holdings and sector allocation for my investment fund.</div>
         </a>
         <a class="card" href="#" aria-disabled="true">
