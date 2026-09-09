@@ -1,5 +1,5 @@
 import * as T from './vendor/three.module.min.js';
-import {createSwimmingFish,animateSwimmingFish} from './swimming-fish.mjs?v=swim-2';
+import {createSwimmingFish,animateSwimmingFish} from './swimming-fish.mjs?v=swim-depth-3';
 export function createWorld(container){
  const scene=new T.Scene();scene.background=new T.Color('#c6ded3');scene.fog=new T.Fog('#c6ded3',40,110);
  const renderer=new T.WebGLRenderer({antialias:true,powerPreference:'low-power'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.25;container.appendChild(renderer.domElement);

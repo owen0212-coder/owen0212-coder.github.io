@@ -99,6 +99,7 @@ test('fish visibly travel in their facing direction and articulate their tails',
     animateSwimmingFish(fish, 5);
     const start = fish.position.clone();
     const facing = new T.Vector3(0, 0, -1).applyEuler(fish.rotation);
+    facing.y = 0; facing.normalize();
     const tailAngle = fish.userData.swim.tail.rotation.y;
     animateSwimmingFish(fish, 5.01);
     const direction = fish.position.clone().sub(start); direction.y = 0;
@@ -112,11 +113,38 @@ test('swimming paths remain bounded and respect reduced motion', () => {
   const fish = createSwimmingFish(3);
   animateSwimmingFish(fish, 0, true);
   const start = fish.position.clone(), tail = fish.userData.swim.tail.rotation.y;
+  const opacity = fish.userData.swim.materials[0].opacity;
   animateSwimmingFish(fish, 100, true);
   assert.deepEqual(fish.position, start); assert.equal(fish.userData.swim.tail.rotation.y, tail);
+  assert.equal(fish.userData.swim.materials[0].opacity, opacity);
   for (let t = 0; t <= 3600; t += 17) {
     animateSwimmingFish(fish, t);
     assert.ok(fish.position.x > -2 && fish.position.x < 16);
     assert.ok(fish.position.z > -2 && fish.position.z < 14);
   }
+});
+test('fish dive and fade smoothly at independent phases, then resurface visibly', () => {
+  const initialVisibility = [];
+  for (let index = 0; index < 10; index++) {
+    const fish = createSwimmingFish(index);
+    initialVisibility.push(fish.userData.swim.materials[0].opacity);
+    let shallow = -Infinity, deep = Infinity, brightest = 0, faintest = 1;
+    let previous = fish.userData.swim.materials[0].opacity;
+    for (let frame = 0; frame <= 1800; frame++) {
+      animateSwimmingFish(fish, frame / 60);
+      const [bodyMaterial, finMaterial] = fish.userData.swim.materials;
+      shallow = Math.max(shallow, fish.position.y); deep = Math.min(deep, fish.position.y);
+      brightest = Math.max(brightest, bodyMaterial.opacity); faintest = Math.min(faintest, bodyMaterial.opacity);
+      assert.ok(Math.abs(bodyMaterial.opacity - previous) < .01, 'no abrupt visibility changes');
+      assert.equal(finMaterial.opacity, bodyMaterial.opacity);
+      previous = bodyMaterial.opacity;
+    }
+    assert.ok(shallow > -.7 && deep < -2.9, 'fish must travel between shallow and deep water');
+    assert.ok(brightest > .99 && faintest < .02, 'fish must disappear into depth and return');
+    fish.traverse(mesh => { if (mesh.isMesh) {
+      assert.equal(mesh.renderOrder, -1); assert.equal(mesh.material.transparent, true);
+      assert.equal(mesh.material.depthWrite, false);
+    } });
+  }
+  assert.ok(Math.max(...initialVisibility) - Math.min(...initialVisibility) > .8, 'fish must not dive in unison');
 });
