@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#174f51">
+  <meta name="description" content="Start with a rod. Build a fishing empire. A cozy 3D fishing and investment game by Owen.">
+  <title>Rod to Riches · Owen's Project Shed</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main id="game">
+    <div id="world" aria-label="A sunlit three-dimensional fishing harbor"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <header class="topbar">
+      <div class="brand"><a href="../">← THE SHED</a><h1>Rod <i>to</i> Riches<span class="hook">⌁</span></h1><p>A small catch. A big beginning.</p></div>
+      <div class="top-actions"><div class="wallet"><span>YOUR BALANCE</span><strong id="coins">$0</strong></div><button id="sound" class="icon-button" aria-label="Turn sound on" title="Sound">♪<span id="sound-state">OFF</span></button><button id="help" class="icon-button" aria-label="How to play" title="How to play">?</button></div>
+    </header>
+    <div class="location"><span class="sun" aria-hidden="true">☀</span><div><strong>Willow Bay</strong><span>CALM WATERS · BIG POSSIBILITIES</span></div></div>
+    <aside class="harbor" aria-label="Harbor management">
+      <div class="harbor-heading"><div><span class="eyebrow">YOUR LITTLE EMPIRE</span><h2>The harbor</h2></div><button id="panel-toggle" class="icon-button" aria-label="Collapse harbor" aria-expanded="true">−</button></div>
+      <div id="harbor-body">
+        <nav class="tabs" aria-label="Harbor sections"><button data-tab="catch" aria-pressed="true">Catch</button><button data-tab="gear" aria-pressed="false">Gear</button><button data-tab="fleet" aria-pressed="false">Fleet</button><button data-tab="journal" aria-pressed="false">Journal</button></nav>
+        <div id="panel-content"></div>
+        <div class="milestone"><div><span id="milestone-label">YOUR FIRST FISHING BOAT</span><strong id="milestone-value">$0 / $450</strong></div><div class="thin-track"><div id="milestone-bar"></div></div><p id="milestone-copy">Every catch is a little capital.</p></div>
+      </div>
+    </aside>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <section class="fishing" aria-label="Fishing controls">
+      <div class="status-line"><span class="live-dot"></span><span id="phase-label">A GOOD DAY TO START SOMETHING</span></div>
+      <h2 id="fishing-title">Your empire starts with a cast.</h2>
+      <p id="fishing-hint">Cast your line. A little patience goes a long way.</p>
+      <div id="fight" hidden><div class="meter-label"><span>LINE TENSION <b id="tension-value">25%</b></span><span id="fight-advice">Hold to reel · release to cool</span></div><div class="tension-track"><div id="tension-bar"></div><span></span></div><div class="progress-row"><span>LANDING THE FISH</span><div class="thin-track"><div id="catch-bar"></div></div><b id="catch-percent">0%</b></div></div>
+      <button id="cast" class="cast-button"><span id="cast-icon">↗</span><span id="cast-label">Cast your line</span><kbd>SPACE</kbd></button>
+      <p class="control-note" id="control-note">Click or press Space · progress saved on this device</p>
+    </section>
+    <footer class="game-footer"><span>ROD TO RICHES <b>v0.1</b></span><span id="save-state">SAVED LOCALLY</span></footer>
+  </main>
+  <dialog id="help-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close instructions">×</button></form><span class="eyebrow">WELCOME TO WILLOW BAY</span><h2>From one rod<br>to your own fleet.</h2><ol><li><strong>Cast & wait.</strong> Tap Cast, then hook the fish when it bites.</li><li><strong>Reel with care.</strong> Hold the button or Space to reel. Release to lower tension. A full red meter snaps the line.</li><li><strong>Sell & reinvest.</strong> Sell your cooler at the harbor. Upgrade your rod, bait, and storage.</li><li><strong>Build your fleet.</strong> A boat costs $450 and earns $18 each minute while you play. Collect its earnings in Fleet.</li></ol><p>All prices are fictional game dollars. Progress stays in this browser on this device. Boats pause when the game is hidden or closed.</p><p>Tip: upgraded rods make difficult fish easier. Rare species need better gear. You can press P to pause a fishing attempt.</p><button id="help-done" class="primary">Let's go fishing</button></dialog>
+  <noscript><div class="fatal">Please enable JavaScript to play Rod to Riches. <a href="../">Back to the Shed</a></div></noscript>
+  <script type="module" src="./game.mjs"></script>
+</body>
+</html>
