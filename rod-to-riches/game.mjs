@@ -1,5 +1,6 @@
 import {SPECIES,GEAR,BOAT_RATE,MAX_BOATS,initialState,sanitize,capacity,boatCost,rollFish,landFish,sellFish,upgrade,buyBoat,earnBoat,collectBoat,fightStep} from './economy.mjs';
 import {createWorld} from './scene.mjs';
+import {bindFishingInput} from './fishing-input.mjs';
 const $=id=>document.getElementById(id), money=n=>'$'+Math.floor(n).toLocaleString('en-US');
 const KEY='rod-to-riches-save-v1';let state=initialState(),storageAvailable=true;
 try{state=sanitize(JSON.parse(localStorage.getItem(KEY)));}catch{storageAvailable=false;}
@@ -44,20 +45,14 @@ $('panel-content').addEventListener('click',e=>{const b=e.target.closest('button
  if(b.dataset.action==='collect'){toast(`Collected ${money(collectBoat(state))} from your fleet.`);tone(700);}
  updatePanel();save();});
 $('panel-toggle').addEventListener('click',()=>setPanel($('harbor-body').hidden));
-// Holding is separate from activation, so a tap to hook cannot accidentally reel.
-$('cast').addEventListener('pointerdown',e=>{if(phase==='fighting'&&!paused){e.preventDefault();holding=true;$('cast').setPointerCapture?.(e.pointerId);}});
 function release(){holding=false;}
-addEventListener('pointerup',release);addEventListener('pointercancel',release);addEventListener('blur',()=>{release();if(['waiting','bite','fighting'].includes(phase)){paused=true;updateFishing();}});
-$('cast').addEventListener('click',()=>{if(phase!=='fighting'||paused)cast();});
-addEventListener('keydown',e=>{if($('help-dialog').open)return;if(e.code==='KeyP'&&!e.repeat&&['waiting','bite','fighting'].includes(phase)){paused=!paused;release();updateFishing();return;}if(e.code!=='Space'||e.target.closest('button,a,input,dialog'))return;e.preventDefault();if(e.repeat)return;if(phase==='fighting'&&!paused)holding=true;else cast();});
-// Space must work when the cast button itself has keyboard focus.
-$('cast').addEventListener('keydown',e=>{if(e.code==='Space'&&phase==='fighting'&&!paused){e.preventDefault();if(!e.repeat)holding=true;}});
-addEventListener('keyup',e=>{if(e.code==='Space'){release();if(phase==='fighting')e.preventDefault();}});
+const fishingInput=bindFishingInput($('cast'),{getPhase:()=>phase,isPaused:()=>paused,isHelpOpen:()=>$('help-dialog').open,activate:cast,setHolding:value=>{holding=value;},togglePause:()=>{paused=!paused;updateFishing();}});
+addEventListener('blur',()=>{release();if(['waiting','bite','fighting'].includes(phase)){paused=true;updateFishing();}});
 function showHelp(){release();if(['waiting','bite','fighting'].includes(phase))paused=true;updateFishing();$('help-dialog').showModal();}
 $('help').addEventListener('click',showHelp);$('help-done').addEventListener('click',()=>$('help-dialog').close());
 $('sound').addEventListener('click',()=>{state.sound=!state.sound;updateSound();tone();save();});
 function updateSound(){$('sound-state').textContent=state.sound?'ON':'OFF';$('sound').setAttribute('aria-label',state.sound?'Turn sound off':'Turn sound on');}
-document.addEventListener('visibilitychange',()=>{release();if(document.hidden){save();if(['waiting','bite','fighting'].includes(phase)){paused=true;updateFishing();}}});addEventListener('pagehide',save);
+document.addEventListener('visibilitychange',()=>{fishingInput.cancel();if(document.hidden){save();if(['waiting','bite','fighting'].includes(phase)){paused=true;updateFishing();}}});addEventListener('pagehide',save);
 if(matchMedia('(max-width:600px)').matches)setPanel(false);
 updatePanel();updateFishing();updateSound();save();
 let last=performance.now();function frame(now){const dt=Math.min((now-last)/1000,.08);last=now;if(!document.hidden){

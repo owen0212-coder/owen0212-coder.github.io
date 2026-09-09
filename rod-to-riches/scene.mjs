@@ -1,4 +1,5 @@
 import * as T from './vendor/three.module.min.js';
+import {createSwimmingFish} from './swimming-fish.mjs';
 export function createWorld(container){
  const scene=new T.Scene();scene.background=new T.Color('#c6ded3');scene.fog=new T.Fog('#c6ded3',40,110);
  const renderer=new T.WebGLRenderer({antialias:true,powerPreference:'low-power'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.25;container.appendChild(renderer.domElement);
@@ -11,7 +12,7 @@ export function createWorld(container){
  const cyl=(r1,r2,h,c,x,y,z,n=8,p)=>mesh(new T.CylinderGeometry(r1,r2,h,n),c,x,y,z,p);
  function sphere(r,c,x,y,z,p){return mesh(new T.IcosahedronGeometry(r,1),c,x,y,z,p);}
  let seed=731;function random(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;}
- const waterGeo=new T.PlaneGeometry(230,230,85,85);waterGeo.rotateX(-Math.PI/2);const waterMat=new T.MeshStandardMaterial({color:'#438e92',roughness:.35,metalness:.22,flatShading:true});const water=new T.Mesh(waterGeo,waterMat);water.receiveShadow=true;scene.add(water);const original=Float32Array.from(waterGeo.attributes.position.array);
+ const waterGeo=new T.PlaneGeometry(230,230,85,85);waterGeo.rotateX(-Math.PI/2);const waterMat=new T.MeshStandardMaterial({color:'#438e92',roughness:.35,metalness:.22,flatShading:true,transparent:true,opacity:.86,depthWrite:false});const water=new T.Mesh(waterGeo,waterMat);water.receiveShadow=true;scene.add(water);const original=Float32Array.from(waterGeo.attributes.position.array);
  // An irregular island, tapering into stone and a sandy shoreline.
  const land=new T.Group();scene.add(land);land.position.set(-14,-.2,-5);
  const shore=cyl(13,12.6,1.5,'#d8c596',0,0,0,11,land);shore.scale.set(1,1,1.3);
@@ -49,7 +50,7 @@ export function createWorld(container){
  const lineGeo=new T.BufferGeometry().setFromPoints([new T.Vector3(),new T.Vector3()]);const line=new T.Line(lineGeo,new T.LineBasicMaterial({color:'#ecedce',transparent:true,opacity:.8}));scene.add(line);line.visible=false;
  const rings=[];for(let i=0;i<4;i++){const ring=new T.Mesh(new T.RingGeometry(.47,.49,48),new T.MeshBasicMaterial({color:'#ddf0d9',transparent:true,opacity:.3,side:T.DoubleSide}));ring.rotation.x=-Math.PI/2;scene.add(ring);rings.push(ring);}
  // Low-poly fish silhouettes moving beneath the surface.
- const swimmers=[];for(let i=0;i<10;i++){const g=new T.Group();const body=sphere(.35,'#377677',0,0,0,g);body.scale.set(.4,.16,1);const tail=cone(.2,.4,'#377677',0,0,.45,3,g);tail.rotation.x=Math.PI/2;g.position.set(random()*18-4,-.08,random()*20-9);scene.add(g);swimmers.push(g);}
+ const swimmers=[];for(let i=0;i<10;i++){const g=createSwimmingFish();g.position.x=random()*18-4;g.position.z=random()*20-9;scene.add(g);swimmers.push(g);}
  const boats=[];function boat(x,z,index){const g=new T.Group();g.position.set(x,.25,z);scene.add(g);const hull=box(1.45,.55,3,'#426c66',0,0,0,g);const prow=cone(.88,1.2,'#426c66',0,0,-1.65,3,g);prow.rotation.x=-Math.PI/2;box(1.18,.12,2.7,'#c3ac7c',0,.32,0,g);box(.95,.8,1,'#f1dbaf',0,.74,.3,g);box(1.2,.12,1.25,'#d89862',0,1.18,.3,g);box(.61,.32,.04,'#537e7a',0,.85,-.22,g);cyl(.04,.04,2.1,'#74644a',.4,1.3,.1,7,g);box(.45,.32,.04,'#ddb259',.61,2.15,.1,g);g.rotation.y=.2+index*.3;boats.push(g);return g;}
  for(let i=0;i<3;i++){boat(4+i*3,-4-i*2,i);boats[i].visible=false;}
  // Buoys and reeds give a sense of scale without downloaded assets.
