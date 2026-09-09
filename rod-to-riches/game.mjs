@@ -1,5 +1,5 @@
 import {SPECIES,GEAR,BOAT_RATE,MAX_BOATS,initialState,sanitize,capacity,boatCost,rollFish,landFish,sellFish,upgrade,buyBoat,earnBoat,collectBoat,fightStep} from './economy.mjs';
-import {createWorld} from './scene.mjs';
+import {createWorld} from './scene.mjs?v=swim-2';
 import {bindFishingInput} from './fishing-input.mjs';
 const $=id=>document.getElementById(id), money=n=>'$'+Math.floor(n).toLocaleString('en-US');
 const KEY='rod-to-riches-save-v1';let state=initialState(),storageAvailable=true;

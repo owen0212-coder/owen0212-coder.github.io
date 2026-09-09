@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as T from './vendor/three.module.min.js';
-import {createSwimmingFish} from './swimming-fish.mjs';
+import {createSwimmingFish,animateSwimmingFish} from './swimming-fish.mjs';
 import {bindFishingInput} from './fishing-input.mjs';
 
 class Surface {
@@ -77,11 +77,46 @@ test('disabled controls, other inputs, and help dialogs do not trigger casts', (
   const elsewhere = {closest: () => ({tagName: 'INPUT'})};
   assert.equal(target.emit('keydown', {code: 'Space', target: elsewhere}).defaultPrevented, false);
 });
-test('swimming fish stay fully below the lowest wave at every orientation and cast no shadows', () => {
-  const fish = createSwimmingFish();
-  for (let i = 0; i < 32; i++) { fish.rotation.y = i * Math.PI / 16; fish.updateMatrixWorld(true);
-    const bounds = new T.Box3().setFromObject(fish);
-    assert.ok(bounds.max.y < -.09, `fish intersects surface at ${bounds.max.y}`);
+test('every fish and animated fin stays submerged, with faceted lighting but no shadow artifacts', () => {
+  for (let index = 0; index < 10; index++) {
+    const fish = createSwimmingFish(index);
+    for (let i = 0; i < 96; i++) {
+      animateSwimmingFish(fish, i * .73);
+      fish.updateMatrixWorld(true);
+      const bounds = new T.Box3().setFromObject(fish);
+      assert.ok(bounds.max.y < -.09, `fish ${index} intersects surface at ${bounds.max.y}`);
+    }
+    fish.traverse(mesh => { if (mesh.isMesh) {
+      assert.equal(mesh.castShadow, false); assert.equal(mesh.receiveShadow, false);
+      assert.equal(mesh.material.isMeshStandardMaterial, true);
+      assert.equal(mesh.material.flatShading, true);
+    } });
   }
-  fish.traverse(mesh => { if (mesh.isMesh) { assert.equal(mesh.castShadow, false); assert.equal(mesh.receiveShadow, false); assert.equal(mesh.material.isMeshBasicMaterial, true); } });
+});
+test('fish visibly travel in their facing direction and articulate their tails', () => {
+  for (let index = 0; index < 10; index++) {
+    const fish = createSwimmingFish(index);
+    animateSwimmingFish(fish, 5);
+    const start = fish.position.clone();
+    const facing = new T.Vector3(0, 0, -1).applyEuler(fish.rotation);
+    const tailAngle = fish.userData.swim.tail.rotation.y;
+    animateSwimmingFish(fish, 5.01);
+    const direction = fish.position.clone().sub(start); direction.y = 0;
+    assert.ok(direction.normalize().dot(facing) > .999, 'fish must swim head-first');
+    animateSwimmingFish(fish, 6);
+    assert.ok(fish.position.distanceTo(start) > .35, 'movement must be visible within one second');
+    assert.ok(Math.abs(fish.userData.swim.tail.rotation.y - tailAngle) > .01, 'tail must beat');
+  }
+});
+test('swimming paths remain bounded and respect reduced motion', () => {
+  const fish = createSwimmingFish(3);
+  animateSwimmingFish(fish, 0, true);
+  const start = fish.position.clone(), tail = fish.userData.swim.tail.rotation.y;
+  animateSwimmingFish(fish, 100, true);
+  assert.deepEqual(fish.position, start); assert.equal(fish.userData.swim.tail.rotation.y, tail);
+  for (let t = 0; t <= 3600; t += 17) {
+    animateSwimmingFish(fish, t);
+    assert.ok(fish.position.x > -2 && fish.position.x < 16);
+    assert.ok(fish.position.z > -2 && fish.position.z < 14);
+  }
 });
