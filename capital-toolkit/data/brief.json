@@ -1,0 +1,30 @@
+{
+  "asOf": "2026-09-15T16:25:00Z",
+  "asOfLabel": "15 Sep 2026, 12:25 p.m. ET / 16 Sep, 00:25 HKT",
+  "title": "The hurdle rate is rising.",
+  "deck": "My read: the tougher question is not just whether earnings grow, but how much investors should pay for them when bond yields and energy costs are rising. Ahead of the Fed decision, I would stress-test valuations rather than treat a modest equity pullback as proof that the risks are priced in.",
+  "facts": [
+    {"label": "10-year Treasury", "value": "4.97%", "context": "Official daily par yield · 14 Sep", "sources": ["1"]},
+    {"label": "US headline CPI", "value": "+0.4%", "context": "August, month-on-month · seasonally adjusted", "sources": ["2"]},
+    {"label": "S&P 500", "value": "−0.5%", "context": "14 Sep closing session · rounded", "sources": ["3"]}
+  ],
+  "sections": [
+    {"kind": "01 / OBSERVED", "title": "The bond move matters beyond the headline.", "body": "Treasury’s 14 September observations put the 2-year at 4.65%, the 10-year at 4.97%, and the 30-year at 5.34%. The 10-year was 4.79% on 1 September: an 18-basis-point increase. The 10Y–2Y spread is now +32 basis points. This is a positive curve at those two maturities, but that shape alone cannot distinguish stronger growth expectations from inflation concerns or a higher term premium.", "sources": ["1"]},
+    {"kind": "02 / CONTEXT", "title": "Inflation is not telling a one-line story.", "body": "August headline CPI increased 0.4% month-on-month and 3.4% year-on-year. Gasoline rose 3.9% over the month, while core CPI rose 0.3% month-on-month and 2.4% year-on-year. My interpretation: energy is a meaningful part of the pressure, but the monthly core reading argues against dismissing everything as an oil-only shock. Core’s lower annual rate is an important counterweight to an indiscriminately bearish inflation narrative.", "sources": ["2"]},
+    {"kind": "03 / HEADLINES → IMPLICATIONS", "title": "A lower index is not automatically a cheaper market.", "body": "AP reported that the S&P 500, Dow and Nasdaq fell 0.5%, 0.3% and 0.6%, respectively, on 14 September, alongside pressure from oil and AI-related concerns. My read: that is a multi-factor repricing, not evidence of a single proven cause. When the discount rate rises, fair value can fall even with unchanged earnings forecasts. A lower quoted price therefore does not, by itself, create a larger margin of safety.", "sources": ["3", "1"]},
+    {"kind": "04 / PUT IT TO WORK", "title": "Separate the forecast from the price you pay.", "body": "The Fed’s scheduled 15–16 September meeting has not concluded at this brief’s cutoff. I would not treat a particular decision as a fact. In the DCF workbench, hold cash-flow assumptions constant and move WACC up by one percentage point; then test weaker cash-flow growth separately. This exposes whether the thesis relies on operating performance or a generous valuation multiple. WACC is a company-specific blended cost of capital, not simply today’s 10-year Treasury yield.", "sources": ["4", "5"]}
+  ],
+  "watch": [
+    "The 16 September Fed statement and projections: distinguish the actual decision from pre-meeting expectations.",
+    "A sustained retreat in longer-dated yields and energy prices would weaken the discount-rate-pressure argument.",
+    "Broader earnings resilience and improving market participation would support a less defensive interpretation; one down session cannot establish a trend."
+  ],
+  "caveat": "This is Codex’s sourced interpretation, not Owen’s personal view or investment advice. Equity performance refers to the completed 14 September session, Treasury figures to 14 September daily observations, and inflation to August. It is not a live commentary on the ongoing 15 September session. Sources can be revised; causal explanations and scenarios are judgments, not established facts.",
+  "sources": [
+    {"id": "1", "name": "US Treasury · September daily par yields", "date": "Observations through 14 Sep 2026", "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202609"},
+    {"id": "2", "name": "BLS · August CPI release", "date": "11 Sep 2026", "url": "https://www.bls.gov/news.release/archives/cpi_09112026.htm"},
+    {"id": "3", "name": "AP · 14 September US index close", "date": "14 Sep 2026", "url": "https://apnews.com/article/8f72a301be85728018018735163f4dad"},
+    {"id": "4", "name": "Federal Reserve · FOMC calendar", "date": "2026 meeting schedule", "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},
+    {"id": "5", "name": "NYU Stern · Damodaran valuation framework", "date": "Methodology reference", "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/lectures/val.html"}
+  ]
+}
