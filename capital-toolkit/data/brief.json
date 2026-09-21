@@ -1,31 +1,105 @@
 {
-  "asOf": "2026-09-15T22:36:34Z",
-  "asOfLabel": "15 Sep 2026, 6:36 p.m. ET / 16 Sep, 06:36 HKT",
-  "title": "Five percent is a hurdle, not a forecast.",
-  "deck": "My read after Tuesday's close: a higher discount rate and a potential squeeze on cash flows deserve separate tests. The latest Treasury observation reached 5.00%, but a round number is not a sell signal. The more useful question ahead of the Fed decision is which valuations still work if financing stays expensive and energy costs remain elevated.",
+  "asOf": "2026-09-21T22:33:30Z",
+  "asOfLabel": "21 Sep 2026, 6:33 p.m. ET / 22 Sep, 06:33 HKT",
+  "title": "Relief rally. Not a policy reset.",
+  "deck": "My read after Monday's close: less pressure from oil and longer-term yields is welcome, but it does not erase last week's Fed tightening. Separate improving valuation conditions from evidence that a company's future cash flows have actually improved.",
   "facts": [
-    {"label": "10-year Treasury", "value": "5.00%", "context": "Official daily par yield · 15 Sep · +3 bp from 14 Sep", "sources": ["1"]},
-    {"label": "S&P 500 close", "value": "7,585.73", "context": "15 Sep completed session · −0.4%, rounded", "sources": ["3"]},
-    {"label": "Brent crude", "value": "$108.75", "context": "USD per barrel · 15 Sep settlement · +2.9%, AP report", "sources": ["6"]}
+    {
+      "label": "10-year Treasury",
+      "value": "4.96%",
+      "context": "Official daily par yield · 21 Sep · −5 bp versus 18 Sep",
+      "sources": [
+        "1"
+      ]
+    },
+    {
+      "label": "S&P 500 close",
+      "value": "7,764.70",
+      "context": "21 Sep completed session · +1.5%, rounded",
+      "sources": [
+        "2"
+      ]
+    },
+    {
+      "label": "Brent crude",
+      "value": "$100.34",
+      "context": "USD per barrel · 21 Sep AP closing report · −3.4%",
+      "sources": [
+        "3"
+      ]
+    }
   ],
   "sections": [
-    {"kind": "01 / OBSERVED", "title": "The curve moved, not just the headline number.", "body": "Official Treasury par yields for 15 September were 4.67% at two years, 5.00% at ten years and 5.36% at thirty years. Their daily changes were +2, +3 and +2 basis points respectively. The 10Y–2Y spread widened slightly to +33 basis points. My interpretation: this is a modest, broad upward move, not evidence by itself of a sudden regime change. Nominal yields alone cannot tell us how much came from expected policy, real growth, inflation compensation or term premium. Nor is a par-yield observation interchangeable with an intraday bond quote.", "sources": ["1"]},
-    {"kind": "02 / THE COMPLETED SESSION", "title": "Weakness was not confined to the Nasdaq.", "body": "AP's closing figures put the S&P 500 at 7,585.73 (−0.4%), the Dow at 52,093.11 (−0.6%) and the Nasdaq Composite at 25,981.57 (−0.8%). The Russell 2000 also lost 0.8%; all changes are rounded. My read: weakness across these benchmarks merits testing both financing sensitivity and operating assumptions. It does not establish how many individual stocks fell, and one session is not enough to diagnose a recession or identify a single cause.", "sources": ["3"]},
-    {"kind": "03 / HEADLINES → CASH FLOWS", "title": "Oil risk belongs in the forecast as well as the discount rate.", "body": "AP reported Brent's Tuesday settlement at $108.75 per barrel, up 2.9%. Separately, August's CPI release showed headline inflation of 3.4% year-on-year and core inflation of 2.4%, with core prices up 0.3% on the month. These are different time windows: today's oil price is not already measured in August CPI. My inference is conditional: sustained expensive energy could pressure consumers and margins at energy-using businesses, while helping some producers. Pricing power, hedges and demand elasticity determine the company-level impact. A rapid oil reversal would weaken this argument; I would not impose the same earnings haircut on every business.", "sources": ["6", "2"]},
-    {"kind": "04 / PUT IT TO WORK", "title": "Stress the model before predicting the Fed.", "body": "The Fed's 15–16 September meeting, including projections, remains unfinished at this cutoff. Expectations are not a policy announcement. In my calculation using this toolkit's fictional default company, increasing WACC from 10% to 11% while holding every other assumption constant reduces estimated value from $15.70 to $13.62 per share, approximately 13.2%. This is a sensitivity illustration, not a forecast for the market: neither a Treasury yield nor a Fed decision maps one-for-one into company WACC. Next test slower cash-flow growth separately, then together with the rate change, to avoid hiding operating risk inside a single discount-rate assumption.", "sources": ["4", "5"]}
+    {
+      "kind": "01 / OBSERVED",
+      "title": "The relief was further out on the curve.",
+      "body": "Treasury's official daily observations put the two-year yield at 4.76%, unchanged from Friday, while the ten-year fell from 5.01% to 4.96% and the thirty-year from 5.34% to 5.29%. The 10Y–2Y spread narrowed from 25 to 20 basis points. My interpretation: longer-duration borrowing conditions eased, but this was not a uniform repricing of the curve toward cheaper money. Nominal yields alone cannot separate inflation expectations, real rates and term premium. These are consistent daily par-yield observations, not executable bond quotes or an intraday event study.",
+      "sources": [
+        "1"
+      ]
+    },
+    {
+      "kind": "02 / THE COMPLETED SESSION",
+      "title": "A strong index day is not a breadth measure.",
+      "body": "AP's Monday closes were S&P 500 7,764.70 (+1.5%), Dow 52,048.83 (+0.7%) and Nasdaq Composite 27,122.09 (+2.3%); the Russell 2000 gained 0.5%. Percentage changes are rounded. My inference: the gap between benchmarks argues against treating the session as equal relief for every business. An index return does not reveal the proportion of advancing shares, earnings revisions or the financing conditions facing smaller borrowers. The bullish counterargument is that lower discount rates can legitimately lift long-lived cash flows even without an immediate earnings upgrade. That is a valuation mechanism, not proof that those cash flows will arrive.",
+      "sources": [
+        "2"
+      ]
+    },
+    {
+      "kind": "03 / HEADLINES → CASH FLOWS",
+      "title": "Cheaper oil helps, if the improvement lasts.",
+      "body": "AP reported Brent down 3.4% to $100.34 per barrel and described continuing constraints on Middle Eastern oil shipments. My assessment: a sustained supply improvement could ease costs for transport and other energy users, but one day's commodity move is insufficient reason to rebuild a multi-year margin forecast. Hedges, inventories and contracts delay transmission; competition may pass savings to customers rather than shareholders. For producers, the same price decline can reduce revenue. The countercase is a temporary easing of geopolitical risk that reverses before operating costs change. Watch physical supply and company commentary, not just optimistic headlines.",
+      "sources": [
+        "3"
+      ]
+    },
+    {
+      "kind": "04 / POLICY → VALUATION",
+      "title": "Keep the policy rate and the valuation assumptions separate.",
+      "body": "On 16 September, the Fed raised its target range by 25 basis points to 3.75–4.00%. Its projections put the median year-end policy-rate midpoint at 4.1% for both 2026 and 2027; these are conditional participant judgments, not promises. The same projections put 2026 real GDP growth at 2.3%, measured fourth-quarter to fourth-quarter. My interpretation: tighter policy and continued growth can coexist, so neither a blanket earnings downgrade nor an automatic return to cheap financing follows. In the DCF, test discount-rate relief with cash flows unchanged, then test operating improvements separately. Combining both immediately can double-count an optimistic narrative without independent evidence for either assumption.",
+      "sources": [
+        "4",
+        "5"
+      ]
+    }
   ],
   "watch": [
-    "After the 16 September Fed decision, compare the statement and projections with the subsequent bond-market response. Do not assume the headline rate decision alone explains it.",
-    "A durable reversal in oil and longer-dated yields would weaken the combined cost-and-valuation pressure thesis; a one-day bounce would be less persuasive.",
-    "Look for company evidence of pricing power, demand resilience and manageable refinancing needs. Those would challenge a blanket downgrade to cash-flow forecasts."
+    "Would lower longer-term yields persist without a deterioration in growth expectations? Falling yields alongside weaker company demand would change the interpretation.",
+    "Look for sustained oil-supply improvements and evidence of lower input costs reaching margins. A renewed supply disruption would weaken the relief thesis.",
+    "Check whether gains broaden beyond the strongest benchmark and whether company guidance supports the cash flows assumed in valuations. Index strength alone cannot answer either question."
   ],
-  "caveat": "Codex's interpretation, not Owen's personal view or investment advice. Equities refer to the completed 15 September US session; Treasury figures are 15 September official daily observations; Brent is that day's reported settlement; CPI describes August, released 11 September. This is a dated post-close brief, not live commentary. The DCF example uses fictional assumptions and is independently calculated with the toolkit. Sources may be revised; causal explanations and scenarios are judgments, not established facts.",
+  "caveat": "Codex's analysis, not Owen's personal view or investment advice. Equities and the oil report cover the completed 21 September US session. Treasury values are official 21 September daily par yields, compared with 18 September; they can differ from news reports' market quotes. Fed policy and projections were released 16 September. Research cutoff is shown in EDT (UTC−4) and HKT (UTC+8). This is dated research, not live commentary. Interpretations are conditional, causal links are not established by simultaneous price moves, and projections are not realized outcomes.",
   "sources": [
-    {"id": "1", "name": "US Treasury · September daily par yields", "date": "Observations through 15 Sep 2026", "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202609"},
-    {"id": "2", "name": "BLS · August CPI release", "date": "11 Sep 2026", "url": "https://www.bls.gov/news.release/archives/cpi_09112026.htm"},
-    {"id": "3", "name": "AP · 15 September US index close", "date": "15 Sep 2026", "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-b1b1bc9f943da62c6a639a8761b4eca3"},
-    {"id": "4", "name": "Federal Reserve · FOMC calendar", "date": "2026 meeting schedule", "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},
-    {"id": "5", "name": "NYU Stern · Damodaran valuation framework", "date": "Methodology reference; numerical illustration is Codex's calculation", "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/lectures/val.html"},
-    {"id": "6", "name": "AP · Oil and bond-market pressure at the US close", "date": "15 Sep 2026", "url": "https://apnews.com/article/stock-markets-oil-rates-inflation-ai-123ddc2d8ba06c324cbbd899f7eeebd2"}
+    {
+      "id": "1",
+      "name": "US Treasury · September daily par yields",
+      "date": "Observations through 21 Sep 2026",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202609"
+    },
+    {
+      "id": "2",
+      "name": "AP · 21 September US index closes",
+      "date": "21 Sep 2026",
+      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-3cb34d37f609dde5fb94d695e9665869"
+    },
+    {
+      "id": "3",
+      "name": "AP · Stocks, oil and bond-market relief",
+      "date": "21 Sep 2026",
+      "url": "https://apnews.com/article/stocks-markets-rates-oil-energy-trump-xi-1f1a267bf4556c01513f506914eb6359"
+    },
+    {
+      "id": "4",
+      "name": "Federal Reserve · FOMC policy statement",
+      "date": "16 Sep 2026",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+    },
+    {
+      "id": "5",
+      "name": "Federal Reserve · Economic projections and definitions",
+      "date": "16 Sep 2026",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm"
+    }
   ]
 }
