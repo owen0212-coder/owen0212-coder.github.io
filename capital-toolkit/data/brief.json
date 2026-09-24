@@ -1,29 +1,29 @@
 {
-  "asOf": "2026-09-21T22:33:30Z",
-  "asOfLabel": "21 Sep 2026, 6:33 p.m. ET / 22 Sep, 06:33 HKT",
-  "title": "Relief rally. Not a policy reset.",
-  "deck": "My read after Monday's close: less pressure from oil and longer-term yields is welcome, but it does not erase last week's Fed tightening. Separate improving valuation conditions from evidence that a company's future cash flows have actually improved.",
+  "asOf": "2026-09-24T07:11:30Z",
+  "asOfLabel": "24 Sep 2026, 3:11 a.m. ET / 24 Sep, 15:11 HKT",
+  "title": "Stronger economy. Tougher valuation maths.",
+  "deck": "My read on Wednesday's completed session: the pressure is not simply a weaker-growth story. Stronger activity can support revenues while higher costs and required returns squeeze what investors will pay for them. The useful test is whether durable cash-flow gains can outrun the discount-rate headwind.",
   "facts": [
     {
       "label": "10-year Treasury",
-      "value": "4.96%",
-      "context": "Official daily par yield · 21 Sep · −5 bp versus 18 Sep",
+      "value": "5.11%",
+      "context": "Official daily par yield · 23 Sep · +15 bp versus 22 Sep",
       "sources": [
         "1"
       ]
     },
     {
       "label": "S&P 500 close",
-      "value": "7,764.70",
-      "context": "21 Sep completed session · +1.5%, rounded",
+      "value": "7,706.03",
+      "context": "23 Sep completed session · −0.8%, rounded",
       "sources": [
         "2"
       ]
     },
     {
-      "label": "Brent crude",
-      "value": "$100.34",
-      "context": "USD per barrel · 21 Sep AP closing report · −3.4%",
+      "label": "US flash composite PMI",
+      "value": "58.4",
+      "context": "September preliminary output index · August 56.0 · released 23 Sep",
       "sources": [
         "3"
       ]
@@ -32,74 +32,75 @@
   "sections": [
     {
       "kind": "01 / OBSERVED",
-      "title": "The relief was further out on the curve.",
-      "body": "Treasury's official daily observations put the two-year yield at 4.76%, unchanged from Friday, while the ten-year fell from 5.01% to 4.96% and the thirty-year from 5.34% to 5.29%. The 10Y–2Y spread narrowed from 25 to 20 basis points. My interpretation: longer-duration borrowing conditions eased, but this was not a uniform repricing of the curve toward cheaper money. Nominal yields alone cannot separate inflation expectations, real rates and term premium. These are consistent daily par-yield observations, not executable bond quotes or an intraday event study.",
+      "title": "Higher yields across the curve, not just one maturity.",
+      "body": "Official Treasury par yields rose to 4.85% at two years, 5.11% at ten years and 5.40% at thirty years on 23 September: daily increases of 14, 15 and 11 basis points. The 10Y–2Y spread moved only from 25 to 26 basis points. My interpretation: the important change was a broadly higher level of yields, not a dramatic change in slope. That raises the hurdle for valuations dependent on distant cash flows. It does not identify how much came from real growth, inflation compensation, policy expectations or term premium; daily observations cannot establish that causal breakdown.",
       "sources": [
         "1"
       ]
     },
     {
-      "kind": "02 / THE COMPLETED SESSION",
-      "title": "A strong index day is not a breadth measure.",
-      "body": "AP's Monday closes were S&P 500 7,764.70 (+1.5%), Dow 52,048.83 (+0.7%) and Nasdaq Composite 27,122.09 (+2.3%); the Russell 2000 gained 0.5%. Percentage changes are rounded. My inference: the gap between benchmarks argues against treating the session as equal relief for every business. An index return does not reveal the proportion of advancing shares, earnings revisions or the financing conditions facing smaller borrowers. The bullish counterargument is that lower discount rates can legitimately lift long-lived cash flows even without an immediate earnings upgrade. That is a valuation mechanism, not proof that those cash flows will arrive.",
+      "kind": "02 / ECONOMY ≠ STOCK MARKET",
+      "title": "Good demand news can still be uncomfortable for shares.",
+      "body": "S&P Global's September flash composite output index rose to 58.4 from 56.0, while input-cost growth reached a near four-year high. This is a preliminary business survey, not an official GDP or inflation reading. AP's closing figures show the S&P 500 at 7,706.03 (−0.8%), Dow at 51,511.59 (−0.7%) and Nasdaq Composite at 26,936.04 (−1.1%); the Russell 2000 lost 1.8%, all changes rounded. My inference: stronger sales prospects and more expensive capital can pull valuations in opposite directions. The counterargument is genuine operating leverage: businesses able to serve extra demand without proportionate cost increases may still grow cash flows faster. Index declines do not prove that mechanism has failed.",
       "sources": [
-        "2"
-      ]
-    },
-    {
-      "kind": "03 / HEADLINES → CASH FLOWS",
-      "title": "Cheaper oil helps, if the improvement lasts.",
-      "body": "AP reported Brent down 3.4% to $100.34 per barrel and described continuing constraints on Middle Eastern oil shipments. My assessment: a sustained supply improvement could ease costs for transport and other energy users, but one day's commodity move is insufficient reason to rebuild a multi-year margin forecast. Hedges, inventories and contracts delay transmission; competition may pass savings to customers rather than shareholders. For producers, the same price decline can reduce revenue. The countercase is a temporary easing of geopolitical risk that reverses before operating costs change. Watch physical supply and company commentary, not just optimistic headlines.",
-      "sources": [
+        "2",
         "3"
       ]
     },
     {
-      "kind": "04 / POLICY → VALUATION",
-      "title": "Keep the policy rate and the valuation assumptions separate.",
-      "body": "On 16 September, the Fed raised its target range by 25 basis points to 3.75–4.00%. Its projections put the median year-end policy-rate midpoint at 4.1% for both 2026 and 2027; these are conditional participant judgments, not promises. The same projections put 2026 real GDP growth at 2.3%, measured fourth-quarter to fourth-quarter. My interpretation: tighter policy and continued growth can coexist, so neither a blanket earnings downgrade nor an automatic return to cheap financing follows. In the DCF, test discount-rate relief with cash flows unchanged, then test operating improvements separately. Combining both immediately can double-count an optimistic narrative without independent evidence for either assumption.",
+      "kind": "03 / COST PRESSURE",
+      "title": "Check the oil contract before comparing the headline.",
+      "body": "AP reported November-delivery Brent at $103.08 per barrel, up 3.9%, while December delivery rose 2.8% to $98.12. Those are different contracts, not contradictory prices for an identical instrument. My assessment: the delivery-month gap makes a generic claim that oil is above or below a round-number threshold less useful than a consistent contract comparison. For a company forecast, exposure depends on purchase timing, hedges and pass-through. S&P Global also noted that competition constrained some selling-price increases. Strong demand therefore need not protect every margin. Sustained lower input costs would weaken this concern; a single cheaper later-dated contract does not settle it.",
       "sources": [
         "4",
+        "3"
+      ]
+    },
+    {
+      "kind": "04 / COMPANY CHECK → DCF",
+      "title": "Resilient operations are a counterweight, not a free pass.",
+      "body": "Cintas reported fiscal first-quarter revenue growth of 10.9%, organic growth of 8.9% and operating margin of 23.6%, versus 22.7% a year earlier, for the period ended 31 August. Its raised annual guidance excludes the proposed UniFirst acquisition's expected impact; adjusted EPS guidance also excludes non-recurring transaction costs. My interpretation: this is company-specific evidence against a blanket collapse in operating performance, not proof of economy-wide resilience or an attractive share price. In the DCF, keep a standalone operating case separate from acquisition scenarios, and test a higher discount rate independently. Do not add hypothetical deal benefits without their funding and integration costs, or substitute adjusted EPS for free cash flow.",
+      "sources": [
         "5"
       ]
     }
   ],
   "watch": [
-    "Would lower longer-term yields persist without a deterioration in growth expectations? Falling yields alongside weaker company demand would change the interpretation.",
-    "Look for sustained oil-supply improvements and evidence of lower input costs reaching margins. A renewed supply disruption would weaken the relief thesis.",
-    "Check whether gains broaden beyond the strongest benchmark and whether company guidance supports the cash flows assumed in valuations. Index strength alone cannot answer either question."
+    "Compare final survey readings with subsequent official activity and price data before treating the flash report as confirmed growth or inflation.",
+    "Look for repeated evidence of sales growth converting into cash after working capital and investment needs, rather than assuming reported earnings growth is enough.",
+    "Track a consistent oil delivery month and company-specific cost pass-through. A sustained reversal in input costs and yields would challenge the valuation-pressure thesis."
   ],
-  "caveat": "Codex's analysis, not Owen's personal view or investment advice. Equities and the oil report cover the completed 21 September US session. Treasury values are official 21 September daily par yields, compared with 18 September; they can differ from news reports' market quotes. Fed policy and projections were released 16 September. Research cutoff is shown in EDT (UTC−4) and HKT (UTC+8). This is dated research, not live commentary. Interpretations are conditional, causal links are not established by simultaneous price moves, and projections are not realized outcomes.",
+  "caveat": "Codex's analysis, not Owen's personal view or investment advice. This brief covers the completed 23 September US session; research concluded on 24 September at the displayed EDT/HKT cutoff, not at the scheduled morning publication time. Treasury values are official daily par-yield observations versus 22 September, not executable quotes. PMI is a preliminary September survey released 23 September. Cintas results were released 23 September but cover the quarter ended 31 August; guidance is forward-looking. Oil figures distinguish November and December delivery. Interpretations and causal explanations are judgments, not established facts.",
   "sources": [
     {
       "id": "1",
       "name": "US Treasury · September daily par yields",
-      "date": "Observations through 21 Sep 2026",
+      "date": "Observations through 23 Sep 2026",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202609"
     },
     {
       "id": "2",
-      "name": "AP · 21 September US index closes",
-      "date": "21 Sep 2026",
-      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-3cb34d37f609dde5fb94d695e9665869"
+      "name": "AP via ABC News · 23 September index closes",
+      "date": "23 Sep 2026",
+      "url": "https://www-cdn.abcnews.com/Business/wireStory/major-us-stock-indexes-fared-wednesday-9232026-136697299"
     },
     {
       "id": "3",
-      "name": "AP · Stocks, oil and bond-market relief",
-      "date": "21 Sep 2026",
-      "url": "https://apnews.com/article/stocks-markets-rates-oil-energy-trump-xi-1f1a267bf4556c01513f506914eb6359"
+      "name": "S&P Global · September US flash PMI",
+      "date": "23 Sep 2026 · preliminary survey",
+      "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/09/us-flash-pmi-signals-fastest-growth-for-over-five-years-in-september"
     },
     {
       "id": "4",
-      "name": "Federal Reserve · FOMC policy statement",
-      "date": "16 Sep 2026",
-      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+      "name": "AP via Local 10 · Stocks, yields and Brent delivery months",
+      "date": "23 Sep 2026 closing report",
+      "url": "https://www.local10.com/business/2026/09/23/pressure-from-the-bond-market-hits-a-new-level-and-us-stocks-slide-on-worries-about-inflation/"
     },
     {
       "id": "5",
-      "name": "Federal Reserve · Economic projections and definitions",
-      "date": "16 Sep 2026",
-      "url": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm"
+      "name": "Cintas · Fiscal 2027 first-quarter results",
+      "date": "23 Sep 2026 · quarter ended 31 Aug 2026",
+      "url": "https://www.cintas.com/about/newsroom/details/news/2026/09/22/cintas-corporation-announces-fiscal-2027-first-quarter-results/"
     }
   ]
 }
