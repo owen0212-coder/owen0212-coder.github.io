@@ -1,24 +1,8 @@
 {
   "source": "U.S. Department of the Treasury",
   "sourceUrl": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026",
-  "retrievedAt": "2026-09-24T07:10:30.102398+00:00",
+  "retrievedAt": "2026-09-25T11:41:58.826706+00:00",
   "rows": [
-    {
-      "date": "2025-09-10",
-      "yields": {
-        "1M": 4.23,
-        "3M": 4.09,
-        "6M": 3.83,
-        "1Y": 3.66,
-        "2Y": 3.54,
-        "3Y": 3.47,
-        "5Y": 3.59,
-        "7Y": 3.78,
-        "10Y": 4.04,
-        "20Y": 4.65,
-        "30Y": 4.69
-      }
-    },
     {
       "date": "2025-09-11",
       "yields": {
@@ -4161,6 +4145,22 @@
         "10Y": 5.11,
         "20Y": 5.45,
         "30Y": 5.4
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "yields": {
+        "1M": 4.01,
+        "3M": 4.24,
+        "6M": 4.34,
+        "1Y": 4.51,
+        "2Y": 4.87,
+        "3Y": 4.99,
+        "5Y": 5.03,
+        "7Y": 5.1,
+        "10Y": 5.18,
+        "20Y": 5.53,
+        "30Y": 5.47
       }
     }
   ]
