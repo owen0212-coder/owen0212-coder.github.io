@@ -1,29 +1,29 @@
 {
-  "asOf": "2026-09-25T11:59:45Z",
-  "asOfLabel": "25 Sep 2026, 7:59 a.m. ET / 25 Sep, 19:59 HKT",
-  "title": "Flat stocks. A higher hurdle.",
-  "deck": "My read on Thursday's completed session: a steady index does not mean financing pressure has eased. Jobless claims and Costco's results offer evidence of resilience, but resilience is not the same as a cheap valuation. Separate sustainable operating growth from price effects and one-off earnings benefits.",
+  "asOf": "2026-09-27T11:49:18Z",
+  "asOfLabel": "27 Sep 2026, 7:49 a.m. ET / 27 Sep, 19:49 HKT",
+  "title": "Friday’s relief meets weekend risk.",
+  "deck": "My read: stronger stocks did not remove the tension between expensive capital and fragile consumer expectations. Weekend diplomacy adds a fresh uncertainty for the next session—not an explanation of Friday’s close. Test the cash-flow impact separately from the discount-rate impact.",
   "facts": [
     {
       "label": "10-year Treasury",
-      "value": "5.18%",
-      "context": "Official daily par yield · 24 Sep · +7 bp versus 23 Sep",
+      "value": "5.17%",
+      "context": "Official daily par yield · 25 Sep · −1 bp versus 24 Sep",
       "sources": [
         "1"
       ]
     },
     {
       "label": "S&P 500 close",
-      "value": "7,704.13",
-      "context": "24 Sep completed session · down 1.90 points",
+      "value": "7,743.41",
+      "context": "25 Sep completed session · +0.5% on the day",
       "sources": [
         "2"
       ]
     },
     {
-      "label": "Initial jobless claims",
-      "value": "197,000",
-      "context": "Seasonally adjusted · week ended 19 Sep · advance estimate released 24 Sep",
+      "label": "Consumer sentiment",
+      "value": "48.1",
+      "context": "Michigan final September index · August: 51.7 · not a percentage",
       "sources": [
         "3"
       ]
@@ -31,70 +31,71 @@
   ],
   "sections": [
     {
-      "kind": "01 / OBSERVED",
-      "title": "The closing index hid a different bond-market message.",
-      "body": "AP recorded the S&P 500 at 7,704.13, down less than 0.1%; the Dow closed at 51,349.98 (−0.3%) and the Nasdaq Composite at 26,939.37, up less than 0.1%. Official Treasury par yields rose to 4.87% at two years, 5.18% at ten years and 5.47% at thirty years: increases of 2, 7 and 7 basis points. The 10Y–2Y spread widened from 26 to 31 basis points. My interpretation: the longer-term financing hurdle rose despite a nearly unchanged headline equity index. This does not prove investors ignored risk; improving earnings expectations could offset discount-rate pressure. Nor can nominal yields alone identify inflation compensation, real-rate changes or term premium.",
+      "kind": "01 / FRIDAY’S EVIDENCE",
+      "title": "Stocks recovered; the yield curve gave a mixed signal.",
+      "body": "Friday’s S&P 500 rose 0.5%, the Dow 0.9% and the Nasdaq Composite 0.5%, according to AP. Treasury’s daily par yields were 4.81% at two years, 5.17% at ten years and 5.49% at thirty years: changes of −6, −1 and +2 basis points from Thursday. The 10Y–2Y spread widened to 36 basis points from 31. My interpretation: this was not uniform relief across borrowing maturities. A slightly lower ten-year yield alone is weak evidence that the longer-term valuation hurdle has eased. Nominal yields cannot tell us how much came from real rates, inflation compensation or term premium.",
       "sources": [
         "1",
         "2"
       ]
     },
     {
-      "kind": "02 / LABOUR CHECK",
-      "title": "No claims surge—but do not confuse layoffs with hiring.",
-      "body": "The Labor Department reported 197,000 initial claims for the week ended 19 September, down 1,000 from a revised 198,000. The four-week average fell to 202,250. Continuing insured unemployment was 1,719,000 for the earlier week ended 12 September, up 2,000. All are seasonally adjusted. My assessment: these readings do not support an abrupt surge in benefit applications, which is a counterweight to a near-term demand-collapse narrative. But claims do not measure job creation, hours or wage purchasing power. The prior initial estimate was revised upward by more than the latest weekly decline, so the small headline change deserves less weight than a sustained trend.",
+      "kind": "02 / CONSUMER CHECK",
+      "title": "Weaker confidence and higher expected inflation complicate the story.",
+      "body": "Michigan’s final September sentiment index fell to 48.1 from 51.7 in August—a 3.6-point decline. Year-ahead inflation expectations increased to 4.6% from 4.0%; long-run expectations edged to 3.4% from 3.3%. These are survey expectations, not measured inflation or a Federal Reserve forecast. My assessment: businesses could face customers who resist discretionary spending while still expecting higher prices. That is a potential margin problem, not proof of an imminent recession. The counterargument is that gloomy attitudes do not translate mechanically into weaker purchases. Subsequent spending, unit volumes and company guidance would be better tests of whether confidence is becoming a cash-flow problem.",
       "sources": [
         "3"
       ]
     },
     {
-      "kind": "03 / COMPANY EVIDENCE",
-      "title": "Costco grew, but not every headline percentage is underlying demand.",
-      "body": "Costco's 24 September release reported quarterly net sales of $93.9 billion, up 11.2%, for the 16 weeks ended 30 August. US comparable sales rose 10.7%, or 7.2% excluding gasoline-price and currency effects. Diluted EPS was $6.75, including a disclosed $0.15 non-recurring net benefit from tariff refunds. My inference: growth remains meaningful after the stated sales adjustments, but those adjustments do not remove all inflation or reveal unit volumes. Strong performance at one retailer could reflect market-share gains or value-seeking rather than uniformly healthy consumers. The release is company evidence, not an explanation of Thursday's index move.",
+      "kind": "03 / WEEKEND DEVELOPMENT",
+      "title": "Do not price a reopening as a settled outcome.",
+      "body": "Reuters reported on Sunday that Trump had said Saturday he rejected Iran’s proposal to reopen Hormuz and end fighting. Iran continued to seek diplomacy and said mediators had not formally conveyed a US rejection. My inference: near-term supply normalization remains uncertain, but negotiations are not demonstrably over. This development occurred after Friday’s cash-market close; it cannot explain that session’s returns, and Monday’s response has not occurred at this cutoff. The relevant business question is how persistent transport and energy costs might affect margins and working capital. A negotiated reopening would weaken that concern; a headline alone does not establish either the duration or magnitude of the cost shock.",
       "sources": [
         "4"
       ]
     },
     {
       "kind": "04 / PUT IT TO WORK",
-      "title": "Normalize cash flows before changing the growth assumption.",
-      "body": "For a DCF, distinguish recurring operations from temporary benefits before setting the starting cash flow. Do not simply annualize a seasonal quarter or treat EPS as unlevered free cash flow. Then test a higher discount rate independently of sales growth. My preferred comparison is resilient operations with expensive capital versus weaker demand with margin pressure—not an automatic earnings downgrade because bond yields rose. A strong business can still require demanding assumptions to justify its valuation.",
+      "title": "Use separate operating and valuation scenarios.",
+      "body": "For a DCF, compare a normalization case with a persistent-cost case. In the latter, test weaker cash-flow growth or a lower normalized starting free cash flow, then vary WACC separately. Do not mechanically add consumer inflation expectations to WACC, or treat Treasury par yields as a company’s full cost of capital. An energy producer and a fuel-intensive operator can have very different exposures to the same headline. The toolkit’s constant-growth model is a simplified sensitivity exercise: temporary disruptions need an explicit year-by-year model to distinguish recovery timing from permanent damage. The useful output is a range with transparent assumptions, not a precise price target.",
       "sources": [
-        "4",
-        "1"
+        "1",
+        "3",
+        "4"
       ]
     }
   ],
   "watch": [
-    "Watch whether the claims trend changes across several releases and revisions, then compare with hiring and hours rather than drawing conclusions from a single weekly move.",
-    "Check company volumes, customer mix and cash conversion to distinguish real demand growth from price effects or market-share gains.",
-    "A sustained reversal in long-term yields without weaker operating evidence would soften the valuation headwind; continued increases would make cash-flow durability more important."
+    "Look for confirmed changes in shipping access and negotiating terms. Separate announcements from demonstrated normalization; do not assume the next market reaction in advance.",
+    "Compare future consumer spending and company volume/margin evidence with the survey’s weaker outlook. Resilient purchasing would challenge the demand-warning interpretation.",
+    "Watch whether any easing in short-maturity yields extends to longer maturities. A sustained decline without deteriorating cash flows would soften the valuation headwind."
   ],
-  "caveat": "Codex's analysis, not Owen's personal view or investment advice. Market closes and Treasury observations cover 24 September, the latest completed US session at the displayed research cutoff. Research finished on 25 September, later than the scheduled morning run; this is not live commentary on that day's trading. Treasury figures are daily par yields, not executable market quotes. Claims refer to the distinct weeks stated and are subject to revision. Costco's release is dated 24 September and describes a quarter ended 30 August. Company evidence is not representative of every consumer or business. Interpretations are conditional; co-movement does not establish causation.",
+  "caveat": "Codex’s analysis, not Owen’s personal view or investment advice. Equity closes and Treasury observations cover Friday 25 September, the latest completed US cash session. Research cutoff is Sunday 27 September at the displayed ET/HKT time; this is not a live quote feed. Weekend news is explicitly separate from Friday’s market performance. Index percentage changes are rounded. Treasury figures are daily par yields, not executable quotes. Michigan figures are final September survey results; expectations are not realized inflation. Geopolitical reporting remains subject to new statements and developments. Interpretations are conditional, and co-movement does not establish causation.",
   "sources": [
     {
       "id": "1",
       "name": "US Treasury · September daily par yields",
-      "date": "Observations through 24 Sep 2026",
+      "date": "Observations through 25 Sep 2026",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202609"
     },
     {
       "id": "2",
-      "name": "AP via ABC News · 24 September index closes",
-      "date": "24 Sep 2026",
-      "url": "https://abcnews.com/Business/wireStory/major-us-stock-indexes-fared-thursday-9242026-136734081"
+      "name": "Associated Press via MRT · Friday index closes",
+      "date": "25 Sep 2026",
+      "url": "https://www.mrt.com/business/article/how-major-us-stock-indexes-fared-friday-9-25-2026-22449563.php"
     },
     {
       "id": "3",
-      "name": "US Department of Labor · Weekly unemployment insurance claims",
-      "date": "24 Sep 2026 · initial claims week ended 19 Sep",
-      "url": "https://www.dol.gov/sites/dolgov/files/OPA/newsreleases/ui-claims/20261535.pdf"
+      "name": "University of Michigan · Surveys of Consumers",
+      "date": "Final September 2026 results · accessed 27 Sep",
+      "url": "https://www.sca.isr.umich.edu/"
     },
     {
       "id": "4",
-      "name": "Costco · Fourth-quarter and fiscal 2026 results",
-      "date": "24 Sep 2026 · quarter ended 30 Aug 2026",
-      "url": "https://investor.costco.com/news/news-details/2026/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Operating-Results/default.aspx"
+      "name": "Reuters via Internazionale · Iran diplomacy and Hormuz proposal",
+      "date": "27 Sep 2026 · includes Saturday statements",
+      "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/09/27/iran-insists-on-diplomatic-solution-after-trump-rejects-peace-plan"
     }
   ]
 }
