@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The Capital Toolkit: US market charts, sourced market research, and a transparent discounted cash flow calculator.">
+  <meta name="description" content="The Capital Toolkit: US market charts, sourced research, a DCF calculator, and an interactive LBO model.">
   <title>The Capital Toolkit · Owen's Project Shed</title>
-  <link rel="stylesheet" href="toolkit.css?v=20260916">
-  <script type="module" src="app.mjs?v=20260916"></script>
+  <link rel="stylesheet" href="toolkit.css?v=20260927-lbo">
+  <script type="module" src="app.mjs?v=20260927-lbo"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to tools</a>
@@ -16,7 +16,7 @@
       <div><p class="eyebrow">A FEW GOOD TOOLS. BETTER QUESTIONS.</p><h1>The Capital <span>Toolkit.</span></h1><p class="lede">Follow the markets. Test the assumptions.<br>A little less guesswork, a little more homework.</p></div>
       <div class="hero-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m15 12-9.373 9.373a1 1 0 0 1-3.001-3L12 9M18 15l4-4m-.5.5-1.914-1.914A2 2 0 0 1 19 8.172v-.344a2 2 0 0 0-.586-1.414l-1.657-1.657A6 6 0 0 0 12.516 3H9l1.243 1.243A6 6 0 0 1 12 8.485V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></svg><span>EST. 2026</span></div>
     </section>
-    <nav class="tool-nav" aria-label="Financial tools"><a href="#markets" class="selected" data-tool="markets"><span>01</span> The Market Desk</a><a href="#dcf" data-tool="dcf"><span>02</span> DCF Workbench</a></nav>
+    <nav class="tool-nav" aria-label="Financial tools"><a href="#markets" class="selected" data-tool="markets"><span>01</span> The Market Desk</a><a href="#dcf" data-tool="dcf"><span>02</span> DCF Workbench</a><a href="#lbo" data-tool="lbo"><span>03</span> LBO Deal Lab</a></nav>
     <noscript><p class="notice">JavaScript is needed for the charts and calculator. You can still read the <a href="data/brief.json">sourced research brief</a> and <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve">official Treasury data</a>.</p></noscript>
     <section id="markets" class="tool-panel" aria-labelledby="markets-title">
       <div class="section-heading"><div><p class="eyebrow">01 / THE MARKET DESK</p><h2 id="markets-title">The US, at a glance.</h2></div><span class="pill">US markets · USD</span></div>
@@ -74,7 +74,53 @@
       </div>
       <article class="panel method"><details><summary>Open the hood: methodology &amp; limitations</summary><p>FCFF grows at your annual rate through the explicit forecast. Each year’s cash flow is discounted at a constant WACC using year-end timing. Terminal value assumes perpetual growth after the last forecast year.</p><p class="formula">Enterprise value = Σ FCFFₜ / (1 + WACC)ᵗ + [FCFFₙ × (1 + g) / (WACC − g)] / (1 + WACC)ⁿ</p><p>Equity value = enterprise value + excess cash − debt and other senior claims. Value per share = equity value ÷ diluted shares. Include preferred stock, non-controlling interests, or other relevant claims in the debt/claims input as appropriate; avoid double-counting leases.</p><p>This simplified model assumes positive normalized FCFF, a stable capital structure, and a sustainable terminal growth rate. It does not separately model revenue, margins, taxes, reinvestment, future dilution, or stock-based compensation. It is unsuitable for banks or businesses with negative cash flow without a more detailed model. Negative equity outputs are left visible, not presented as literal negative stock prices.</p><p>Methodology reference: <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/lectures/val.html" target="_blank" rel="noopener noreferrer">Aswath Damodaran, NYU Stern: firm valuation ↗</a></p></details></article>
     </section>
-    <details id="data-details" class="panel data-details"><summary>Data, privacy &amp; the fine print</summary><p>Equity charts and headlines are embedded from TradingView with attribution. Some symbols may be delayed or unavailable under the provider’s exchange licences. We do not scrape Yahoo Finance or extract TradingView data. If an embed cannot load, use its source link. <a href="https://www.tradingview.com/widget-docs/faq/data/" target="_blank" rel="noopener noreferrer">Provider data policy ↗</a></p><p>The Treasury chart uses a locally hosted copy of the official daily data, refreshed by the scheduled research task. The observation date and retrieval time are shown separately. A stale-data warning appears when the latest observation is over four calendar days old. Weekends and holidays can create legitimate gaps.</p><p>Analysis is authored by Codex from researched sources, not generated from the chart iframe. Briefs retain their own research cutoff and do not change when a quote changes. A daily update is scheduled for 6:30 a.m. Hong Kong time; completion depends on the scheduled task running successfully. Verify sources before relying on any claim.</p><p>Your scratchpad and DCF assumptions are stored in this browser’s local storage, not uploaded or synced. Browser clearing, private browsing, or a different device may remove or separate them. Embedded providers receive ordinary connection information such as your IP address and are subject to their own privacy policies. Neither GitHub Pages nor external feeds are guaranteed accessible from every mainland China network.</p><p>For education and personal research only. Not investment advice, a recommendation, or a guarantee of future returns.</p></details>
+    <section id="lbo" class="tool-panel" aria-labelledby="lbo-title" hidden>
+      <div class="section-heading"><div><p class="eyebrow">03 / LBO DEAL LAB</p><h2 id="lbo-title">Buy. Build. Pay it down.</h2></div><span class="pill">No spreadsheet required</span></div>
+      <p class="data-note">What makes a buyout work: growth, a better exit, or less debt? Model a leveraged acquisition and follow the money. All starting assumptions are fictional, not current financing terms. <a href="#lbo-results">Jump to returns ↓</a></p>
+      <div class="dcf-layout lbo-layout">
+        <form id="lbo-form" class="panel inputs" novalidate>
+          <div class="panel-heading"><h3>Structure the deal</h3><button type="button" id="reset-lbo" class="text-button">Load example ↺</button></div>
+          <p class="data-note">Money in <strong>USD millions</strong>. Multiples use EBITDA. A single debt tranche, with no interim distributions.</p>
+          <label>Deal / model name<input name="name" maxlength="80" autocomplete="off" value="Harbour Supply Co. · fictional"></label>
+          <fieldset><legend>01 / The business</legend><div class="field-grid">
+            <label>Base-year revenue ($m)<input name="revenue" type="number" step="any" min="0.01" value="500" required></label>
+            <label>EBITDA margin (%)<input name="margin" type="number" step="any" min="0.01" max="100" value="20" required></label>
+            <label>Revenue growth (% / yr)<input name="growth" type="number" step="any" min="-99.99" max="100" value="5" required></label>
+            <label>Holding period (years)<input name="years" type="number" step="1" min="1" max="10" value="5" required></label>
+          </div><p class="field-hint">Margin stays constant, so EBITDA grows at the same rate as revenue.</p></fieldset>
+          <fieldset><legend>02 / Entry &amp; exit</legend><div class="field-grid">
+            <label>Entry EV / EBITDA (×)<input name="entryMultiple" type="number" step="any" min="0.01" max="100" value="10" required></label>
+            <label>Exit EV / EBITDA (×)<input name="exitMultiple" type="number" step="any" min="0" max="100" value="10" required></label>
+            <label>Entry fees (% of EV)<input name="entryFees" type="number" step="any" min="0" max="100" value="2" required></label>
+            <label>Exit fees (% of EV)<input name="exitFees" type="number" step="any" min="0" max="100" value="1" required></label>
+          </div><p class="field-hint">Cash-free, debt-free purchase. Entry fees include transaction and financing costs.</p></fieldset>
+          <fieldset><legend>03 / The financing</legend><div class="field-grid">
+            <label>Entry debt / EBITDA (×)<input name="leverage" type="number" step="any" min="0" max="20" value="5" required></label>
+            <label>Cash interest rate (%)<input name="interest" type="number" step="any" min="0" max="100" value="8" required></label>
+            <label>Annual amortization (%)<input name="amortization" type="number" step="any" min="0" max="100" value="5" required></label>
+            <label>Excess cash sweep (%)<input name="sweep" type="number" step="any" min="0" max="100" value="100" required></label>
+          </div><p class="field-hint">Amortization is a % of original debt. The sweep repays debt using available cash after mandatory payments. Interest uses opening debt.</p></fieldset>
+          <fieldset><legend>04 / Cash conversion</legend><div class="field-grid">
+            <label>Cash tax rate (%)<input name="tax" type="number" step="any" min="0" max="100" value="25" required></label>
+            <label>D&amp;A (% of revenue)<input name="da" type="number" step="any" min="0" max="100" value="2" required></label>
+            <label>Capex (% of revenue)<input name="capex" type="number" step="any" min="0" max="100" value="3" required></label>
+            <label>NWC (% of revenue)<input name="nwc" type="number" step="any" min="0" max="100" value="10" required></label>
+          </div><p class="field-hint">NWC is the operating working-capital balance; only its annual change consumes or releases cash.</p></fieldset>
+          <p id="lbo-save-status" class="source-line" role="status">Assumptions save in this browser only.</p>
+        </form>
+        <div class="dcf-output"><p id="lbo-error" class="notice error" role="alert" hidden></p><div id="lbo-results" aria-live="polite"></div></div>
+      </div>
+      <article class="panel method"><details><summary>Open the hood: LBO methodology &amp; limitations</summary>
+        <p>Purchase enterprise value = base-year EBITDA × entry multiple. Uses equal purchase EV plus entry fees; sources are new debt and sponsor equity. The business is delivered cash-free and debt-free with normal operating working capital included in the price. Opening excess cash is zero; no separate minimum cash reserve is funded.</p>
+        <p>Revenue grows annually at a constant rate and margin remains fixed. Cash taxes equal max(EBIT − cash interest, 0) × tax rate. Interest is fully deductible in this simplified model; tax-law limits, loss carryforwards, purchase accounting and fee tax shields are not modeled. D&amp;A reduces taxable income but is non-cash.</p>
+        <p class="formula">Cash flow before principal = EBITDA − interest − cash taxes − capex − change in NWC</p>
+        <p>Interest uses beginning-of-year debt; principal is paid at year-end. Mandatory repayment is capped at remaining debt, then the cash sweep applies to all remaining available cash, including prior retained cash. Unused cash earns no interest and is retained until exit. A cash or mandatory-payment shortfall stops the forecast and suppresses returns: there is no assumed revolver or rescue equity. Remaining debt is repaid at exit; no earlier maturity or covenants are modeled.</p>
+        <p class="formula">Exit proceeds = max(0, exit EBITDA × exit multiple − exit fees − debt + excess cash)<br>MOIC = exit proceeds ÷ initial sponsor equity<br>Annual IRR = MOIC^(1 / holding years) − 1</p>
+        <p>That IRR formula is exact here because there is one initial equity outflow and one exit inflow, with no interim dividends or extra contributions. A total equity loss displays −100%. Debt exceeding net exit assets is flagged separately, not treated as negative sponsor proceeds. Returns are gross deal-level figures before fund fees, carry and investor taxes. Sensitivities change one operating-growth rate and the exit multiple, holding other assumptions fixed.</p>
+        <p>This is a study and screening model, not an investment-committee-ready three-statement model. It excludes multiple debt tranches, floating-rate curves, PIK, refinancing, acquisitions, management dilution and distributions. Educational reference: <a href="https://www.wallstreetprep.com/knowledge/lbo-modeling-test-example-solutions/" target="_blank" rel="noopener noreferrer">Wall Street Prep: LBO modeling mechanics ↗</a>. This calculator uses its own simplified assumptions.</p>
+      </details></article>
+    </section>
+    <details id="data-details" class="panel data-details"><summary>Data, privacy &amp; the fine print</summary><p>Equity charts and headlines are embedded from TradingView with attribution. Some symbols may be delayed or unavailable under the provider’s exchange licences. We do not scrape Yahoo Finance or extract TradingView data. If an embed cannot load, use its source link. <a href="https://www.tradingview.com/widget-docs/faq/data/" target="_blank" rel="noopener noreferrer">Provider data policy ↗</a></p><p>The Treasury chart uses a locally hosted copy of the official daily data, refreshed by the scheduled research task. The observation date and retrieval time are shown separately. A stale-data warning appears when the latest observation is over four calendar days old. Weekends and holidays can create legitimate gaps.</p><p>Analysis is authored by Codex from researched sources, not generated from the chart iframe. Briefs retain their own research cutoff and do not change when a quote changes. A daily update is scheduled for 6:30 a.m. Hong Kong time; completion depends on the scheduled task running successfully. Verify sources before relying on any claim.</p><p>Your scratchpad, DCF and LBO assumptions are stored in this browser’s local storage, not uploaded or synced. Browser clearing, private browsing, or a different device may remove or separate them. Embedded providers receive ordinary connection information such as your IP address and are subject to their own privacy policies. Neither GitHub Pages nor external feeds are guaranteed accessible from every mainland China network.</p><p>For education and personal research only. Not investment advice, a recommendation, or a guarantee of future returns.</p></details>
     <footer><a href="../">← Back to the shed</a><span>Built to question the numbers, not worship them.</span></footer>
   </main>
 </body>

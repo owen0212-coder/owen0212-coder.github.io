@@ -1,5 +1,6 @@
 import {defaults, valueCompany, sensitivity} from './dcf.mjs';
 import {marketView} from './markets.mjs?v=20260916';
+import {initLbo} from './lbo-ui.mjs?v=20260927';
 
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
@@ -15,10 +16,10 @@ function download(filename, content, type) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-// Real links keep the selected tool bookmarkable. No network is needed for DCF.
+// Real links keep the selected tool bookmarkable. Calculators need no external feeds.
 let feedsStarted = false;
 function selectTool() {
-  const active = location.hash === '#dcf' ? 'dcf' : 'markets';
+  const active = ['#lbo', '#lbo-results', '#lbo-form'].includes(location.hash) ? 'lbo' : location.hash === '#dcf' ? 'dcf' : 'markets';
   $$('.tool-panel').forEach(panel => panel.hidden = panel.id !== active);
   $$('[data-tool]').forEach(link => {
     link.classList.toggle('selected', link.dataset.tool === active);
@@ -175,7 +176,7 @@ let renderTimer;
 form.addEventListener('input', () => {clearTimeout(renderTimer); renderTimer=setTimeout(renderDcf,150);});
 form.addEventListener('change', () => {clearTimeout(renderTimer);renderDcf();});
 $('#reset-dcf').addEventListener('click', () => {if (confirm('Replace your current assumptions with the fictional example?')) {fillModel(defaults);renderDcf();}});
-renderDcf(); selectTool(); loadTreasury(); loadBrief();
+renderDcf(); initLbo(); selectTool(); loadTreasury(); loadBrief();
 setInterval(() => {
   if (document.hidden) return;
   loadTreasury();

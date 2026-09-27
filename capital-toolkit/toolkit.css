@@ -7,3 +7,29 @@
 .equity-panel .chart-heading{margin-bottom:16px}
 @media(max-width:700px){.dcf-layout,.research-columns,.notes-grid{grid-template-columns:minmax(0,1fr)}.field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero>div:first-child{min-width:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* LBO Deal Lab: shares the workbench palette, with its own deal and debt views. */
+.tool-nav{flex-wrap:wrap;column-gap:30px;row-gap:0}
+.tool-nav a{white-space:nowrap}
+.inputs fieldset{border:0;border-top:1px solid var(--border);padding:18px 0 8px;margin:18px 0 0;min-width:0}
+.inputs legend{padding:0 10px 0 0;color:var(--accent);font:10px ui-monospace,monospace;letter-spacing:.08em}
+.inputs fieldset>.field-hint{margin:0 0 10px}
+.lbo-return-card{border-top:3px solid var(--accent)}
+.lbo-return-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;align-items:end}
+.lbo-return-grid .label{color:var(--muted);font-size:12px}
+.lbo-return-grid .big-value{font-size:clamp(32px,4vw,48px);margin:5px 0;line-height:1.25}
+.lbo-moic{font-size:clamp(26px,3vw,38px);line-height:1.25;margin:5px 0;color:var(--accent)}
+.lbo-funding{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.lbo-funding dl{margin:0;font-size:12px}
+.lbo-funding dl>div{display:flex;justify-content:space-between;gap:8px;padding:8px 0}
+.lbo-funding dt{color:var(--muted)}
+.lbo-funding dd{margin:0;font-variant-numeric:tabular-nums}
+.lbo-total{border-top:1px solid var(--border);font-weight:650}
+.lbo-debt-line,.lbo-ebitda-line{fill:none;stroke-width:2.5;stroke-linejoin:round}
+.lbo-debt-line{stroke:var(--accent)}.lbo-ebitda-line{stroke:var(--green);stroke-dasharray:6 4}
+.lbo-debt-line-dot{fill:var(--accent)}.lbo-ebitda-line-dot{fill:var(--green)}
+.lbo-debt-key{color:var(--accent)}.lbo-ebitda-key{color:var(--green)}
+.lbo-schedule th:first-child{position:sticky;left:0;background:var(--surface);z-index:1}
+.lbo-subtotal{background:var(--surface2);font-weight:600}
+.lbo-schedule .lbo-subtotal th:first-child{background:var(--surface2)}
+@media(max-width:700px){.tool-nav{column-gap:20px}.tool-nav a{font-size:12px;padding:12px 0}.tool-nav a span{display:none}.lbo-funding{gap:18px}.lbo-funding dl{font-size:11px}.lbo-layout .valuation-bridge{grid-template-columns:1fr}.lbo-layout .valuation-bridge div{display:flex;justify-content:space-between;gap:12px}}
