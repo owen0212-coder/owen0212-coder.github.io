@@ -1,29 +1,29 @@
 {
-  "asOf": "2026-09-27T11:49:18Z",
-  "asOfLabel": "27 Sep 2026, 7:49 a.m. ET / 27 Sep, 19:49 HKT",
-  "title": "Friday’s relief meets weekend risk.",
-  "deck": "My read: stronger stocks did not remove the tension between expensive capital and fragile consumer expectations. Weekend diplomacy adds a fresh uncertainty for the next session—not an explanation of Friday’s close. Test the cash-flow impact separately from the discount-rate impact.",
+  "asOf": "2026-09-30T10:02:51Z",
+  "asOfLabel": "30 Sept 2026, 06:02 ET / 30 Sept 2026, 18:02 HKT",
+  "title": "Weaker confidence. No cheaper capital.",
+  "deck": "My read after Tuesday’s close: household caution is growing, but that has not translated into broad relief in financing costs. The labour data provide a useful check against an overly bearish reading. For valuations and buyouts, test weaker cash generation separately from the cost of debt.",
   "facts": [
     {
       "label": "10-year Treasury",
-      "value": "5.17%",
-      "context": "Official daily par yield · 25 Sep · −1 bp versus 24 Sep",
+      "value": "5.26%",
+      "context": "Official daily par yield · 29 Sep · +2 bp versus 28 Sep",
       "sources": [
         "1"
       ]
     },
     {
       "label": "S&P 500 close",
-      "value": "7,743.41",
-      "context": "25 Sep completed session · +0.5% on the day",
+      "value": "7,670.84",
+      "context": "29 Sep completed session · −0.2% on the day, rounded",
       "sources": [
         "2"
       ]
     },
     {
-      "label": "Consumer sentiment",
-      "value": "48.1",
-      "context": "Michigan final September index · August: 51.7 · not a percentage",
+      "label": "Consumer confidence",
+      "value": "81.9",
+      "context": "Conference Board September index · August: 88.6 · 1985 = 100",
       "sources": [
         "3"
       ]
@@ -31,34 +31,34 @@
   ],
   "sections": [
     {
-      "kind": "01 / FRIDAY’S EVIDENCE",
-      "title": "Stocks recovered; the yield curve gave a mixed signal.",
-      "body": "Friday’s S&P 500 rose 0.5%, the Dow 0.9% and the Nasdaq Composite 0.5%, according to AP. Treasury’s daily par yields were 4.81% at two years, 5.17% at ten years and 5.49% at thirty years: changes of −6, −1 and +2 basis points from Thursday. The 10Y–2Y spread widened to 36 basis points from 31. My interpretation: this was not uniform relief across borrowing maturities. A slightly lower ten-year yield alone is weak evidence that the longer-term valuation hurdle has eased. Nominal yields cannot tell us how much came from real rates, inflation compensation or term premium.",
+      "kind": "01 / MARKET EVIDENCE",
+      "title": "A softer stock market, but not a uniform bond rally.",
+      "body": "AP reported Tuesday declines of 0.2% for the S&P 500, 0.3% for the Dow and 0.1% for the Nasdaq Composite. Official Treasury par yields moved differently across maturities: two years fell to 4.89% from 4.92%, while ten years rose to 5.26% from 5.24% and thirty years to 5.59% from 5.56%. The 10Y–2Y spread widened to 37 basis points from 32. My interpretation: softer near-term demand signals have not produced a general reduction in the long-term financing hurdle. That is a valuation headwind, not proof of a particular cause. Nominal yields alone cannot distinguish inflation compensation, real yields or term premium.",
       "sources": [
         "1",
         "2"
       ]
     },
     {
-      "kind": "02 / CONSUMER CHECK",
-      "title": "Weaker confidence and higher expected inflation complicate the story.",
-      "body": "Michigan’s final September sentiment index fell to 48.1 from 51.7 in August—a 3.6-point decline. Year-ahead inflation expectations increased to 4.6% from 4.0%; long-run expectations edged to 3.4% from 3.3%. These are survey expectations, not measured inflation or a Federal Reserve forecast. My assessment: businesses could face customers who resist discretionary spending while still expecting higher prices. That is a potential margin problem, not proof of an imminent recession. The counterargument is that gloomy attitudes do not translate mechanically into weaker purchases. Subsequent spending, unit volumes and company guidance would be better tests of whether confidence is becoming a cash-flow problem.",
+      "kind": "02 / HOUSEHOLD SIGNAL",
+      "title": "Confidence weakened in both the present and the outlook.",
+      "body": "The Conference Board’s September index fell 6.7 points to 81.9. Its present-situation measure was 109.3 and expectations 63.6. The survey covered 1–23 September, so it is not a reading of reactions to the final weekend’s diplomacy. My assessment: weakness in both components deserves more attention than a single headline about future pessimism. But confidence is not spending, and index points are not percentage changes in consumption. The countercase is that incomes and employment could sustain purchases despite unhappy consumers. I would look for confirmation in real spending and company volumes before turning this survey into a permanent reduction in cash-flow growth.",
       "sources": [
         "3"
       ]
     },
     {
-      "kind": "03 / WEEKEND DEVELOPMENT",
-      "title": "Do not price a reopening as a settled outcome.",
-      "body": "Reuters reported on Sunday that Trump had said Saturday he rejected Iran’s proposal to reopen Hormuz and end fighting. Iran continued to seek diplomacy and said mediators had not formally conveyed a US rejection. My inference: near-term supply normalization remains uncertain, but negotiations are not demonstrably over. This development occurred after Friday’s cash-market close; it cannot explain that session’s returns, and Monday’s response has not occurred at this cutoff. The relevant business question is how persistent transport and energy costs might affect margins and working capital. A negotiated reopening would weaken that concern; a headline alone does not establish either the duration or magnitude of the cost shock.",
+      "kind": "03 / LABOUR CROSS-CHECK",
+      "title": "Less confidence is not the same as a layoff wave.",
+      "body": "The BLS release on 29 September described August openings as little changed at 7.1 million and hires as little changed at 5.2 million. Layoffs and discharges were essentially unchanged at 1.6 million; the quits rate was 1.9%. These are rounded, seasonally adjusted figures. My inference: the release does not establish an abrupt deterioration in employment flows. It also cannot refute September’s weaker household perceptions, because it measures an earlier month and different things. Openings are a month-end stock; hires and separations are monthly flows, not net payroll growth. Revisions and subsequent releases matter more than treating every numerical monthly change as a decisive trend.",
       "sources": [
         "4"
       ]
     },
     {
       "kind": "04 / PUT IT TO WORK",
-      "title": "Use separate operating and valuation scenarios.",
-      "body": "For a DCF, compare a normalization case with a persistent-cost case. In the latter, test weaker cash-flow growth or a lower normalized starting free cash flow, then vary WACC separately. Do not mechanically add consumer inflation expectations to WACC, or treat Treasury par yields as a company’s full cost of capital. An energy producer and a fuel-intensive operator can have very different exposures to the same headline. The toolkit’s constant-growth model is a simplified sensitivity exercise: temporary disruptions need an explicit year-by-year model to distinguish recovery timing from permanent damage. The useful output is a range with transparent assumptions, not a precise price target.",
+      "title": "A buyout needs cash, not just an attractive exit multiple.",
+      "body": "In the LBO Deal Lab, compare a lower-growth case with a higher-interest case, then combine them. Slower operating cash generation leaves more debt outstanding; more expensive financing can compound that effect. Keep the exit multiple unchanged initially to isolate those mechanisms. Treasury yields are not acquisition-loan quotes: lender spreads, fees and structure also matter. The calculator’s rate is fixed within each scenario, so this is not a floating-rate refinancing forecast. For the DCF, vary cash-flow growth and WACC independently. A later improvement in spending and sustained easing in long-term yields would weaken the cautious interpretation; neither should be assumed from a confidence survey alone.",
       "sources": [
         "1",
         "3",
@@ -67,35 +67,35 @@
     }
   ],
   "watch": [
-    "Look for confirmed changes in shipping access and negotiating terms. Separate announcements from demonstrated normalization; do not assume the next market reaction in advance.",
-    "Compare future consumer spending and company volume/margin evidence with the survey’s weaker outlook. Resilient purchasing would challenge the demand-warning interpretation.",
-    "Watch whether any easing in short-maturity yields extends to longer maturities. A sustained decline without deteriorating cash flows would soften the valuation headwind."
+    "Compare the next real-spending and income readings with survey pessimism. Stronger realized demand would challenge the weaker-cash-flow scenario.",
+    "Check subsequent employment data and JOLTS revisions before calling a layoff cycle. August establishment data and September household perceptions are not interchangeable.",
+    "Look for sustained long-maturity yield relief and actual credit terms, not just lower short-maturity yields, before assuming cheaper financing."
   ],
-  "caveat": "Codex’s analysis, not Owen’s personal view or investment advice. Equity closes and Treasury observations cover Friday 25 September, the latest completed US cash session. Research cutoff is Sunday 27 September at the displayed ET/HKT time; this is not a live quote feed. Weekend news is explicitly separate from Friday’s market performance. Index percentage changes are rounded. Treasury figures are daily par yields, not executable quotes. Michigan figures are final September survey results; expectations are not realized inflation. Geopolitical reporting remains subject to new statements and developments. Interpretations are conditional, and co-movement does not establish causation.",
+  "caveat": "Codex’s analysis, not Owen’s personal view or investment advice. Research completed on 30 September at the actual ET/HKT cutoff above, later than the scheduled run. Equity closes and Treasury observations cover 29 September, the latest completed US cash session; this is not live commentary on 30 September trading. Treasury figures are official daily par yields, not executable quotes, and may differ from newsroom benchmark yields. Equity percentage changes are rounded. Conference Board results describe its 1–23 September survey window; BLS figures describe August and are subject to revision. Interpretations are conditional, not demonstrated explanations of daily price moves. Calculator scenarios are educational, not company valuations or financing offers.",
   "sources": [
     {
       "id": "1",
       "name": "US Treasury · September daily par yields",
-      "date": "Observations through 25 Sep 2026",
+      "date": "29 Sep 2026 observations, compared with 28 Sep",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202609"
     },
     {
       "id": "2",
-      "name": "Associated Press via MRT · Friday index closes",
-      "date": "25 Sep 2026",
-      "url": "https://www.mrt.com/business/article/how-major-us-stock-indexes-fared-friday-9-25-2026-22449563.php"
+      "name": "Associated Press · Tuesday US index closes",
+      "date": "29 Sep 2026 · 4:25 p.m. ET",
+      "url": "https://apnews.com/article/69778ade7a033a10cb44b9078b6bb15d"
     },
     {
       "id": "3",
-      "name": "University of Michigan · Surveys of Consumers",
-      "date": "Final September 2026 results · accessed 27 Sep",
-      "url": "https://www.sca.isr.umich.edu/"
+      "name": "The Conference Board · September consumer confidence",
+      "date": "29 Sep 2026 release · survey 1–23 Sep",
+      "url": "https://www.conference-board.org/topics/consumer-confidence/"
     },
     {
       "id": "4",
-      "name": "Reuters via Internazionale · Iran diplomacy and Hormuz proposal",
-      "date": "27 Sep 2026 · includes Saturday statements",
-      "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/09/27/iran-insists-on-diplomatic-solution-after-trump-rejects-peace-plan"
+      "name": "Bureau of Labor Statistics · August JOLTS",
+      "date": "29 Sep 2026 release · August observations",
+      "url": "https://www.bls.gov/news.release/jolts.nr0.htm"
     }
   ]
 }
