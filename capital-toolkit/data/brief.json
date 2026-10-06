@@ -1,29 +1,29 @@
 {
-  "asOf": "2026-09-30T10:02:51Z",
-  "asOfLabel": "30 Sept 2026, 06:02 ET / 30 Sept 2026, 18:02 HKT",
-  "title": "Weaker confidence. No cheaper capital.",
-  "deck": "My read after Tuesday’s close: household caution is growing, but that has not translated into broad relief in financing costs. The labour data provide a useful check against an overly bearish reading. For valuations and buyouts, test weaker cash generation separately from the cost of debt.",
+  "asOf": "2026-10-06T23:13:03Z",
+  "asOfLabel": "06 Oct 2026, 19:13 ET / 07 Oct 2026, 07:13 HKT",
+  "title": "Record prices. Cash flow still has to deliver.",
+  "deck": "My read after Tuesday’s close: lower yields helped the valuation backdrop, but the rally was not universal and services costs remain a constraint. Google’s nuclear-power agreement shows how demand can become contracted revenue; the investment question is how much cash remains after building the capacity.",
   "facts": [
     {
       "label": "10-year Treasury",
-      "value": "5.26%",
-      "context": "Official daily par yield · 29 Sep · +2 bp versus 28 Sep",
+      "value": "5.27%",
+      "context": "Official daily par yield · 6 Oct · −4 bp versus 5 Oct",
       "sources": [
         "1"
       ]
     },
     {
       "label": "S&P 500 close",
-      "value": "7,670.84",
-      "context": "29 Sep completed session · −0.2% on the day, rounded",
+      "value": "7,818.93",
+      "context": "6 Oct completed session · +0.6%, rounded · record close",
       "sources": [
         "2"
       ]
     },
     {
-      "label": "Consumer confidence",
-      "value": "81.9",
-      "context": "Conference Board September index · August: 88.6 · 1985 = 100",
+      "label": "Services prices index",
+      "value": "74.0",
+      "context": "September ISM diffusion index · August: 72.6 · not an inflation rate",
       "sources": [
         "3"
       ]
@@ -32,33 +32,33 @@
   "sections": [
     {
       "kind": "01 / MARKET EVIDENCE",
-      "title": "A softer stock market, but not a uniform bond rally.",
-      "body": "AP reported Tuesday declines of 0.2% for the S&P 500, 0.3% for the Dow and 0.1% for the Nasdaq Composite. Official Treasury par yields moved differently across maturities: two years fell to 4.89% from 4.92%, while ten years rose to 5.26% from 5.24% and thirty years to 5.59% from 5.56%. The 10Y–2Y spread widened to 37 basis points from 32. My interpretation: softer near-term demand signals have not produced a general reduction in the long-term financing hurdle. That is a valuation headwind, not proof of a particular cause. Nominal yields alone cannot distinguish inflation compensation, real yields or term premium.",
+      "title": "A record is not the same as broad participation.",
+      "body": "AP reported gains of 0.5% for the Dow and 0.4% for the Nasdaq Composite, while the Russell 2000 fell 0.6%. Treasury’s two-year par yield fell five basis points to 4.79%; ten years fell four to 5.27%, and thirty years two to 5.64%. My interpretation: lower nominal yields offered valuation relief, but small-cap weakness cautions against calling this an economy-wide improvement. That comparison is a breadth clue, not a full advance/decline analysis. A single session cannot establish either a lasting change in financing conditions or the cause of the stock-market gains.",
       "sources": [
         "1",
         "2"
       ]
     },
     {
-      "kind": "02 / HOUSEHOLD SIGNAL",
-      "title": "Confidence weakened in both the present and the outlook.",
-      "body": "The Conference Board’s September index fell 6.7 points to 81.9. Its present-situation measure was 109.3 and expectations 63.6. The survey covered 1–23 September, so it is not a reading of reactions to the final weekend’s diplomacy. My assessment: weakness in both components deserves more attention than a single headline about future pessimism. But confidence is not spending, and index points are not percentage changes in consumption. The countercase is that incomes and employment could sustain purchases despite unhappy consumers. I would look for confirmation in real spending and company volumes before turning this survey into a permanent reduction in cash-flow growth.",
+      "kind": "02 / MACRO CROSS-CHECK",
+      "title": "Demand is growing; so is pressure on margins.",
+      "body": "ISM’s September services report, released on 5 October, put its headline PMI at 54.9 versus 55.4 in August. New orders remained expansionary at 59.8, while the prices index rose to 74.0 from 72.6. My assessment: this combination is more consistent with continued demand and difficult cost control than with a clean disinflation story. These are diffusion indexes, not percentage growth in output or prices. The counterargument is that sustained orders and pricing power may protect profits. That needs confirmation in realized margins and cash conversion; higher selling prices alone would not demonstrate stronger real demand.",
       "sources": [
         "3"
       ]
     },
     {
-      "kind": "03 / LABOUR CROSS-CHECK",
-      "title": "Less confidence is not the same as a layoff wave.",
-      "body": "The BLS release on 29 September described August openings as little changed at 7.1 million and hires as little changed at 5.2 million. Layoffs and discharges were essentially unchanged at 1.6 million; the quits rate was 1.9%. These are rounded, seasonally adjusted figures. My inference: the release does not establish an abrupt deterioration in employment flows. It also cannot refute September’s weaker household perceptions, because it measures an earlier month and different things. Openings are a month-end stock; hires and separations are monthly flows, not net payroll growth. Revisions and subsequent releases matter more than treating every numerical monthly change as a decisive trend.",
+      "kind": "03 / COMPANY CATALYST",
+      "title": "An electricity contract is not free cash flow.",
+      "body": "Constellation announced a 20-year agreement with Google supporting 890 MW of additional nuclear capacity and more than $4.3 billion of investment; the first uprate is expected by 2028. A separate 15-year agreement covers 2,700 MW from existing generation. Those are different commitments: not all contracted power is new capacity. My inference: a long-duration buyer can improve revenue visibility and support investment. But the announcement does not disclose enough pricing and cost detail to establish project returns. Construction overruns, outages and financing costs could absorb the benefit. The bullish case is successful delivery with attractive contracted margins; it should be tested rather than inferred from megawatts alone.",
       "sources": [
         "4"
       ]
     },
     {
       "kind": "04 / PUT IT TO WORK",
-      "title": "A buyout needs cash, not just an attractive exit multiple.",
-      "body": "In the LBO Deal Lab, compare a lower-growth case with a higher-interest case, then combine them. Slower operating cash generation leaves more debt outstanding; more expensive financing can compound that effect. Keep the exit multiple unchanged initially to isolate those mechanisms. Treasury yields are not acquisition-loan quotes: lender spreads, fees and structure also matter. The calculator’s rate is fixed within each scenario, so this is not a floating-rate refinancing forecast. For the DCF, vary cash-flow growth and WACC independently. A later improvement in spending and sustained easing in long-term yields would weaken the cautious interpretation; neither should be assumed from a confidence survey alone.",
+      "title": "Test cash generation before rewarding the story.",
+      "body": "For a normalized operating business, use the DCF to compare weaker free-cash-flow growth with a higher WACC, separately and together. Do not mechanically translate one day’s Treasury move into an equal change in WACC. In the LBO Deal Lab, reduce the EBITDA margin or increase capex while holding the exit multiple fixed; this isolates the effect on debt repayment. Neither calculator is a construction-stage nuclear-project model: phased spending, delayed commissioning and contract-specific pricing need a separate forecast. Better realized margins and sustained financing relief would strengthen the optimistic case; delayed cash receipts or cost overruns would weaken it.",
       "sources": [
         "1",
         "3",
@@ -67,35 +67,35 @@
     }
   ],
   "watch": [
-    "Compare the next real-spending and income readings with survey pessimism. Stronger realized demand would challenge the weaker-cash-flow scenario.",
-    "Check subsequent employment data and JOLTS revisions before calling a layoff cycle. August establishment data and September household perceptions are not interchangeable.",
-    "Look for sustained long-maturity yield relief and actual credit terms, not just lower short-maturity yields, before assuming cheaper financing."
+    "Watch whether smaller-company performance begins to confirm the large-index rally across several sessions, rather than treating one record close as broad strength.",
+    "Compare upcoming company results with the services survey: can revenue growth translate into stable margins and operating cash flow?",
+    "Look for disclosed power-contract economics, spending schedules and delivery milestones before converting announced capacity into a return estimate."
   ],
-  "caveat": "Codex’s analysis, not Owen’s personal view or investment advice. Research completed on 30 September at the actual ET/HKT cutoff above, later than the scheduled run. Equity closes and Treasury observations cover 29 September, the latest completed US cash session; this is not live commentary on 30 September trading. Treasury figures are official daily par yields, not executable quotes, and may differ from newsroom benchmark yields. Equity percentage changes are rounded. Conference Board results describe its 1–23 September survey window; BLS figures describe August and are subject to revision. Interpretations are conditional, not demonstrated explanations of daily price moves. Calculator scenarios are educational, not company valuations or financing offers.",
+  "caveat": "Codex’s analysis, not Owen’s personal view or investment advice. Research completed at the actual ET/HKT cutoff above, later than the scheduled run. Market closes and the cited Treasury web-table observations cover 6 October, the latest completed US cash session. This is not a live feed. Treasury daily par yields are indicative, not executable quotes; equity percentage moves are rounded. ISM describes September conditions and was released on 5 October, not during Tuesday’s session. Company capacity, investment and delivery figures are announced plans, not completed assets or guaranteed returns. Interpretations are conditional and do not prove causality. Calculator examples are educational, not valuations of Constellation or financing offers.",
   "sources": [
     {
       "id": "1",
-      "name": "US Treasury · September daily par yields",
-      "date": "29 Sep 2026 observations, compared with 28 Sep",
-      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202609"
+      "name": "US Treasury · October daily par yields",
+      "date": "6 Oct 2026 observations, compared with 5 Oct",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"
     },
     {
       "id": "2",
       "name": "Associated Press · Tuesday US index closes",
-      "date": "29 Sep 2026 · 4:25 p.m. ET",
-      "url": "https://apnews.com/article/69778ade7a033a10cb44b9078b6bb15d"
+      "date": "6 Oct 2026 · 4:21 p.m. ET",
+      "url": "https://apnews.com/article/267ca73e15e09f7e8deb5f6076405f48"
     },
     {
       "id": "3",
-      "name": "The Conference Board · September consumer confidence",
-      "date": "29 Sep 2026 release · survey 1–23 Sep",
-      "url": "https://www.conference-board.org/topics/consumer-confidence/"
+      "name": "ISM · September services report, issuer release",
+      "date": "5 Oct 2026 · 10:00 a.m. ET · September survey",
+      "url": "https://www.prnewswire.com/news-releases/services-pmi-at-54-9-september-2026-ism-services-pmi-report-302898421.html"
     },
     {
       "id": "4",
-      "name": "Bureau of Labor Statistics · August JOLTS",
-      "date": "29 Sep 2026 release · August observations",
-      "url": "https://www.bls.gov/news.release/jolts.nr0.htm"
+      "name": "Constellation · Google nuclear-capacity and energy agreements",
+      "date": "6 Oct 2026 announcement",
+      "url": "https://www.constellationenergy.com/news/2026/10/google-and-constellation-announce-landmark-agreement-to-bring-890-mw-of-new-nuclear-capacity-to-pjm-grid.html"
     }
   ]
 }
