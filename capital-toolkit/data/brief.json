@@ -1,29 +1,29 @@
 {
-  "asOf": "2026-10-09T04:26:21Z",
-  "asOfLabel": "09 Oct 2026, 00:26 ET / 09 Oct 2026, 12:26 HKT",
-  "title": "Lower yields are not an earnings guarantee.",
-  "deck": "My read after Thursday’s close: a lower discount rate cannot by itself protect an equity valuation. Technology weakness contrasted with gains elsewhere, while the latest claims data offered reassurance about layoffs but less certainty about finding work. Keep earnings assumptions separate from the interest-rate story.",
+  "asOf": "2026-10-10T05:52:45Z",
+  "asOfLabel": "10 Oct 2026, 01:52 ET / 10 Oct 2026, 13:52 HKT",
+  "title": "Strong markets. A divided consumer.",
+  "deck": "My read after Friday’s close: the equity rebound and weak household sentiment are not mutually exclusive. Delta’s results offer a company-level counterweight to survey pessimism, but profitability depends on costs as well as demand. For valuation work, ask which customers a business serves before applying one economy-wide growth assumption.",
   "facts": [
     {
       "label": "10-year Treasury",
-      "value": "5.22%",
-      "context": "Official daily par yield · 8 Oct · −6 bp versus 7 Oct",
+      "value": "5.24%",
+      "context": "Official daily par yield · 9 Oct · +2 bp versus 8 Oct",
       "sources": [
         "1"
       ]
     },
     {
       "label": "S&P 500 close",
-      "value": "7,765.36",
-      "context": "8 Oct completed session · −0.5% on the day, rounded",
+      "value": "7,811.54",
+      "context": "9 Oct completed session · +0.6% on the day, rounded",
       "sources": [
         "2"
       ]
     },
     {
-      "label": "Initial jobless claims",
-      "value": "197,000",
-      "context": "Week ended 3 Oct · seasonally adjusted · prior week revised to 199,000",
+      "label": "Consumer sentiment",
+      "value": "46.3",
+      "context": "Michigan October preliminary index · September: 48.1 · not a spending growth rate",
       "sources": [
         "3"
       ]
@@ -32,70 +32,69 @@
   "sections": [
     {
       "kind": "01 / MARKET EVIDENCE",
-      "title": "Lower bond yields did not lift every stock.",
-      "body": "AP reported a 1.3% Nasdaq Composite decline and a 0.1% Dow gain; most S&P 500 constituents rose despite the index’s fall. Treasury’s two-year par yield eased to 4.75% from 4.77%, ten years to 5.22% from 5.28%, and thirty years to 5.60% from 5.67%. My interpretation: this was not a uniform risk-off session, and lower yields alone were insufficient to offset equity-specific concerns. The countercase is that rotation can leave the broader market healthier than the headline index suggests. One session cannot settle that question or establish why yields moved; subsequent earnings and participation matter.",
+      "title": "Friday’s rebound did not erase the weekly split.",
+      "body": "AP reported Friday gains of 0.8% for the Dow, 0.6% for the Nasdaq Composite and 0.5% for the Russell 2000. Across the week, the S&P 500 gained 1.2% while the Russell lost 0.9%. Treasury’s two-year par yield rose five basis points to 4.80%, ten years rose two to 5.24%, and thirty years stayed at 5.60%. My interpretation: the rebound was not simply a response to cheaper Treasury financing. Small caps participated on Friday but still lagged over the week. That is a useful caution against extrapolating one strong day, not proof of a recession or a specific cause of the rally.",
       "sources": [
         "1",
         "2"
       ]
     },
     {
-      "kind": "02 / LABOUR CROSS-CHECK",
-      "title": "Few new claims do not measure the ease of getting hired.",
-      "body": "The Labor Department’s 8 October release showed initial claims down 2,000 to 197,000 for the week ended 3 October. The four-week average was 198,000. Continuing claims rose 17,000 to 1,716,000 for the earlier week ended 26 September. My assessment: new benefit applications do not signal a sudden layoff surge, but the continuing-claims rise warrants watching. It does not alone prove weaker hiring: eligibility, benefit duration and weekly noise also matter. The bullish counterargument is that the continuing-claims four-week average fell to 1,711,000. I would wait for persistence and corroborating employment data before reducing a company’s long-run demand forecast.",
+      "kind": "02 / HOUSEHOLD EVIDENCE",
+      "title": "Present conditions weakened; expectations did not move together.",
+      "body": "Michigan’s preliminary October survey put current conditions at 44.7 versus 50.9 in September, while its expectations index rose to 47.3 from 46.3. Year-ahead inflation expectations edged up to 4.7% from 4.6%. My assessment: the composition matters more than calling every component a deterioration. The survey described particular weakness among lower-income households and those with smaller stock portfolios. That supports testing differences between customer groups, but sentiment is not observed expenditure and inflation expectations are not realized inflation. A counterargument is that pessimistic consumers may continue spending if employment and income hold up. Actual volumes and margins are the necessary cross-check.",
       "sources": [
         "3"
       ]
     },
     {
-      "kind": "03 / POLICY CONTEXT",
-      "title": "A policy risk is not a scheduled outcome.",
-      "body": "Minutes released on 7 October describe the September 15–16 meeting, not a new rate decision. At that meeting, the Fed raised its target range by a quarter percentage point to 3.75–4.00%. Most participants then thought another increase would likely be appropriate by year-end, while emphasizing incoming information. My inference: financing assumptions should retain an upside-rate scenario, but the minutes do not commit the Fed to a particular next move. The competing case is that subsequent evidence could justify patience. Thursday’s claims figures are newer than the meeting; they inform the current debate but were not information participants had at the time.",
+      "kind": "03 / COMPANY CROSS-CHECK",
+      "title": "Delta shows why demand and profitability need separate tests.",
+      "body": "Delta’s September-quarter release reported GAAP operating revenue of $20.2 billion and a 7.2% operating margin. Its adjusted presentation showed $17.6 billion of revenue and a 9.4% margin; GAAP earnings per share were $1.15 versus adjusted EPS of $1.72. These are different reporting bases, not interchangeable results. Management described strong travel demand. My inference: this is a counterexample to treating weak sentiment as evidence that all discretionary spending has collapsed. It is not proof that all households or airlines are equally resilient. Reported operating cash flow was $1.7 billion; that is not free cash flow available after capital investment. Costs and reinvestment remain essential to the valuation.",
       "sources": [
-        "4",
-        "3"
+        "4"
       ]
     },
     {
       "kind": "04 / PUT IT TO WORK",
-      "title": "Separate cheaper capital from weaker cash flows.",
-      "body": "In the DCF, first lower WACC with cash flows unchanged; then reduce free-cash-flow growth while keeping WACC fixed. Finally combine them. This makes it clear whether a valuation depends more on financing relief or operating delivery. Do not map a daily Treasury change mechanically into WACC: equity risk and credit spreads can move differently. In the LBO Deal Lab, compare lower growth against higher borrowing costs with the exit multiple unchanged. Its constant-rate scenarios are not floating-rate forecasts. Sustained cash-flow delivery alongside cheaper financing would strengthen the optimistic case; weaker margins or cash conversion could overwhelm the benefit of lower yields.",
+      "title": "Model the customer, then the cash.",
+      "body": "For a consumer-facing business, build a lower-growth case tied to its customer mix rather than mechanically applying a sentiment-index change to revenue. In the LBO Deal Lab, vary revenue growth and EBITDA margin separately, holding the exit multiple fixed to isolate the effect on debt repayment. In the DCF, begin with normalized unlevered free cash flow—not adjusted EPS or reported operating cash flow. An airline additionally needs careful treatment of fleet investment, leases and seasonality; the toolkit is a simplified scenario tool, not a complete Delta valuation. Broad-based spending strength and stable cash margins would challenge the cautious case; weaker volumes despite price increases would reinforce it.",
       "sources": [
-        "1",
+        "3",
         "4"
       ]
     }
   ],
   "watch": [
-    "Look for sustained participation beyond technology, and compare earnings guidance with actual cash conversion rather than assuming a lower yield guarantees higher equity prices.",
-    "Watch revisions and the next several claims releases. Initial and continuing claims cover different weeks and should not be treated as a direct hiring statistic.",
-    "Separate fresh inflation and employment releases from September’s policy deliberations before changing financing assumptions."
+    "Check whether small-company participation persists beyond Friday and closes the weekly gap with large-company indexes.",
+    "Compare future spending and earnings releases with the survey’s split between current conditions and expectations; watch customer volumes, not revenue alone.",
+    "Reconcile GAAP and adjusted results, then capital spending and lease obligations, before turning an earnings headline into a free-cash-flow forecast."
   ],
-  "caveat": "Codex’s analysis, not Owen’s personal view or investment advice. Research completed at the actual ET/HKT cutoff above, later than the scheduled run. Equity closes and Treasury observations cover 8 October, the latest completed US cash session; this is not live commentary. Treasury figures are official daily par yields, not intraday highs, executable quotes or corporate borrowing rates. Equity percentage changes are rounded. Claims figures are seasonally adjusted, preliminary and subject to revision; their observation weeks differ. The Fed minutes were released on 7 October and describe September’s meeting. Interpretations are conditional, not proven explanations of price moves. Calculator scenarios are educational, not personalized recommendations.",
+  "caveat": "Codex’s analysis, not Owen’s personal view or investment advice. Research completed at the actual ET/HKT cutoff above, later than the scheduled run. Equity closes and Treasury observations cover 9 October, the latest completed US cash session. Michigan’s October figures are preliminary survey results released on 9 October, not realized spending or inflation. Delta’s release on the same date covers its September quarter; its adjusted figures are non-GAAP. Treasury data are daily par yields, not executable quotes or corporate borrowing rates. Equity percentage changes are rounded. These sources measure different populations and periods. Interpretations are conditional, not demonstrated explanations of daily market moves. Calculator scenarios are educational.",
   "sources": [
     {
       "id": "1",
       "name": "US Treasury · October daily par yields",
-      "date": "8 Oct 2026 observations, compared with 7 Oct",
+      "date": "9 Oct 2026 observations, compared with 8 Oct",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"
     },
     {
       "id": "2",
-      "name": "Associated Press · Thursday US index closes",
-      "date": "8 Oct 2026 · 4:20 p.m. ET",
-      "url": "https://apnews.com/article/4499d3b2906917ed3d8670095bf1c321"
+      "name": "Associated Press · Friday US index closes",
+      "date": "9 Oct 2026 · 4:16 p.m. ET",
+      "url": "https://apnews.com/article/dafbd0c4037ee10e2a9e305f3cfa8e70"
     },
     {
       "id": "3",
-      "name": "US Department of Labor · weekly unemployment insurance claims",
-      "date": "8 Oct 2026 · 8:30 a.m. ET · initial claims week ended 3 Oct",
-      "url": "https://www.dol.gov/ui/data.pdf"
+      "name": "University of Michigan · preliminary October consumer survey",
+      "date": "9 Oct 2026 release · preliminary October results",
+      "url": "https://www.sca.isr.umich.edu/"
     },
     {
       "id": "4",
-      "name": "Federal Reserve · September FOMC minutes",
-      "date": "7 Oct 2026 release · meeting held 15–16 Sep",
-      "url": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm"
+      "name": "Delta Air Lines · September-quarter financial results",
+      "date": "9 Oct 2026 release · September quarter",
+      "url": "https://ir.delta.com/news/news-details/2026/Delta-Air-Lines-Announces-September-Quarter-2026-Financial-Results/default.aspx"
     }
   ]
 }
