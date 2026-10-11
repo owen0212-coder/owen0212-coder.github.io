@@ -1,7 +1,7 @@
 {
   "source": "U.S. Department of the Treasury",
   "sourceUrl": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026",
-  "retrievedAt": "2026-10-10T05:51:19.357146+00:00",
+  "retrievedAt": "2026-10-11T22:38:31.167847+00:00",
   "rows": [
     {
       "date": "2025-09-26",
