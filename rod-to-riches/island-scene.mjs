@@ -71,7 +71,8 @@ export function createIslandWorld(container,onGround){
  box(1.1,.7,.65,'#b79663',8.2,1.46,2);box(1.2,.1,.75,'#d9bc8c',8.2,1.86,2);
  const player=person(),footRing=new T.Mesh(new T.RingGeometry(.48,.57,32).rotateX(-Math.PI/2),new T.MeshBasicMaterial({color:'#fff0b9',transparent:true,opacity:.9,side:T.DoubleSide}));scene.add(footRing);
  const rod=new T.Group();player.group.add(rod);rod.position.set(.38,.95,.22);rod.rotation.x=.7;cyl(.022,.045,3,'#6c6040',0,1.5,0,7,rod);rod.visible=false;
- const bobber=ball(.12,'#eab775',0,.15,16),lineGeometry=new T.BufferGeometry().setFromPoints([new T.Vector3(),new T.Vector3()]),line=new T.Line(lineGeometry,new T.LineBasicMaterial({color:'#fff1c9'}));scene.add(line);bobber.visible=false;line.visible=false;
+ const bobber=ball(.18,'#eab775',0,.15,16),lineGeometry=new T.BufferGeometry().setFromPoints([new T.Vector3(),new T.Vector3(),new T.Vector3()]),line=new T.Line(lineGeometry,new T.LineBasicMaterial({color:'#fff1c9'}));scene.add(line);bobber.visible=false;line.visible=false;
+ const biteRings=[.45,.8].map(radius=>{const ring=new T.Mesh(new T.RingGeometry(radius,radius+.025,40).rotateX(-Math.PI/2),new T.MeshBasicMaterial({color:'#fff0bd',transparent:true,opacity:.5,depthWrite:false,side:T.DoubleSide}));scene.add(ring);ring.visible=false;return ring;});
  const targetRing=new T.Mesh(new T.RingGeometry(.3,.38,32).rotateX(-Math.PI/2),new T.MeshBasicMaterial({color:'#ffe9ac',side:T.DoubleSide}));scene.add(targetRing);targetRing.visible=false;
  const pathLine=new T.Line(new T.BufferGeometry(),new T.LineDashedMaterial({color:'#f8ecc3',dashSize:.3,gapSize:.2,transparent:true,opacity:.8}));scene.add(pathLine);
  const swimmers=[];for(let i=0;i<10;i++){const fish=createSwimmingFish(i);scene.add(fish);swimmers.push(fish);}
@@ -84,14 +85,21 @@ export function createIslandWorld(container,onGround){
  function resize(){const w=container.clientWidth,h=container.clientHeight;renderer.setSize(w,h);const height=w<600?28:30;camera.left=-height*w/h/2;camera.right=height*w/h/2;camera.top=height/2;camera.bottom=-height/2;camera.updateProjectionMatrix();}resize();addEventListener('resize',resize);
  function setPath(points){pathLine.geometry.dispose();pathLine.geometry=new T.BufferGeometry().setFromPoints(points.map(p=>new T.Vector3(p.x,1.15,p.z)));pathLine.computeLineDistances();targetRing.visible=points.length>0;if(points.length){const p=points.at(-1);targetRing.position.set(p.x,1.16,p.z);}}
  function project(p){const v=new T.Vector3(p.x,p.y,p.z).project(camera);return {x:(v.x+1)/2*container.clientWidth,y:(1-v.y)/2*container.clientHeight};}
- function render(dt,state,moving,phase,holding){
+ function render(dt,state,moving,phase,holding,fishing={}){
   time+=dt;const motion=reduced?0:time,p=state.business.position;player.group.position.set(p.x,1.11,p.z);
   if(moving){animation+=dt*10;player.group.rotation.y=moving.angle;}
   player.legs.forEach((l,i)=>l.rotation.x=moving?Math.sin(animation+i*Math.PI)*.52:0);player.arms.forEach((a,i)=>a.rotation.x=moving?Math.sin(animation+i*Math.PI)*-.45:0);
-  const active=['waiting','bite','fighting'].includes(phase);rod.visible=active;bobber.visible=active;line.visible=active;
-  if(active){player.group.rotation.y=0;player.arms[1].rotation.x=-.8;rod.rotation.x=.7-(holding?.15:0);const tip=new T.Vector3(0,3,0);rod.localToWorld(tip);bobber.position.set(p.x,.16+Math.sin(motion*4)*.06+(phase==='bite'?Math.sin(time*20)*.1:0),16);lineGeometry.setFromPoints([tip,bobber.position]);}
+  const active=['waiting','nibble','bite','fighting'].includes(phase);rod.visible=active;bobber.visible=active;line.visible=active;biteRings.forEach(r=>r.visible=active);
+  if(active){
+   const ft=fishing.time||0,run=phase==='fighting',surge=fishing.stage==='surge';
+   player.group.rotation.y=0;player.arms[1].rotation.x=-.8;rod.rotation.x=.7-(holding&&!fishing.paused?.15:0)+(surge?.12:0);
+   const tip=new T.Vector3(0,3,0);rod.localToWorld(tip);
+   bobber.position.set(p.x+(run?Math.sin(ft*2)*(surge?1.3:.5):0),.16+(reduced?0:Math.sin(ft*4)*.06)-(fishing.dip||0)*.5,run?15.5+(1-fishing.progress/100)*3:16);
+   const mid=tip.clone().lerp(bobber.position,.5);if(!holding)mid.y-=.45;lineGeometry.setFromPoints([tip,mid,bobber.position]);
+   biteRings.forEach((ring,i)=>{ring.position.set(bobber.position.x,.1+i*.01,bobber.position.z);const scale=(phase==='nibble'?1.3:phase==='bite'||surge?1.8:1)+(reduced?0:Math.sin(ft*5+i)*.1);ring.scale.setScalar(scale);ring.material.opacity=phase==='waiting'?.25:.65;});
+  }
   footRing.position.set(p.x,1.135,p.z);targetRing.rotation.z=motion*.5;
-  const target=container.clientWidth<600?new T.Vector3(p.x,0,p.z-1):new T.Vector3(p.x*.22+1,0,p.z*.2-1);
+  const target=container.clientWidth<600?new T.Vector3(p.x+(fishing.atDock?3:0),0,p.z+(fishing.atDock?5:-1)):new T.Vector3(p.x*.22+1,0,p.z*.2-1);
   focus.lerp(target,reduced?1:1-Math.exp(-dt*4));camera.position.copy(focus).add(offset);camera.lookAt(focus);camera.updateMatrixWorld();
   const pos=water.geometry.attributes.position;for(let i=0;i<pos.count;i++)pos.array[i*3+1]=Math.sin(waterBase[i*3]*.4+motion)*Math.cos(waterBase[i*3+2]*.35+motion*.5)*.065;pos.needsUpdate=true;
   for(const fish of swimmers)animateSwimmingFish(fish,time,reduced);

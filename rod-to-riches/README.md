@@ -6,13 +6,23 @@ A self-contained, single-player 3D fishing and investment game for Owen's Projec
 
 Walk with WASD / arrows, click or tap the ground, or choose a station sign / Island guide destination to walk there automatically. Press E or the context button when close enough to interact. Phones also have a direction pad. Water, buildings, trees and unpurchased parcels block movement; purchased parcels connect to the existing island. Leaving a fishing attempt abandons only that attempt, never stored catches.
 
-- Fishing dock: cast, hook on the bite, hold Space / Reel and release to reduce tension. P pauses the attempt.
+- Fishing dock: wait through the float’s nibbles, strike in the green timing window, then read the fish’s surges. Hold Space / Reel to gain ground and release to give line. P pauses the attempt.
 - Fish market: sell your personal catch and collect net crew proceeds.
 - Fish Exchange: visit the broker to trade shares and claim the existing starter grant.
 - Tackle & Co.: buy rod, bait and cooler upgrades.
 - Harbormaster: buy land and boats, hire and train fishers, and collect fleet earnings.
 
 All five stations are reachable on the original island. Choosing a destination moves the character through the world; it never teleports or executes a remote trade. Transaction handlers recheck physical proximity. Bag / journal is read-only and can be opened anywhere. The help dialog explains controls and economy limits.
+
+## Read the water (v0.4)
+
+Every cast has two to four visible nibbles before a committed bite. A close-up float view mirrors the dock bobber. Pulling during the wait/nibbles or before the timing marker reaches green scares the fish away; striking after green or ignoring the bite lets it take the bait. Bait is an existing permanent gear upgrade, not consumable inventory or a cash penalty. Green sets the hook; the smaller gold center gives 100% initial hook grip rather than 85%, plus an 8% landing head start. Higher bait levels reduce waiting without widening the hook window.
+
+The fight alternates between steady swimming, a telegraphed surge, the run itself, and recovery. Reel in steady/recovery periods, ease off for the warning, and let the fish run. Reeling into a surge damages hook grip; releasing sacrifices some landing progress but protects the hook. Keep tension between 18% and 85%: sustained slack loosens the hook, high tension damages it, and 100% tension snaps the line. Zero grip loses the fish. A 75-second escape limit prevents endless attempts. Every loss explains its cause; there are no hidden random escape rolls after a successful hook.
+
+Species difficulty controls hook-window width/duration, surge strength and duration, warning time, strain, and landing speed. Common fish are more forgiving; legendary fish demand longer, tighter fights. Rod upgrades reduce ordinary strain and improve reeling speed without removing risk. All seven species are tested as catchable across different frame rates and fight patterns. `fishing.mjs` is the pure timing/fight simulation, `fishing.css` the dock UI, and `fishing.test.mjs` covers timing, failure paths and balance. The previous hold/release-only fight has been retired.
+
+Fishing pauses on tab hiding, focus loss, or opening a dialog. Holding one key or pointer across a phase transition never triggers another cast or hook action. Reduced-motion mode removes decorative pulsing while retaining the essential timing marker and float signal. Physical keyboard/pointer controls use hold/release; assistive click activation during a fight toggles the reel. Active attempts are not saved; caught fish and all progression remain in the existing save.
 
 ## Hosting and development
 

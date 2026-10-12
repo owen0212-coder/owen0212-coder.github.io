@@ -40,10 +40,3 @@ export function upgrade(s,key){const gear=GEAR[key];if(!gear||s[key]>=3)return f
 export function buyBoat(s){if(s.boats>=MAX_BOATS||s.coins<boatCost(s))return false;s.coins-=boatCost(s);s.boats++;return true;}
 export function earnBoat(s,seconds){if(Number.isFinite(seconds)&&seconds>0)s.boatBank=Math.min(1e9,s.boatBank+s.boats*BOAT_RATE/60*seconds);}
 export function collectBoat(s){const earned=Math.floor(s.boatBank);s.boatBank-=earned;s.coins+=earned;s.revenue+=earned;return earned;}
-export function fightStep(f,holding,dt,difficulty,rod){
- const pull=.75+Math.sin(f.time*2.1)*.22;
- f.time+=dt;
- f.tension=Math.max(4,Math.min(100,f.tension+dt*(holding?(15+difficulty*5-rod*2)*pull:-30)));
- f.progress=Math.max(0,Math.min(100,f.progress+dt*(holding?15+rod*3-difficulty*1.5:-1.6)));
- if(f.tension>=100)return 'lost';if(f.progress>=100)return 'caught';if(f.time>=45)return 'lost';return 'fighting';
-}

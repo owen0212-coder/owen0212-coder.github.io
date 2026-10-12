@@ -45,7 +45,7 @@ export function bindFishingInput(button, {
   listen(target, 'keydown', event => {
     if (isHelpOpen()) return;
     if (event.code === 'KeyP' && !event.repeat) {
-      if (['waiting', 'bite', 'fighting'].includes(getPhase())) {
+      if (['waiting', 'nibble', 'bite', 'fighting'].includes(getPhase())) {
         setHolding(false);
         togglePause();
       }

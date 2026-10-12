@@ -77,6 +77,21 @@ test('disabled controls, other inputs, and help dialogs do not trigger casts', (
   const elsewhere = {closest: () => ({tagName: 'INPUT'})};
   assert.equal(target.emit('keydown', {code: 'Space', target: elsewhere}).defaultPrevented, false);
 });
+test('a held cast cannot strike during nibbles or auto-hook the bite',()=>{
+ const {button,target,state}=setup();state.phase='idle';
+ target.emit('keydown',{code:'Space',target:button});assert.equal(state.activations,1);
+ for(const phase of ['waiting','nibble','waiting','bite']){state.phase=phase;target.emit('keydown',{code:'Space',target:button,repeat:true});}
+ assert.equal(state.activations,1);assert.equal(state.holding,false);
+ target.emit('keyup',{code:'Space',target:button});
+ target.emit('keydown',{code:'Space',target:button});assert.equal(state.activations,2);
+ state.phase='fighting';target.emit('keydown',{code:'Space',target:button,repeat:true});assert.equal(state.holding,false);
+ target.emit('keyup',{code:'Space',target:button});target.emit('keydown',{code:'Space',target:button});assert.equal(state.holding,true);
+});
+test('nibbles support pause without firing a hook action',()=>{
+ const {target,state}=setup();state.phase='nibble';target.emit('keydown',{code:'KeyP',repeat:false});
+ assert.equal(state.paused,true);assert.equal(state.holding,false);assert.equal(state.activations,0);
+ target.emit('keydown',{code:'KeyP',repeat:false});assert.equal(state.paused,false);
+});
 test('every fish and animated fin stays submerged, with faceted lighting but no shadow artifacts', () => {
   for (let index = 0; index < 10; index++) {
     const fish = createSwimmingFish(index);
