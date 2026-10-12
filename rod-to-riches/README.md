@@ -22,6 +22,8 @@ The fight alternates between steady swimming, a telegraphed surge, the run itsel
 
 Species difficulty controls hook-window width/duration, surge strength and duration, warning time, strain, and landing speed. Common fish are more forgiving; legendary fish demand longer, tighter fights. Rod upgrades reduce ordinary strain and improve reeling speed without removing risk. All seven species are tested as catchable across different frame rates and fight patterns. `fishing.mjs` is the pure timing/fight simulation, `fishing.css` the dock UI, and `fishing.test.mjs` covers timing, failure paths and balance. The previous hold/release-only fight has been retired.
 
+The shorter-fight balance increases safe reeling progress and especially rewards recovery windows, without speeding up warnings or changing hook timing / loss conditions. With minimum eligible gear and a normal hook, well-managed fights target roughly 7–12 seconds for common/uncommon fish, 12–16 for rare fish, and 14–22 for legendary fish. Actual duration depends on technique, frame rate, gear, perfect hooks and the fish’s pattern; these are not automatic catch timers.
+
 Fishing pauses on tab hiding, focus loss, or opening a dialog. Holding one key or pointer across a phase transition never triggers another cast or hook action. Reduced-motion mode removes decorative pulsing while retaining the essential timing marker and float signal. Physical keyboard/pointer controls use hold/release; assistive click activation during a fight toggles the reel. Active attempts are not saved; caught fish and all progression remain in the existing save.
 
 ## Hosting and development

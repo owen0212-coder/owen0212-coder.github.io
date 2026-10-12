@@ -52,6 +52,14 @@ test('all seven species are catchable by reading surges on different frame rates
 test('holding blindly snaps the line, while doing nothing lets the hook slip',()=>{
  for(const s of SPECIES){const hold=play(s,.5,1/60,'hold'),release=play(s,.5,1/60,'release');assert.equal(hold.reason,'snap');assert.equal(release.reason,'slack');}
 });
+test('well-managed fights stay short without removing the first surge',()=>{
+ const limits={Common:13,Uncommon:14,Rare:16,Legendary:23};
+ for(const s of SPECIES)for(let seed=0;seed<30;seed++)for(const dt of [1/60,.08]){
+  const f=play(s,seed/30,dt);
+  assert.equal(f.result,'caught');assert.ok(f.time<limits[s.rarity],`${s.id} took ${f.time.toFixed(2)}s`);
+  assert.ok(f.time>5,'starter-gear catches should still include a surge and recovery');
+ }
+});
 test('every surge is telegraphed and followed by a productive recovery',()=>{
  const f=createFight(2.6,3);const stages=[];
  for(let i=0;i<1800;i++){f.time=i/60;const stage=fightCue(f).stage;if(stage!==stages.at(-1))stages.push(stage);}

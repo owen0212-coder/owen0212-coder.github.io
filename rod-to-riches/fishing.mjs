@@ -51,7 +51,8 @@ export function tugStep(f,holding,dt){
   const strain=holding?(surge?32+8*d:recovery?8+2*d:14+4*d-r*1.5):(surge?2+2*d:-18);
   f.tension=clamp(f.tension+strain*step,0,100);
   const safe=f.tension>=18&&f.tension<=85;
-  const gain=holding&&!surge&&safe?(16+r*1.5-d*1.9)*(recovery?1.55:1):surge?-(holding?2:3+d*.6):-.7;
+  // Reward a clean opening more generously; keep warning times and risk unchanged.
+  const gain=holding&&!surge&&safe?(26+r*1.5-d*1.9)*(recovery?1.9:1):surge?-(holding?2:3+d*.6):-.7;
   f.progress=clamp(f.progress+gain*step,0,100);
   const damage=(f.tension<18?12+3*d:0)+(f.tension>85?8+4*d:0)+(surge&&holding?12+5*d:0);
   f.hook=clamp(f.hook+(damage?-damage:recovery&&safe?2:0)*step,0,100);
