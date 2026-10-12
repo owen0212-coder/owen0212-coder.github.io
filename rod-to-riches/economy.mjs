@@ -1,3 +1,4 @@
+import {initialMarket,sanitizeMarket} from './market.mjs';
 export const SPECIES = [
   {id:'minnow',name:'Silver minnow',rarity:'Common',color:'#afccce',base:12,min:.2,max:.6,difficulty:.65,weight:36,rod:0},
   {id:'perch',name:'Golden perch',rarity:'Common',color:'#d9ad53',base:22,min:.6,max:1.8,difficulty:.9,weight:28,rod:0},
@@ -13,7 +14,7 @@ export const GEAR = {
   cooler:{name:'Cooler',description:'Carry more fish between visits to the market.',costs:[65,160,300],names:['Canvas basket','Small cooler','Large cooler','Ice chest']}
 };
 export const BOAT_COST=450, BOAT_RATE=18, MAX_BOATS=3;
-export function initialState(){return {version:1,coins:0,rod:0,bait:0,cooler:0,fish:[],collection:{},caught:0,revenue:0,boats:0,boatBank:0,best:0,sound:false};}
+export function initialState(){return {version:1,coins:0,rod:0,bait:0,cooler:0,fish:[],collection:{},caught:0,revenue:0,boats:0,boatBank:0,best:0,sound:false,market:initialMarket()};}
 export function capacity(s){return 5+s.cooler*4;}
 export function boatCost(s){return BOAT_COST+s.boats*300;}
 export function sanitize(raw){
@@ -23,7 +24,7 @@ export function sanitize(raw){
  s.coins=Math.floor(s.coins);s.caught=Math.floor(s.caught);
  s.fish=Array.isArray(raw.fish)?raw.fish.filter(f=>f&&SPECIES.some(p=>p.id===f.id)&&Number.isFinite(f.kg)&&f.kg>0&&f.kg<=20&&Number.isInteger(f.value)&&f.value>0&&f.value<=1000).slice(0,capacity(s)).map(f=>({id:f.id,kg:f.kg,value:f.value})):[];
  for(const p of SPECIES){const v=raw.collection?.[p.id];if(Number.isFinite(v)&&v>0)s.collection[p.id]=Math.min(1e9,Math.floor(v));}
- s.sound=raw.sound===true;return s;
+ s.sound=raw.sound===true;s.market=sanitizeMarket(raw.market);return s;
 }
 export function rollFish(s,rng=Math.random){
  const choices=SPECIES.filter(p=>p.rod<=s.rod);const weights=choices.map(p=>p.weight*(1+s.bait*(p.rarity==='Common'?-.13:.38)));

@@ -5,7 +5,7 @@
   <meta name="theme-color" content="#174f51">
   <meta name="description" content="Start with a rod. Build a fishing empire. A cozy 3D fishing and investment game by Owen.">
   <title>Rod to Riches · Owen's Project Shed</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=fish-exchange-1">
 </head>
 <body>
   <main id="game">
@@ -16,6 +16,7 @@
       <div class="top-actions"><div class="wallet"><span>YOUR BALANCE</span><strong id="coins">$0</strong></div><button id="sound" class="icon-button" aria-label="Turn sound on" title="Sound">♪<span id="sound-state">OFF</span></button><button id="help" class="icon-button" aria-label="How to play" title="How to play">?</button></div>
     </header>
     <div class="location"><span class="sun" aria-hidden="true">☀</span><div><strong>Willow Bay</strong><span>CALM WATERS · BIG POSSIBILITIES</span></div></div>
+    <button id="open-exchange" class="exchange-entry"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M5 28V34H35M10 26V20M18 26V15M26 26V9M8 15L17 8L25 12L34 4M28 4H34V10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><small>FROM FISHERMAN TO INVESTOR</small><strong>The Fish Exchange <b>↗</b></strong><em id="exchange-entry-hint">Trade now · $100 starter capital</em></span></button>
     <aside class="harbor" aria-label="Harbor management">
       <div class="harbor-heading"><div><span class="eyebrow">YOUR LITTLE EMPIRE</span><h2>The harbor</h2></div><button id="panel-toggle" class="icon-button" aria-label="Collapse harbor" aria-expanded="true">−</button></div>
       <div id="harbor-body">
@@ -33,10 +34,11 @@
       <button id="cast" class="cast-button"><span id="cast-icon">↗</span><span id="cast-label">Cast your line</span><kbd>SPACE</kbd></button>
       <p class="control-note" id="control-note">Click or press Space · progress saved on this device</p>
     </section>
-    <footer class="game-footer"><span>ROD TO RICHES <b>v0.1</b></span><span id="save-state">SAVED LOCALLY</span></footer>
+    <footer class="game-footer"><span>ROD TO RICHES <b>v0.2</b></span><span id="save-state">SAVED LOCALLY</span></footer>
   </main>
-  <dialog id="help-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close instructions">×</button></form><span class="eyebrow">WELCOME TO WILLOW BAY</span><h2>From one rod<br>to your own fleet.</h2><ol><li><strong>Cast & wait.</strong> Tap Cast, then hook the fish when it bites.</li><li><strong>Reel with care.</strong> Hold the button or Space to reel. Release to lower tension. A full red meter snaps the line.</li><li><strong>Sell & reinvest.</strong> Sell your cooler at the harbor. Upgrade your rod, bait, and storage.</li><li><strong>Build your fleet.</strong> A boat costs $450 and earns $18 each minute while you play. Collect its earnings in Fleet.</li></ol><p>All prices are fictional game dollars. Progress stays in this browser on this device. Boats pause when the game is hidden or closed.</p><p>Tip: upgraded rods make difficult fish easier. Rare species need better gear. You can press P to pause a fishing attempt.</p><button id="help-done" class="primary">Let's go fishing</button></dialog>
+  <dialog id="help-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close instructions">×</button></form><span class="eyebrow">WELCOME TO WILLOW BAY</span><h2>From one rod<br>to your own fleet.</h2><ol><li><strong>Cast & wait.</strong> Tap Cast, then hook the fish when it bites.</li><li><strong>Reel with care.</strong> Hold the button or Space to reel. Release to lower tension. A full red meter snaps the line.</li><li><strong>Sell & reinvest.</strong> Sell your cooler at the harbor. Upgrade your rod, bait, and storage.</li><li><strong>Build your fleet.</strong> A boat costs $450 and earns $18 each minute while you play. Collect its earnings in Fleet.</li><li><strong>Trade the bay.</strong> Open The Fish Exchange at any time. Claim $100 once, buy shares in fictional fishing businesses, and sell them to fund upgrades. Prices can fall as well as rise.</li></ol><p>All prices are fictional game dollars. Progress stays in this browser on this device. Boats and the exchange pause when the game is hidden or closed. Cash is shared between fishing and trading; the starter grant is not trading profit.</p><p>Tip: upgraded rods make difficult fish easier. Rare species need better gear. You can press P to pause a fishing attempt.</p><button id="help-done" class="primary">Let's go fishing</button></dialog>
+  <dialog id="exchange-dialog" aria-labelledby="exchange-title"><header class="exchange-header"><div><span class="eyebrow">WILLOW BAY · EST. THIS MORNING</span><h2 id="exchange-title">The Fish Exchange<span>™</span></h2><p>Put your catch to work.</p></div><div class="exchange-header-actions"><span id="exchange-clock">NEXT QUOTE 8s</span><button id="exchange-close" aria-label="Close exchange">×</button></div></header><div id="exchange-body"></div><p id="exchange-status" role="status" aria-live="polite"></p><footer class="exchange-footer"><strong>Fictional stocks. Real decisions. No real money.</strong><span>Long-only simulation · No dividends · News effects are already reflected in the current quote · Prices pause when this tab is hidden · Local browser save</span><span>Fishing pauses while the exchange is open. Close it and resume when you’re ready. The $100 grant is not trading profit.</span><span id="exchange-save-state"></span><button id="exchange-back" class="exchange-back">← Back to fishing</button></footer></dialog>
   <noscript><div class="fatal">Please enable JavaScript to play Rod to Riches. <a href="../">Back to the Shed</a></div></noscript>
-  <script type="module" src="./game.mjs?v=swim-depth-3"></script>
+  <script type="module" src="./game.mjs?v=fish-exchange-1"></script>
 </body>
 </html>
