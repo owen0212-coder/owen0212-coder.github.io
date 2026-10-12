@@ -1,5 +1,5 @@
 import {SPECIES,BOAT_RATE,capacity,initialState,sanitize,rollFish,landFish,sellFish,earnBoat} from './economy.mjs?v=island-1';
-import {createBite,biteCue,advanceBite,setHook,createFight,fightCue,tugStep} from './fishing.mjs?v=fishing-3';
+import {createBite,biteCue,advanceBite,setHook,createFight,fightCue,tugStep} from './fishing.mjs?v=shallows-1';
 import {createIslandWorld} from './island-scene.mjs?v=fishing-2';
 import {STATIONS,nearestStation,walkable,findPath,stepPlayer,followPath,distance,frameDelta} from './island.mjs';
 import {earnBusiness} from './business.mjs';

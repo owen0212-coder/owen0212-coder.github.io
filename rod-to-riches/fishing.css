@@ -21,8 +21,8 @@
 [data-ready=true] #hook-instruction{color:#c4eabb}
 .island-game .fishing #fight{width:100%;margin:8px 0 16px}
 .fish-run{position:relative;height:40px;background:#153d3973;border-radius:8px;margin-bottom:10px;overflow:hidden}
-.run-line{position:absolute;top:14px;left:9%;right:15%;border-top:1px dashed #bfd4b96b}
-.run-dock,.run-deep{position:absolute;bottom:6px;font-size:6px;letter-spacing:.1em;color:#acc6b7}.run-dock{left:9px}.run-deep{right:9px}
+.run-line{position:absolute;top:14px;left:9%;right:35%;border-top:1px dashed #bfd4b96b}
+.run-dock,.run-deep{position:absolute;bottom:6px;font-size:6px;letter-spacing:.1em;color:#acc6b7}.run-dock{left:9px}.run-deep{right:35%}
 #fight-fish{position:absolute;left:80%;top:0;color:#f4ca78;font-size:25px;transform:scaleX(-1);transition:left .1s linear}
 #fight-fish[data-running=true]{color:#f2a68c;transform:scaleX(1)}
 #fight-fish svg{display:block;width:30px;height:25px;fill:currentColor}

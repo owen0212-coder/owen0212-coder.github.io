@@ -1,5 +1,7 @@
 // Pure fishing simulation. Timing uses active play seconds, never wall-clock time.
 const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
+// The outer edge of this fishing spot is now 35% closer to the landing point.
+export const SHALLOW_START=35;
 export function createBite(difficulty,bait=0,rng=Math.random){
  const difficultySafe=clamp(difficulty,.65,2.6),nibbles=[];
  let time=1.4+rng()*.9-clamp(bait,0,3)*.18;
@@ -30,7 +32,7 @@ export function setHook(b){
 }
 export function createFight(difficulty,rod=0,perfect=false,rng=Math.random){
  return {difficulty:clamp(difficulty,.65,2.6),rod:clamp(rod,0,3),style:rng()*Math.PI*2,
-  time:0,tension:40,progress:perfect?8:0,hook:perfect?100:85,result:'fighting',reason:null};
+  time:0,tension:40,progress:SHALLOW_START+(perfect?8:0),hook:perfect?100:85,result:'fighting',reason:null};
 }
 export function fightCue(f){
  let time=f.time,cycle=0;
@@ -53,7 +55,7 @@ export function tugStep(f,holding,dt){
   const safe=f.tension>=18&&f.tension<=85;
   // Reward a clean opening more generously; keep warning times and risk unchanged.
   const gain=holding&&!surge&&safe?(26+r*1.5-d*1.9)*(recovery?1.9:1):surge?-(holding?2:3+d*.6):-.7;
-  f.progress=clamp(f.progress+gain*step,0,100);
+  f.progress=clamp(f.progress+gain*step,SHALLOW_START,100);
   const damage=(f.tension<18?12+3*d:0)+(f.tension>85?8+4*d:0)+(surge&&holding?12+5*d:0);
   f.hook=clamp(f.hook+(damage?-damage:recovery&&safe?2:0)*step,0,100);
   f.time+=step;remaining-=step;

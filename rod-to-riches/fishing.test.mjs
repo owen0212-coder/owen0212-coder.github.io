@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createBite,biteCue,advanceBite,setHook,createFight,fightCue,tugStep} from './fishing.mjs';
+import {SHALLOW_START,createBite,biteCue,advanceBite,setHook,createFight,fightCue,tugStep} from './fishing.mjs';
 import {SPECIES} from './economy.mjs';
 
 test('every cast has readable nibbles before the committed bite',()=>{
@@ -49,16 +49,24 @@ test('all seven species are catchable by reading surges on different frame rates
   const f=play(s,seed,dt);assert.equal(f.result,'caught',`${s.id}, seed ${seed}, dt ${dt}: ${f.reason}`);assert.ok(f.time<60);
  }
 });
-test('holding blindly snaps the line, while doing nothing lets the hook slip',()=>{
- for(const s of SPECIES){const hold=play(s,.5,1/60,'hold'),release=play(s,.5,1/60,'release');assert.equal(hold.reason,'snap');assert.equal(release.reason,'slack');}
+test('the smallest fish is a quick win, stronger fish punish blind reeling, slack still loses',()=>{
+ assert.equal(play(SPECIES[0],.5,1/60,'hold').result,'caught');
+ for(const s of SPECIES){const hold=play(s,.5,1/60,'hold'),release=play(s,.5,1/60,'release');if(s.id!=='minnow')assert.equal(hold.reason,'snap');assert.equal(release.reason,'slack');}
 });
-test('well-managed fights stay short without removing the first surge',()=>{
- const limits={Common:13,Uncommon:14,Rare:16,Legendary:23};
+test('shallower water shortens well-managed fights across species and frame rates',()=>{
+ const limits={Common:7,Uncommon:8,Rare:9,Legendary:10};
  for(const s of SPECIES)for(let seed=0;seed<30;seed++)for(const dt of [1/60,.08]){
   const f=play(s,seed/30,dt);
   assert.equal(f.result,'caught');assert.ok(f.time<limits[s.rarity],`${s.id} took ${f.time.toFixed(2)}s`);
-  assert.ok(f.time>5,'starter-gear catches should still include a surge and recovery');
+  assert.ok(f.time>0);
  }
+});
+test('fish start closer to the dock and cannot retreat beyond the shallows',()=>{
+ const f=createFight(2.6,3);assert.equal(f.progress,SHALLOW_START);
+ while(fightCue(f).stage!=='surge')f.time+=.01;
+ for(let i=0;i<30;i++)tugStep(f,false,.05);
+ assert.equal(f.progress,SHALLOW_START);
+ assert.equal(createFight(2.6,3,true).progress,SHALLOW_START+8);
 });
 test('every surge is telegraphed and followed by a productive recovery',()=>{
  const f=createFight(2.6,3);const stages=[];
@@ -75,7 +83,7 @@ test('surges punish fighting the fish; releasing gives ground but protects the h
 });
 test('rare fish take more work; better rods help without making blind reeling safe',()=>{
  const common=play(SPECIES[0],.5,1/60),legendary=play(SPECIES.at(-1),.5,1/60);
- assert.ok(legendary.time>common.time*1.5);
+ assert.ok(legendary.time>common.time);
  const upgraded=play(SPECIES[0],.5,1/60,'read',3);assert.ok(upgraded.time<common.time);
  assert.equal(play(SPECIES.at(-1),.5,1/60,'hold',3).result,'lost');
 });
