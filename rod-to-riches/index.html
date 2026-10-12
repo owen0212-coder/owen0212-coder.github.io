@@ -1,44 +1,32 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#174f51">
-  <meta name="description" content="Start with a rod. Build a fishing empire. A cozy 3D fishing and investment game by Owen.">
-  <title>Rod to Riches · Owen's Project Shed</title>
-  <link rel="stylesheet" href="./style.css?v=fish-exchange-1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#174f51"><meta name="description" content="Walk your island, catch fish, trade stocks and invest in land and a growing crew. Rod to Riches by Owen.">
+<title>Rod to Riches · Owen's Project Shed</title>
+<link rel="stylesheet" href="./style.css?v=island-1"><link rel="stylesheet" href="./island.css?v=island-1">
 </head>
 <body>
-  <main id="game">
-    <div id="world" aria-label="A sunlit three-dimensional fishing harbor"></div>
-    <div class="vignette" aria-hidden="true"></div>
-    <header class="topbar">
-      <div class="brand"><a href="../">← THE SHED</a><h1>Rod <i>to</i> Riches<span class="hook">⌁</span></h1><p>A small catch. A big beginning.</p></div>
-      <div class="top-actions"><div class="wallet"><span>YOUR BALANCE</span><strong id="coins">$0</strong></div><button id="sound" class="icon-button" aria-label="Turn sound on" title="Sound">♪<span id="sound-state">OFF</span></button><button id="help" class="icon-button" aria-label="How to play" title="How to play">?</button></div>
-    </header>
-    <div class="location"><span class="sun" aria-hidden="true">☀</span><div><strong>Willow Bay</strong><span>CALM WATERS · BIG POSSIBILITIES</span></div></div>
-    <button id="open-exchange" class="exchange-entry"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M5 28V34H35M10 26V20M18 26V15M26 26V9M8 15L17 8L25 12L34 4M28 4H34V10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><small>FROM FISHERMAN TO INVESTOR</small><strong>The Fish Exchange <b>↗</b></strong><em id="exchange-entry-hint">Trade now · $100 starter capital</em></span></button>
-    <aside class="harbor" aria-label="Harbor management">
-      <div class="harbor-heading"><div><span class="eyebrow">YOUR LITTLE EMPIRE</span><h2>The harbor</h2></div><button id="panel-toggle" class="icon-button" aria-label="Collapse harbor" aria-expanded="true">−</button></div>
-      <div id="harbor-body">
-        <nav class="tabs" aria-label="Harbor sections"><button data-tab="catch" aria-pressed="true">Catch</button><button data-tab="gear" aria-pressed="false">Gear</button><button data-tab="fleet" aria-pressed="false">Fleet</button><button data-tab="journal" aria-pressed="false">Journal</button></nav>
-        <div id="panel-content"></div>
-        <div class="milestone"><div><span id="milestone-label">YOUR FIRST FISHING BOAT</span><strong id="milestone-value">$0 / $450</strong></div><div class="thin-track"><div id="milestone-bar"></div></div><p id="milestone-copy">Every catch is a little capital.</p></div>
-      </div>
-    </aside>
-    <div id="toast" class="toast" role="status" aria-live="polite"></div>
-    <section class="fishing" aria-label="Fishing controls">
-      <div class="status-line"><span class="live-dot"></span><span id="phase-label">A GOOD DAY TO START SOMETHING</span></div>
-      <h2 id="fishing-title">Your empire starts with a cast.</h2>
-      <p id="fishing-hint">Cast your line. A little patience goes a long way.</p>
-      <div id="fight" hidden><div class="meter-label"><span>LINE TENSION <b id="tension-value">25%</b></span><span id="fight-advice">Hold to reel · release to cool</span></div><div class="tension-track"><div id="tension-bar"></div><span></span></div><div class="progress-row"><span>LANDING THE FISH</span><div class="thin-track"><div id="catch-bar"></div></div><b id="catch-percent">0%</b></div></div>
-      <button id="cast" class="cast-button"><span id="cast-icon">↗</span><span id="cast-label">Cast your line</span><kbd>SPACE</kbd></button>
-      <p class="control-note" id="control-note">Click or press Space · progress saved on this device</p>
-    </section>
-    <footer class="game-footer"><span>ROD TO RICHES <b>v0.2</b></span><span id="save-state">SAVED LOCALLY</span></footer>
-  </main>
-  <dialog id="help-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close instructions">×</button></form><span class="eyebrow">WELCOME TO WILLOW BAY</span><h2>From one rod<br>to your own fleet.</h2><ol><li><strong>Cast & wait.</strong> Tap Cast, then hook the fish when it bites.</li><li><strong>Reel with care.</strong> Hold the button or Space to reel. Release to lower tension. A full red meter snaps the line.</li><li><strong>Sell & reinvest.</strong> Sell your cooler at the harbor. Upgrade your rod, bait, and storage.</li><li><strong>Build your fleet.</strong> A boat costs $450 and earns $18 each minute while you play. Collect its earnings in Fleet.</li><li><strong>Trade the bay.</strong> Open The Fish Exchange at any time. Claim $100 once, buy shares in fictional fishing businesses, and sell them to fund upgrades. Prices can fall as well as rise.</li></ol><p>All prices are fictional game dollars. Progress stays in this browser on this device. Boats and the exchange pause when the game is hidden or closed. Cash is shared between fishing and trading; the starter grant is not trading profit.</p><p>Tip: upgraded rods make difficult fish easier. Rare species need better gear. You can press P to pause a fishing attempt.</p><button id="help-done" class="primary">Let's go fishing</button></dialog>
-  <dialog id="exchange-dialog" aria-labelledby="exchange-title"><header class="exchange-header"><div><span class="eyebrow">WILLOW BAY · EST. THIS MORNING</span><h2 id="exchange-title">The Fish Exchange<span>™</span></h2><p>Put your catch to work.</p></div><div class="exchange-header-actions"><span id="exchange-clock">NEXT QUOTE 8s</span><button id="exchange-close" aria-label="Close exchange">×</button></div></header><div id="exchange-body"></div><p id="exchange-status" role="status" aria-live="polite"></p><footer class="exchange-footer"><strong>Fictional stocks. Real decisions. No real money.</strong><span>Long-only simulation · No dividends · News effects are already reflected in the current quote · Prices pause when this tab is hidden · Local browser save</span><span>Fishing pauses while the exchange is open. Close it and resume when you’re ready. The $100 grant is not trading profit.</span><span id="exchange-save-state"></span><button id="exchange-back" class="exchange-back">← Back to fishing</button></footer></dialog>
-  <noscript><div class="fatal">Please enable JavaScript to play Rod to Riches. <a href="../">Back to the Shed</a></div></noscript>
-  <script type="module" src="./game.mjs?v=fish-exchange-1"></script>
-</body>
-</html>
+<main id="game" class="island-game">
+ <div id="world" aria-label="Walkable three-dimensional fishing island"></div><div class="vignette" aria-hidden="true"></div>
+ <header class="topbar"><div class="brand"><a href="../">← THE SHED</a><h1>Rod <i>to</i> Riches</h1><p>Little island. Big ambitions.</p></div>
+ <div class="top-actions"><div class="wallet"><span>AVAILABLE CASH</span><strong id="coins">$0</strong></div><button id="bag" class="hud-button" aria-label="View your catch and journal">Bag <b id="bag-count">0/5</b></button><button id="sound" class="icon-button" aria-label="Turn sound on">♪<span id="sound-state">OFF</span></button><button id="help" class="icon-button" aria-label="How to play">?</button></div></header>
+ <div class="island-toolbar"><button id="guide-toggle" class="hud-button" aria-expanded="false" aria-controls="destination-guide">⌖ Island guide <span>▾</span></button><span id="empire-summary">Home island · 0 crew</span></div>
+ <nav id="destination-guide" aria-label="Walk to a station" hidden><span class="eyebrow">CHOOSE A PLACE · WE’LL WALK THERE</span><div id="destination-buttons"></div><p>These are directions, not shortcuts. Your character walks to every counter.</p></nav>
+ <div id="station-labels" aria-label="Island station signs"></div>
+ <div id="toast" class="toast" role="status" aria-live="polite"></div>
+ <section id="travel-hud" aria-label="Island movement and interaction"><div><span class="eyebrow" id="travel-kicker">WELCOME TO WILLOW BAY</span><h2 id="travel-title">Your island. Your next move.</h2><p id="travel-hint">Click a sign to walk there · WASD / arrows to explore</p></div><button id="interact" class="primary" disabled>Walk up to a station <kbd>E</kbd></button><button id="stop-walking" class="text-button" hidden>Stop walking</button></section>
+ <div id="touch-controls" aria-label="Directional walking controls"><button data-move="up" aria-label="Walk up">↑</button><button data-move="left" aria-label="Walk left">←</button><button data-move="down" aria-label="Walk down">↓</button><button data-move="right" aria-label="Walk right">→</button></div>
+ <section class="fishing" id="fishing-controls" aria-label="Fishing dock controls" hidden>
+  <div class="status-line"><span class="live-dot"></span><span id="phase-label">AT THE FISHING DOCK</span></div><h2 id="fishing-title">Cast into your future.</h2><p id="fishing-hint">Cast, hook, and reel with care.</p>
+  <div id="fight" hidden><div class="meter-label"><span>LINE TENSION <b id="tension-value">25%</b></span><span id="fight-advice">Hold to reel · release to cool</span></div><div class="tension-track"><div id="tension-bar"></div><span></span></div><div class="progress-row"><span>LANDING THE FISH</span><div class="thin-track"><div id="catch-bar"></div></div><b id="catch-percent">0%</b></div></div>
+  <button id="cast" class="cast-button"><span id="cast-icon">↗</span><span id="cast-label">Cast your line</span><kbd>SPACE</kbd></button><button id="leave-dock" class="text-button">← Leave the dock</button><p class="control-note" id="control-note">Hold to reel · release to relax</p>
+ </section>
+ <footer class="game-footer"><span>ROD TO RICHES <b>v0.3 · ISLAND LIFE</b></span><span id="save-state">SAVED LOCALLY</span></footer>
+</main>
+<dialog id="station-dialog" aria-labelledby="station-title"><header class="station-dialog-heading"><div><span class="eyebrow" id="station-kicker">WILLOW BAY</span><h2 id="station-title">The counter</h2></div><button id="station-close" class="icon-button" aria-label="Leave this station">×</button></header><div id="station-content"></div><p id="station-status" role="status" aria-live="polite"></p><footer class="station-dialog-footer"><span id="station-save-state">Saved in this browser.</span><button id="station-back" class="primary secondary">← Back to the island</button></footer></dialog>
+<dialog id="help-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close instructions">×</button></form><span class="eyebrow">YOUR FIRST DAY ON THE ISLAND</span><h2>Build an empire.<br>One step at a time.</h2><ol><li><strong>Walk.</strong> Use WASD / arrows, click the ground, or tap a station sign. The Island guide walks you to any counter. On phones, use the direction pad or tap.</li><li><strong>Interact.</strong> Walk close and press E, or use the on-screen button. Tapping a sign walks you there and opens the station.</li><li><strong>Fish at the dock.</strong> Cast, hook on the bite, then hold Space or the reel button. Release before tension reaches red. Walking away abandons an unfinished attempt, not your stored catch.</li><li><strong>Sell at the fish market.</strong> Carry your catch to the green-awning stall. Collect your crew’s net proceeds there too.</li><li><strong>Visit the stockbroker.</strong> Trade fictional shares at the Exchange. Claim the one-time $100 starter grant there—no fishing unlock required.</li><li><strong>Invest in your island.</strong> Buy gear at Tackle & Co. Visit the Harbormaster for boats, land, hiring and training. New plots physically expand the island and create more crew spaces.</li></ol><p>Crew revenue and wages are shown separately. Wages come out of crew revenue, not your wallet. Businesses and simulated stocks advance only while this tab is visible; there is no offline income, real money, or cloud save. P pauses a fishing attempt, not the whole economy.</p><button id="help-done" class="primary">Explore Willow Bay</button></dialog>
+  <dialog id="exchange-dialog" aria-labelledby="exchange-title"><header class="exchange-header"><div><span class="eyebrow">WILLOW BAY · STOCKBROKER’S COUNTER</span><h2 id="exchange-title">The Fish Exchange<span>™</span></h2><p>Paper shares. A chalkboard. Your next investment.</p></div><div class="exchange-header-actions"><span id="exchange-clock">NEXT QUOTE 8s</span><button id="exchange-close" aria-label="Close exchange">×</button></div></header><div id="exchange-body"></div><p id="exchange-status" role="status" aria-live="polite"></p><footer class="exchange-footer"><strong>Fictional stocks. Real decisions. No real money.</strong><span>Long-only simulation · No dividends · News effects are already reflected in the current quote · Prices pause when this tab is hidden · Local browser save</span><span>You must visit this counter to trade. Close it to return to the island. The $100 grant is not trading profit.</span><span id="exchange-save-state"></span><button id="exchange-back" class="exchange-back">← Back to the island</button></footer></dialog>
+<noscript><div class="fatal">Please enable JavaScript to play. <a href="../">Back to the Shed</a></div></noscript>
+<script type="module" src="./game.mjs?v=island-1"></script>
+</body></html>

@@ -1,75 +1,150 @@
-import {SPECIES,GEAR,BOAT_RATE,MAX_BOATS,initialState,sanitize,capacity,boatCost,rollFish,landFish,sellFish,upgrade,buyBoat,earnBoat,collectBoat,fightStep} from './economy.mjs?v=fish-exchange-1';
-import {createWorld} from './scene.mjs?v=swim-depth-3';
+import {SPECIES,BOAT_RATE,capacity,initialState,sanitize,rollFish,landFish,sellFish,earnBoat,fightStep} from './economy.mjs?v=island-1';
+import {createIslandWorld} from './island-scene.mjs';
+import {STATIONS,nearestStation,walkable,findPath,stepPlayer,followPath,distance,frameDelta} from './island.mjs';
+import {earnBusiness} from './business.mjs';
+import {createStations} from './stations.mjs';
 import {bindFishingInput} from './fishing-input.mjs';
-import {advanceMarket,portfolio} from './market.mjs';
-import {createExchange} from './exchange.mjs';
-const $=id=>document.getElementById(id), money=n=>'$'+Math.floor(n).toLocaleString('en-US');
+import {advanceMarket} from './market.mjs';
+import {createExchange} from './exchange.mjs?v=island-1';
+const $=id=>document.getElementById(id),money=n=>'$'+Math.floor(n).toLocaleString('en-US');
 const KEY='rod-to-riches-save-v1';let state=initialState(),storageAvailable=true;
-try{state=sanitize(JSON.parse(localStorage.getItem(KEY)));}catch{storageAvailable=false;}
-let phase='idle',timer=0,currentFish=null,fight=null,holding=false,paused=false,tab='catch',toastTimer,saveTimer=0,uiTimer=0,audio;
-let world;try{world=createWorld($('world'));}catch(error){$('world').innerHTML='<div class="fatal">This browser could not start the 3D harbor. Try enabling hardware acceleration or opening the game in a recent browser.<a href="../">Back to the Shed</a></div>';$('cast').disabled=true;console.error(error);}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(state));storageAvailable=true;}catch{storageAvailable=false;}$('save-state').textContent=storageAvailable?'SAVED ON THIS DEVICE':'SAVING UNAVAILABLE · KEEP THIS TAB OPEN';$('exchange-save-state').textContent=storageAvailable?'Progress saved on this device.':'Saving unavailable. Keep this tab open; progress may be lost when you leave.';}
-function toast(message){$('toast').textContent=message;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),3500);}
-function tone(freq=550,duration=.12){if(!state.sound)return;try{audio??=new (window.AudioContext||window.webkitAudioContext)();if(audio.state==='suspended')audio.resume();const oscillator=audio.createOscillator(),gain=audio.createGain();oscillator.type='sine';oscillator.frequency.setValueAtTime(freq,audio.currentTime);gain.gain.setValueAtTime(.06,audio.currentTime);gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);oscillator.connect(gain);gain.connect(audio.destination);oscillator.start();oscillator.stop(audio.currentTime+duration);}catch{}}
-function species(f){return SPECIES.find(p=>p.id===f.id);}
-function fishRow(f){const p=species(f);return `<div class="fish-row"><span class="fish-chip" style="color:${p.color}">⌁</span><div><strong>${p.name}</strong><small>${p.rarity} · ${f.kg.toFixed(2)} kg</small></div><b>${money(f.value)}</b></div>`;}
-function updatePanel(){
- $('exchange-entry-hint').textContent=state.market.grantClaimed?`${money(portfolio(state).value)} invested · Open exchange`:'Trade now · $100 starter capital';
- $('coins').textContent=money(state.coins);const price=boatCost(state),hasFleet=state.boats>0;
- $('milestone-label').textContent=hasFleet?'FLEET INCOME / MINUTE':'YOUR FIRST FISHING BOAT';$('milestone-value').textContent=hasFleet?money(state.boats*BOAT_RATE):`${money(state.coins)} / $450`;$('milestone-bar').style.width=(hasFleet?state.boats/MAX_BOATS:Math.min(1,state.coins/450))*100+'%';$('milestone-copy').textContent=hasFleet?'A little fleet. A growing future.':'Every catch is a little capital.';
- let html='';
- if(tab==='catch'){const total=state.fish.reduce((v,f)=>v+f.value,0);html=`<div class="panel-kicker"><span>IN YOUR COOLER</span><span>${state.fish.length} / ${capacity(state)} fish</span></div>`;
- html+=state.fish.length?state.fish.map(fishRow).join(''):'<div class="empty"><span class="fish-symbol" aria-hidden="true">⌁</span><strong>Something good is biting.</strong><p>Your cooler is empty. Cast a line and see what the bay has for you.</p></div>';
- if(total)html+=`<div class="sell-total"><span>Market value</span><strong>${money(total)}</strong></div>`;
- html+=`<button class="primary" data-action="sell" ${total?'':'disabled'}>Sell all fish${total?' · '+money(total):''}</button>`;
- }else if(tab==='gear'){html=Object.entries(GEAR).map(([key,g])=>`<div class="upgrade"><div class="upgrade-top"><h3>${g.name}</h3><span class="level">LEVEL ${state[key]+1} / 4</span></div><p>${g.names[state[key]]} · ${g.description}</p><button class="primary secondary" data-upgrade="${key}" ${state[key]>=3||state.coins<g.costs[state[key]]?'disabled':''}>${state[key]>=3?'Fully upgraded':`Upgrade · ${money(g.costs[state[key]])}`}</button></div>`).join('');
- }else if(tab==='fleet'){html=`<div class="fleet-hero"><strong>${state.boats} ${state.boats===1?'boat':'boats'}</strong><p>${state.boats?money(state.boats*BOAT_RATE)+' per minute while you play':'Your next chapter starts here.'}</p></div><div class="fleet-money"><span>Ready to collect</span><strong id="fleet-bank">${money(state.boatBank)}</strong></div><button class="primary secondary" data-action="collect" ${state.boatBank<1?'disabled':''}>Collect earnings</button><p class="fleet-note">Each boat earns $18 / min. Earnings pause when this tab is hidden or closed. Maximum 3 boats.</p><button class="primary" data-action="boat" ${state.boats>=MAX_BOATS||state.coins<price?'disabled':''}>${state.boats>=MAX_BOATS?'Fleet complete':`Buy ${state.boats?'another':'your first'} boat · ${money(price)}`}</button>`;
- }else{html=`<div class="journal-stats"><div><strong>${state.caught}</strong><small>FISH CAUGHT</small></div><div><strong>${state.best.toFixed(2)} kg</strong><small>PERSONAL BEST</small></div></div><div class="panel-kicker"><span>SPECIES DISCOVERED</span><span>${Object.keys(state.collection).length} / ${SPECIES.length}</span></div>`+SPECIES.map(p=>`<div class="fish-row ${state.collection[p.id]?'':'unknown'}"><span class="fish-chip" style="color:${p.color}">${state.collection[p.id]?'⌁':'?'}</span><div><strong>${state.collection[p.id]?p.name:'Undiscovered'}</strong><small>${p.rarity}${p.rod>state.rod?' · Rod level '+(p.rod+1):''}</small></div><b>${state.collection[p.id]||'—'}</b></div>`).join('')+`<p class="fleet-note">Fishing & fleet revenue: ${money(state.revenue)}. Prices are fictional game dollars.</p>`;}
- $('panel-content').innerHTML=html;
+try{const raw=JSON.parse(localStorage.getItem(KEY));state=sanitize(raw);if(raw?.version===1&&!raw.business&&!localStorage.getItem('rod-to-riches-pre-island-backup-v1'))localStorage.setItem('rod-to-riches-pre-island-backup-v1',JSON.stringify(raw));}catch{storageAvailable=false;}
+let phase='idle',timer=0,currentFish=null,fight=null,holding=false,paused=false,dockSession=false;
+let path=[],destination=null,moving=null,toastTimer,saveTimer=0,uiTimer=0,audio,world;
+const keys=new Set(),touch=new Set();
+function modalOpen(){return $('help-dialog').open||$('exchange-dialog').open||$('station-dialog').open;}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));storageAvailable=true;}catch{storageAvailable=false;}
+ $('save-state').textContent=storageAvailable?'SAVED ON THIS DEVICE':'SAVING UNAVAILABLE';
+ const note=storageAvailable?'Progress saved on this device.':'Saving unavailable. Keep this tab open; progress may be lost when you leave.';
+ $('exchange-save-state').textContent=note;$('station-save-state').textContent=note;
+}
+function toast(message){$('toast').textContent=message;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),3800);}
+function tone(freq=550,duration=.12){if(!state.sound)return;try{audio??=new(window.AudioContext||window.webkitAudioContext)();if(audio.state==='suspended')audio.resume();const o=audio.createOscillator(),g=audio.createGain();o.frequency.value=freq;g.gain.setValueAtTime(.04,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch{}}
+const species=f=>SPECIES.find(p=>p.id===f.id);
+function updateHUD(){
+ $('coins').textContent=money(state.coins);$('bag-count').textContent=state.fish.length+'/'+capacity(state);
+ $('empire-summary').textContent=(state.business.plots.length?1+state.business.plots.length+' land parcels':'Home island')+' · '+state.business.workers+' crew';
+}
+function clearRoute(){path=[];destination=null;world?.setPath([]);}
+function clearMovement(){keys.clear();touch.clear();moving=null;clearRoute();}
+function leaveDock(silent=false){
+ if(!dockSession)return;
+ const active=['waiting','bite','fighting'].includes(phase);
+ dockSession=false;phase='idle';holding=false;paused=false;currentFish=null;fight=null;fishingInput.cancel();
+ if(active&&!silent)toast('Line brought in. Your stored catch is safe.');
+ updateFishing();updateTravel();
+}
+function walkTo(point,stationId=null){
+ if(modalOpen()||!world)return;
+ if(!walkable(point,state.business.plots)){toast('That ground is not walkable. Buy new land at the Harbormaster.');return;}
+ const route=findPath(state.business.position,point,state.business.plots);
+ if(!route.length){toast('No clear route there. Try a nearby path.');return;}
+ leaveDock();keys.clear();touch.clear();path=route;destination=stationId;world.setPath(path);
+ $('destination-guide').hidden=true;$('guide-toggle').setAttribute('aria-expanded','false');updateTravel();
+}
+try{world=createIslandWorld($('world'),point=>walkTo(point));}catch(error){$('world').innerHTML='<div class="fatal">This browser could not start the island. Please enable hardware acceleration or try a recent WebGL2-capable browser.<a href="../">Back to the Shed</a></div>';console.error(error);}
+$('destination-buttons').innerHTML=STATIONS.map(s=>'<button data-destination="'+s.id+'"><b>'+s.number+'</b><span><strong>'+s.name+'</strong><small>'+s.action+'</small></span></button>').join('');
+$('station-labels').innerHTML=STATIONS.map(s=>'<button class="station-sign" data-destination="'+s.id+'" id="sign-'+s.id+'" aria-label="Walk to '+s.name+'"><span class="station-number">'+s.number+'</span>'+s.short+'</button>').join('')+'<span id="sign-player" class="player-marker" aria-hidden="true">YOU</span>';
+for(const id of ['destination-buttons','station-labels'])$(id).addEventListener('click',event=>{const button=event.target.closest('[data-destination]');if(button){const s=STATIONS.find(s=>s.id===button.dataset.destination);walkTo({x:s.x,z:s.z},s.id);}});
+$('guide-toggle').addEventListener('click',()=>{$('destination-guide').hidden=!$('destination-guide').hidden;$('guide-toggle').setAttribute('aria-expanded',String(!$('destination-guide').hidden));});
+function beforeModal(){clearMovement();fishingInput.cancel();if(['waiting','bite','fighting'].includes(phase))paused=true;updateFishing();}
+function afterModal(){keys.clear();touch.clear();fishingInput.cancel();save();updateHUD();updateTravel();updateFishing();}
+const stations=createStations({getState:()=>state,onChange:()=>{updateHUD();save();tone(750);},onOpen:beforeModal,onClose:afterModal});
+const exchange=createExchange({getState:()=>state,onChange:()=>{updateHUD();save();tone(700);},onOpen:beforeModal,onClose:afterModal,canTrade:()=>nearestStation(state.business.position)?.id==='exchange'});
+function enterStation(){
+ if(modalOpen()||!world)return;
+ const station=nearestStation(state.business.position);if(!station){toast('Walk up to a station first.');return;}
+ clearMovement();
+ if(station.id==='dock'){if(!dockSession){dockSession=true;paused=false;phase='idle';}updateFishing();updateTravel();$('cast').focus({preventScroll:true});}
+ else if(station.id==='exchange')exchange.open();
+ else stations.open(station.id);
+}
+$('interact').addEventListener('click',enterStation);$('stop-walking').addEventListener('click',()=>{clearMovement();updateTravel();});
+$('bag').addEventListener('click',()=>stations.open('bag'));
+$('leave-dock').addEventListener('click',()=>leaveDock());
+function updateTravel(){
+ const near=nearestStation(state.business.position),target=STATIONS.find(s=>s.id===destination);
+ $('travel-hud').hidden=dockSession;$('touch-controls').hidden=dockSession;
+ $('travel-kicker').textContent=path.length?'ON YOUR WAY':near?'AT '+near.short:'WELCOME TO WILLOW BAY';
+ $('travel-title').textContent=path.length?'Walking'+(target?' to '+target.name:'…'):near?near.name:'Your island. Your next move.';
+ $('travel-hint').textContent=path.length?'Your character is following the path. Use movement controls to take over.':near?near.action+' · Press E or use the button below.':'Tap a sign or use Island guide · WASD / arrows to explore';
+ $('interact').disabled=!near||path.length>0||!world;$('interact').innerHTML=(near?near.action:'Walk up to a station')+' <kbd>E</kbd>';
+ $('stop-walking').hidden=!path.length;
+ for(const s of STATIONS)$('sign-'+s.id).classList.toggle('near',near?.id===s.id);
 }
 function updateFishing(){
- const texts={idle:['A GOOD DAY TO START SOMETHING','Your empire starts with a cast.','Cast your line. A little patience goes a long way.','Cast your line','↗'],waiting:['LINE IN THE WATER','Good things take a little patience.','Watch the float. Hook the fish when it bites.','Waiting for a bite…','≈'],bite:['SOMETHING IS BITING','Now! Hook your fish.','Tap the button or press Space before it gets away.','Hook the fish!','!'],fighting:['EASY DOES IT',currentFish?species(currentFish).name+' on the line!':'Fish on the line!','Hold to reel. Release before the line gets too hot.','Hold to reel','↥'],caught:['ONE CATCH CLOSER',currentFish?species(currentFish).name+' landed.':'A fine catch.',currentFish?`${currentFish.kg.toFixed(2)} kg · Worth ${money(currentFish.value)} · Safely in your cooler.`:'','Cast again','↗'],lost:['THERE IS ALWAYS ANOTHER FISH','That one got away.','Try again. Ease off the reel when tension rises.','Try another cast','↗']};
- const t=texts[phase];$('phase-label').textContent=paused?'TAKE YOUR TIME · PAUSED':t[0];$('fishing-title').textContent=paused?'The bay can wait.':t[1];$('fishing-hint').textContent=paused?'Press P or tap Resume when you are ready.':t[2];$('cast-label').textContent=paused?'Resume fishing':t[3];$('cast-icon').textContent=paused?'▷':t[4];$('cast').disabled=!world||(!paused&&phase==='waiting');$('cast').className='cast-button'+(paused?' paused':phase==='bite'?' bite':phase==='fighting'?' reel':'');$('fight').hidden=phase!=='fighting';$('control-note').textContent=phase==='fighting'?'Hold button or Space · release to relax · P to pause':'Click or press Space · progress saved on this device';
+ $('fishing-controls').hidden=!dockSession;
+ const texts={idle:['AT THE FISHING DOCK','Cast into your future.','Your cooler travels with you. Sell catches at the fish market.','Cast your line','↗'],waiting:['LINE IN THE WATER','A little patience.','Hook the fish when the float dips.','Waiting for a bite…','≈'],bite:['SOMETHING IS BITING','Hook your fish!','Tap the button or press Space before it escapes.','Hook the fish!','!'],fighting:['EASY DOES IT',currentFish?species(currentFish).name+' on the line!':'Fish on!','Hold to reel. Release to ease the tension.','Hold to reel','↥'],caught:['ONE CATCH CLOSER',currentFish?species(currentFish).name+' landed.':'A fine catch.',currentFish?currentFish.kg.toFixed(2)+' kg · '+money(currentFish.value)+' · In your cooler.':'','Cast again','↗'],lost:['THERE IS ALWAYS ANOTHER FISH','That one got away.','Ease off when the line tension rises.','Try another cast','↗']};
+ const t=texts[phase];$('phase-label').textContent=paused?'FISHING PAUSED':t[0];$('fishing-title').textContent=paused?'The bay can wait.':t[1];$('fishing-hint').textContent=paused?'Press P or tap Resume to continue.':t[2];$('cast-label').textContent=paused?'Resume fishing':t[3];$('cast-icon').textContent=paused?'▷':t[4];$('cast').disabled=!world||!dockSession||(!paused&&phase==='waiting');$('cast').className='cast-button'+(paused?' paused':phase==='bite'?' bite':phase==='fighting'?' reel':'');$('fight').hidden=phase!=='fighting';$('control-note').textContent='Hold button or Space · P pauses fishing · Leave dock to explore';
 }
 function setPhase(value){phase=value;holding=false;updateFishing();}
 function cast(){
+ if(!dockSession||modalOpen()||nearestStation(state.business.position)?.id!=='dock')return;
  if(paused){paused=false;updateFishing();return;}
- if(['idle','caught','lost'].includes(phase)){if(state.fish.length>=capacity(state)){toast('Your cooler is full. Sell your fish at the harbor.');selectTab('catch');return;}currentFish=rollFish(state);timer=2.5+Math.random()*3-state.bait*.45;setPhase('waiting');tone(350);}
- else if(phase==='bite'){fight={time:0,progress:0,tension:20};setPhase('fighting');tone(700);}
+ if(['idle','caught','lost'].includes(phase)){
+  if(state.fish.length>=capacity(state)){toast('Cooler full. Walk to the fish market to sell your catch.');return;}
+  currentFish=rollFish(state);timer=2.5+Math.random()*3-state.bait*.45;setPhase('waiting');tone(350);
+ }else if(phase==='bite'){fight={time:0,progress:0,tension:20};setPhase('fighting');tone(700);}
 }
-function finishFight(result){if(result==='caught'){if(landFish(state,currentFish)){setPhase('caught');updatePanel();save();tone(880,.25);if(state.caught===1)toast('Your first catch! Sell it in the harbor to start investing.');}else{setPhase('lost');toast('The cooler is full. Sell your catch first.');}}else{setPhase('lost');tone(180,.2);}}
-function selectTab(value){tab=value;for(const b of document.querySelectorAll('[data-tab]'))b.setAttribute('aria-pressed',String(b.dataset.tab===tab));setPanel(true);updatePanel();}
-function setPanel(expanded){$('harbor-body').hidden=!expanded;$('panel-toggle').textContent=expanded?'−':'+';$('panel-toggle').setAttribute('aria-expanded',String(expanded));$('panel-toggle').setAttribute('aria-label',expanded?'Collapse harbor':'Expand harbor');document.querySelector('.harbor').classList.toggle('expanded',expanded);}
-document.querySelector('.tabs').addEventListener('click',e=>{if(e.target.dataset.tab)selectTab(e.target.dataset.tab);});
-$('panel-content').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;
- if(b.dataset.action==='sell'){const value=sellFish(state);toast(`Catch sold for ${money(value)}. Your next investment awaits.`);tone(780);}
- if(b.dataset.upgrade){if(upgrade(state,b.dataset.upgrade)){toast(GEAR[b.dataset.upgrade].names[state[b.dataset.upgrade]]+' unlocked.');tone(900,.2);}}
- if(b.dataset.action==='boat'){if(buyBoat(state)){toast('Welcome aboard! Your boat is now earning $18 per minute.');tone(1000,.3);}}
- if(b.dataset.action==='collect'){toast(`Collected ${money(collectBoat(state))} from your fleet.`);tone(700);}
- updatePanel();save();});
-$('panel-toggle').addEventListener('click',()=>setPanel($('harbor-body').hidden));
-function release(){holding=false;}
-const fishingInput=bindFishingInput($('cast'),{getPhase:()=>phase,isPaused:()=>paused,isHelpOpen:()=>$('help-dialog').open||$('exchange-dialog').open,activate:cast,setHolding:value=>{holding=value;},togglePause:()=>{paused=!paused;updateFishing();}});
-const exchange=createExchange({getState:()=>state,onChange:()=>{updatePanel();save();tone(700);},onOpen:()=>{fishingInput.cancel();if(['waiting','bite','fighting'].includes(phase))paused=true;updateFishing();},onClose:()=>{fishingInput.cancel();save();updateFishing();}});
-$('open-exchange').addEventListener('click',()=>exchange.open());
-addEventListener('blur',()=>{release();if(['waiting','bite','fighting'].includes(phase)){paused=true;updateFishing();}});
-function showHelp(){release();if(['waiting','bite','fighting'].includes(phase))paused=true;updateFishing();$('help-dialog').showModal();}
-$('help').addEventListener('click',showHelp);$('help-done').addEventListener('click',()=>$('help-dialog').close());
+function finishFight(result){
+ if(result==='caught'&&landFish(state,currentFish)){setPhase('caught');updateHUD();save();tone(880,.25);if(state.caught===1)toast('First catch! Carry it to the green fish-market stall.');}
+ else{setPhase('lost');tone(180,.2);}
+}
+const fishingInput=bindFishingInput($('cast'),{getPhase:()=>phase,isPaused:()=>paused,isHelpOpen:()=>modalOpen()||!dockSession,activate:cast,setHolding:v=>{holding=v;},togglePause:()=>{paused=!paused;updateFishing();}});
+const directions={KeyW:'up',ArrowUp:'up',KeyS:'down',ArrowDown:'down',KeyA:'left',ArrowLeft:'left',KeyD:'right',ArrowRight:'right'};
+addEventListener('keydown',event=>{
+ if(modalOpen()||event.target?.closest?.('input,textarea,select,[contenteditable="true"]'))return;
+ if(directions[event.code]){event.preventDefault();if(!event.repeat){leaveDock();clearRoute();keys.add(event.code);updateTravel();}}
+ if(event.code==='KeyE'&&!event.repeat){event.preventDefault();enterStation();}
+ if(event.code==='Escape'){$('destination-guide').hidden=true;$('guide-toggle').setAttribute('aria-expanded','false');clearMovement();leaveDock();updateTravel();}
+});
+addEventListener('keyup',event=>{keys.delete(event.code);});
+for(const button of document.querySelectorAll('[data-move]')){
+ button.addEventListener('pointerdown',event=>{if(modalOpen())return;event.preventDefault();button.setPointerCapture(event.pointerId);leaveDock();clearRoute();touch.add(button.dataset.move);updateTravel();});
+ const release=()=>touch.delete(button.dataset.move);button.addEventListener('pointerup',release);button.addEventListener('pointercancel',release);button.addEventListener('lostpointercapture',release);
+}
+function pauseInput(){clearMovement();fishingInput.cancel();if(['waiting','bite','fighting'].includes(phase))paused=true;updateFishing();updateTravel();}
+addEventListener('blur',pauseInput);
+document.addEventListener('visibilitychange',()=>{if(document.hidden){pauseInput();save();}});addEventListener('pagehide',save);
+$('help').addEventListener('click',()=>{beforeModal();$('help-dialog').showModal();});$('help-done').addEventListener('click',()=>$('help-dialog').close());$('help-dialog').addEventListener('close',afterModal);
 $('sound').addEventListener('click',()=>{state.sound=!state.sound;updateSound();tone();save();});
 function updateSound(){$('sound-state').textContent=state.sound?'ON':'OFF';$('sound').setAttribute('aria-label',state.sound?'Turn sound off':'Turn sound on');}
-document.addEventListener('visibilitychange',()=>{fishingInput.cancel();if(document.hidden){save();if(['waiting','bite','fighting'].includes(phase)){paused=true;updateFishing();}}});addEventListener('pagehide',save);
-if(matchMedia('(max-width:600px)').matches)setPanel(false);
-updatePanel();updateFishing();updateSound();save();
-let last=performance.now();function frame(now){const dt=Math.min((now-last)/1000,.08);last=now;if(!document.hidden){
- if(!paused&&!$('help-dialog').open&&!exchange.isOpen()){if(phase==='waiting'){timer-=dt;if(timer<=0){timer=4.5;setPhase('bite');tone(720,.2);}}
- else if(phase==='bite'){timer-=dt;if(timer<=0)setPhase('lost');}
- else if(phase==='fighting'){const result=fightStep(fight,holding,dt,species(currentFish).difficulty,state.rod);$('tension-bar').style.width=fight.tension+'%';$('tension-bar').style.background=fight.tension>80?'#eb845f':'#e6c065';$('tension-value').textContent=Math.round(fight.tension)+'%';$('catch-bar').style.width=fight.progress+'%';$('catch-percent').textContent=Math.round(fight.progress)+'%';$('fight-advice').textContent=fight.tension>78?'Release! Let the line cool.':holding?'Reeling in…':'Hold to reel · release to cool';if(result!=='fighting')finishFight(result);}
+function move(dt){
+ moving=null;if(modalOpen()||!world)return;
+ const dirs=new Set([...Array.from(keys).map(k=>directions[k]),...touch]);
+ let dx=0,dz=0;for(const d of dirs){if(d==='up'){dx-=.555;dz-=.832;}if(d==='down'){dx+=.555;dz+=.832;}if(d==='left'){dx-=.832;dz+=.555;}if(d==='right'){dx+=.832;dz-=.555;}}
+ const old={...state.business.position};
+ if(Math.hypot(dx,dz)>0)state.business.position=stepPlayer(old,dx,dz,dt,state.business.plots);
+ else if(path.length){
+  const result=followPath(old,path,dt,state.business.plots);state.business.position=result.position;path=result.path;
+  if(result.blocked){clearRoute();toast('Path blocked. Try another spot.');}
+  if(!path.length){const arrived=destination;clearRoute();if(arrived)enterStation();updateTravel();}
  }
- if(advanceMarket(state.market,dt)){exchange.render();$('exchange-entry-hint').textContent=state.market.grantClaimed?`${money(portfolio(state).value)} invested · Open exchange`:'Trade now · $100 starter capital';save();}
- earnBoat(state,dt);uiTimer+=dt;saveTimer+=dt;if(uiTimer>=1){uiTimer=0;if(tab==='fleet')updatePanel();exchange.updateClock();}if(saveTimer>=8){saveTimer=0;save();}world?.render(dt,phase,holding,state.boats);
- }requestAnimationFrame(frame);}requestAnimationFrame(frame);
-// Optional browser-agent access uses the same economy actions as the controls.
-if(document.modelContext?.registerTool){const lifecycle=new AbortController();addEventListener('pagehide',()=>lifecycle.abort());
- const tools=[{name:'read_fishing_progress',description:'Read the visible Rod to Riches balance, catch, upgrades and fleet.',annotations:{readOnlyHint:true},execute:()=>({coins:state.coins,fish:state.fish,rod:state.rod,bait:state.bait,cooler:state.cooler,boats:state.boats,boatBank:state.boatBank,phase})},{name:'sell_caught_fish',description:'Sell all fish currently in the cooler for game dollars, exactly like Sell all fish.',annotations:{readOnlyHint:false},execute:()=>{const soldFor=sellFish(state);updatePanel();save();return {soldFor,coins:state.coins};}}];
- for(const tool of tools){try{Promise.resolve(document.modelContext.registerTool({...tool,inputSchema:{type:'object',properties:{},additionalProperties:false},execute:input=>{if(input&&Object.keys(input).length)throw new Error('No arguments accepted');return tool.execute();}},{signal:lifecycle.signal})).catch(()=>{});}catch{}}
+ const p=state.business.position;if(distance(old,p)>.0001)moving={angle:Math.atan2(p.x-old.x,p.z-old.z)};
+}
+updateHUD();updateTravel();updateFishing();updateSound();save();
+let last=null;
+function frame(now){
+ const dt=frameDelta(now,last);last=now;
+ if(!document.hidden){
+  move(dt);
+  if(dockSession&&!paused&&!modalOpen()){
+   if(phase==='waiting'){timer-=dt;if(timer<=0){timer=4.5;setPhase('bite');tone(720,.2);}}
+   else if(phase==='bite'){timer-=dt;if(timer<=0)setPhase('lost');}
+   else if(phase==='fighting'){const result=fightStep(fight,holding,dt,species(currentFish).difficulty,state.rod);$('tension-bar').style.width=fight.tension+'%';$('tension-bar').style.background=fight.tension>80?'#eb845f':'#e6c065';$('tension-value').textContent=Math.round(fight.tension)+'%';$('catch-bar').style.width=fight.progress+'%';$('catch-percent').textContent=Math.round(fight.progress)+'%';$('fight-advice').textContent=fight.tension>78?'Release! Let the line cool.':holding?'Reeling in…':'Hold to reel · release to cool';if(result!=='fighting')finishFight(result);}
+  }
+  if(advanceMarket(state.market,dt)){exchange.render();save();}
+  earnBoat(state,dt);earnBusiness(state,dt);uiTimer+=dt;saveTimer+=dt;
+  if(uiTimer>=.25){uiTimer=0;updateTravel();stations.refresh();exchange.updateClock();}
+  if(saveTimer>=8){saveTimer=0;save();}
+  const labels=world?.render(dt,state,moving,phase,holding)||[];
+  for(const label of labels){const el=$('sign-'+label.id),visible=label.x>45&&label.x<innerWidth-45&&label.y>178&&label.y<innerHeight-190;el.hidden=!visible;el.style.left=label.x+'px';el.style.top=label.y+'px';}
+ }
+ requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+if(document.modelContext?.registerTool){
+ const lifecycle=new AbortController();addEventListener('pagehide',()=>lifecycle.abort());
+ const tools=[{name:'read_fishing_progress',description:'Read Rod to Riches cash, catch, location, crew, land and fleet.',annotations:{readOnlyHint:true},execute:()=>({coins:state.coins,fish:state.fish,rod:state.rod,boats:state.boats,boatBank:state.boatBank,phase,business:state.business,nearStation:nearestStation(state.business.position)?.id||null})},{name:'sell_caught_fish',description:'Sell caught fish only when the character is physically at the fish-market counter.',annotations:{readOnlyHint:false},execute:()=>{if(nearestStation(state.business.position)?.id!=='market')throw new Error('Walk to the fish-market counter first.');const soldFor=sellFish(state);updateHUD();save();return {soldFor,coins:state.coins};}}];
+ for(const tool of tools)try{Promise.resolve(document.modelContext.registerTool({...tool,inputSchema:{type:'object',properties:{},additionalProperties:false},execute:input=>{if(input&&Object.keys(input).length)throw new Error('No arguments accepted');return tool.execute();}},{signal:lifecycle.signal})).catch(()=>{});}catch{}
 }

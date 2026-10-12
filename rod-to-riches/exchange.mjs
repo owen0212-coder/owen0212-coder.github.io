@@ -10,7 +10,7 @@ function chart(values,large=false){
   if(points.length===1)points.push(`${width-pad},${height/2}`);
   return `<svg viewBox="0 0 ${width} ${height}" ${large?'role="img" aria-label="Recent simulated share prices; values labelled above the chart"':'aria-hidden="true"'} preserveAspectRatio="none"><path d="M${pad} ${height/2}H${width-pad}" class="chart-grid"/><polyline points="${points.join(' ')}" fill="none" stroke="currentColor" stroke-width="${large?2.5:1.8}" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
 }
-export function createExchange({getState,onChange,onOpen,onClose}){
+export function createExchange({getState,onChange,onOpen,onClose,canTrade=()=>true}){
   const dialog=document.getElementById('exchange-dialog'),body=document.getElementById('exchange-body');
   const status=document.getElementById('exchange-status');
   let selected='TUNA',quantity='1';
@@ -49,6 +49,7 @@ export function createExchange({getState,onChange,onOpen,onClose}){
   body.addEventListener('input',event=>{if(event.target.id==='trade-quantity'){quantity=event.target.value;updateTicket();}});
   body.addEventListener('click',event=>{
     const button=event.target.closest('button');if(!button||button.disabled)return;
+    if(!canTrade()){status.textContent='Visit the stockbroker’s counter to trade or claim starter capital.';return;}
     if(button.dataset.stock){selected=button.dataset.stock;status.textContent='';render();return;}
     if(button.id==='claim-grant'){
       if(claimGrant(getState())){status.textContent=`${cash(STARTER_GRANT)} starter capital added to your shared wallet. This grant can only be claimed once per save.`;onChange();render();}return;
@@ -62,5 +63,5 @@ export function createExchange({getState,onChange,onOpen,onClose}){
   document.getElementById('exchange-close').addEventListener('click',()=>dialog.close());
   document.getElementById('exchange-back').addEventListener('click',()=>dialog.close());
   dialog.addEventListener('close',onClose);
-  return {open(){onOpen();dialog.showModal();status.textContent='';render();},render,updateClock,isOpen:()=>dialog.open};
+  return {open(){if(!canTrade())return false;onOpen();dialog.showModal();status.textContent='';render();return true;},render,updateClock,isOpen:()=>dialog.open};
 }
