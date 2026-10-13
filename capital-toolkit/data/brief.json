@@ -1,108 +1,115 @@
 {
-  "asOf": "2026-10-11T22:39:51Z",
-  "asOfLabel": "11 Oct 2026, 18:39 ET / 12 Oct 2026, 06:39 HKT",
-  "title": "Oil risk: disruption versus duration.",
-  "deck": "My weekend read: the important question is how long supply is disrupted, not simply how alarming the headline sounds. Shell’s post-storm assessment offers a counterweight to renewed Middle East security risks. For US businesses and valuation models, separate temporary cash costs from lasting damage to margins.",
+  "asOf": "2026-10-13T00:07:45Z",
+  "asOfLabel": "12 Oct 2026, 20:07 ET / 13 Oct 2026, 08:07 HKT",
+  "title": "A flat index hides a divided market.",
+  "deck": "My read after Monday’s close: broad participation is more encouraging than the headline index, but higher oil still threatens margins. Earnings must now show whether businesses can absorb that pressure. A bond-market holiday leaves the discount-rate side of the story unresolved.",
   "facts": [
     {
-      "label": "10-year Treasury",
-      "value": "5.24%",
-      "context": "Official daily par yield · 9 Oct · latest available observation, not a weekend quote",
+      "label": "S&P 500",
+      "value": "7,807.24",
+      "context": "12 Oct cash-session close · down 4.30 points (0.1%, rounded)",
       "sources": [
         "1"
       ]
     },
     {
       "label": "Brent futures",
-      "value": "$104.72",
-      "context": "USD per barrel · 9 Oct settlement · +0.42% that session, not a weekend move",
+      "value": "$106.65",
+      "context": "USD per barrel · 12 Oct settlement · +$1.93 (+1.8%)",
       "sources": [
-        "2"
+        "3"
       ]
     },
     {
-      "label": "WTI futures",
-      "value": "$91.85",
-      "context": "USD per barrel · 9 Oct settlement · +0.39% that session, not a weekend move",
+      "label": "10-year Treasury",
+      "value": "5.24%",
+      "context": "9 Oct official daily par yield · latest available observation, not a Monday quote",
       "sources": [
-        "2"
+        "4"
       ]
     }
   ],
   "sections": [
     {
-      "kind": "01 / MARKET BASELINE",
-      "title": "Friday’s prices cannot explain Sunday’s news.",
-      "body": "Reuters reported that both oil benchmarks finished Friday higher as offshore production was curtailed ahead of Isaias. The refreshed Treasury series still ends on 9 October: two years at 4.80%, ten years at 5.24% and thirty years at 5.60%. Those are dated reference points, not a measured response to the subsequent weekend developments. My interpretation: investors face both operating-cost uncertainty and an already demanding financing backdrop. This does not establish that oil will rise next or that Treasury yields must follow it. This brief does not report live futures prices or an observed post-weekend equity reaction.",
+      "kind": "01 / BREADTH VERSUS THE INDEX",
+      "title": "Flat does not mean everyone stood still.",
+      "body": "Monday’s Dow rose 0.4% to 51,850.55 while the Nasdaq Composite fell 0.4% to 27,245.90. AP reports that roughly 64% of S&P 500 constituents advanced, despite weakness in large technology names. My interpretation: this looks more like uneven participation than indiscriminate selling. The counterargument is that broader gains cannot guarantee continued index strength if heavily weighted companies disappoint. One session is insufficient evidence of a durable shift in leadership. I would look for sustained participation alongside credible earnings, rather than treating a nearly flat benchmark as proof that risks have disappeared.",
       "sources": [
         "1",
         "2"
       ]
     },
     {
-      "kind": "02 / SUPPLY EVIDENCE",
-      "title": "No damage is encouraging. It is not full production.",
-      "body": "In its 10 October Update #5, Shell reported no storm damage at Mars, Olympus, Ursa, Vito and Appomattox, with personnel redeployment continuing. That is a substantive post-storm update, but it does not quantify restored output or certify the entire region. For scale, EIA’s 9 October note cited roughly 1.3 million barrels a day of crude shut in as of 8 October; that older figure is not a current outage estimate. My inference: an intact asset base supports a shorter-disruption scenario. The countercase is that staffing, inspections and downstream constraints can delay cash generation even without platform damage. Confirmed operating volumes—not crew movements alone—would resolve the distinction.",
+      "kind": "02 / THE ENERGY TRANSMISSION",
+      "title": "An oil rally is not the same as a lasting margin shock.",
+      "body": "Reuters reports WTI settled at $93.74 a barrel, up $1.89, or 2%, alongside Brent’s advance. Its report links supply concerns to attacks in Saudi Arabia and shipping incidents, while also noting potential additional Russian diesel supply. My inference: the balance of risks has shifted toward more expensive inputs, but a futures settlement cannot quantify a company’s eventual fuel bill. Hedging, contracts and pricing power determine the cash-flow impact. Persistent higher realized costs without customer price increases would strengthen the margin-pressure case; secure deliveries and falling input prices would weaken it. Energy producers may gain on price while still losing output or incurring disruption costs.",
       "sources": [
-        "3",
-        "4"
+        "3"
       ]
     },
     {
-      "kind": "03 / SECURITY RISK",
-      "title": "Aviation disruption is not a barrel-loss estimate.",
-      "body": "AP reported another strike on Riyadh’s airport on Sunday, attributing it to the Saudi-led coalition, and said the airport had been closed since Saturday. My assessment: this warrants attention to transport reliability and potential energy-supply risks, but the airport report does not quantify additional lost crude output. Treating every attack as an equivalent oil-supply shock would overstate what is known. Evidence of disrupted exports would strengthen the energy-cost downside case; stable deliveries would weaken it.",
-      "sources": [
-        "5"
-      ]
-    },
-    {
-      "kind": "04 / PUT IT TO WORK",
-      "title": "Stress cash flow before changing terminal value.",
-      "body": "For a fuel-intensive US business, distinguish a short-lived operating hit from a persistent reduction in profitability. In the LBO Deal Lab, a lower EBITDA margin tests how weaker cash generation slows debt repayment, holding the exit multiple fixed. Its constant-margin forecast is a sustained downside scenario, not a precise model of a brief outage. In the DCF, use normalized unlevered free cash flow and estimate temporary losses separately outside the simplified calculator; do not turn a weekend disruption automatically into permanently lower terminal growth. Conversely, an oil producer may benefit from higher realized prices yet lose sales volume. Neither the commodity headline nor revenue alone determines equity value. Faster restarts and resilient margins would challenge the cautious case.",
+      "kind": "03 / WHAT RATES DID NOT TELL US",
+      "title": "An unchanged data date is not a vote of confidence.",
+      "body": "US bond trading was closed Monday. The refreshed official Treasury feed still ends on Friday 9 October, with two years at 4.80% and ten years at 5.24%. Their 44-basis-point difference is calculated from those same-date par yields; it is not Monday’s curve movement. My assessment: there is no fresh cash-bond signal here confirming that the oil rally is harmless for financing conditions. Equally, it would be wrong to invent a yield rise. BLS schedules September CPI for 14 October and PPI for 15 October, both at 08:30 ET / 20:30 HKT. Those releases are still ahead, not evidence already in hand.",
       "sources": [
         "2",
+        "4",
+        "6"
+      ]
+    },
+    {
+      "kind": "04 / EARNINGS AS THE CROSS-CHECK",
+      "title": "Test the cash-flow story before rewarding the multiple.",
+      "body": "JPMorganChase schedules its results for approximately 07:00 ET / 19:00 HKT on 13 October, followed by its call at 08:30 ET / 20:30 HKT. My research checklist is funding costs, credit losses and the sources of earnings growth: a strong headline profit need not establish stronger underlying borrower health. Resilient credit quality and operating income would challenge the cautious interpretation; deterioration masked by nonrecurring items would reinforce it. For nonfinancial companies in the Toolkit, test lower operating margins separately from a higher discount rate or borrowing cost. Changing both at once obscures the source of valuation sensitivity. Do not plug bank earnings directly into the industrial FCFF/EBITDA-based DCF and LBO templates: their treatment of debt and operating cash flow is not designed for banks.",
+      "sources": [
+        "5",
         "3",
         "4"
       ]
     }
   ],
   "watch": [
-    "Look for operator-confirmed production restoration and updated regional shut-in volumes; a dated shutdown estimate is not evidence that the same volume remains offline.",
-    "Distinguish verified energy-export or shipping interruptions from aviation incidents, and compare new market prices with Friday’s baseline only when their timestamps and sessions are clear.",
-    "Check whether higher fuel costs are passed through to customers or absorbed in margins, and whether cash recovery supports debt repayment without assuming a richer exit multiple."
+    "Compare bank results with management’s funding-cost and credit-quality explanations, not just the headline earnings number. The issuer’s release and call are still upcoming at this cutoff.",
+    "When Treasury trading resumes, distinguish a genuinely new observation from Friday’s carried-forward reference point; assess it alongside the subsequent inflation releases.",
+    "Look for verified delivery disruptions and realized input costs before translating oil headlines into a permanent margin or terminal-growth downgrade."
   ],
-  "caveat": "Codex’s analysis, not Owen’s personal view or investment advice. Research cutoff is the actual ET/HKT time above. Friday 9 October remains the latest completed US cash-equity session; the displayed oil settlements and Treasury observations also refer to 9 October, not live Sunday-evening trading. Treasury yields are daily par estimates, not executable quotes or company borrowing rates. Shell’s asset-specific statement is dated 10 October; the EIA outage figure refers to 8 October and is included only as historical scale. No region-wide restoration rate or new oil-production loss is inferred from those sources. Scenario implications are conditional; the calculators cannot represent a detailed temporary outage or an integrated energy company without additional modelling.",
+  "caveat": "Codex’s analysis, not Owen’s personal view or investment advice. Research cutoff is the actual ET/HKT time above, not the scheduled run time. Monday 12 October is the latest completed US cash-equity session; index levels and oil settlements refer to that session, not live overnight prices. AP’s index percentage moves are rounded to one decimal place. Treasury observations remain dated 9 October because the US bond market was closed Monday; refreshing the file does not make those yields new. Par yields are indicative curve estimates, not executable quotes or company borrowing rates. Earnings and inflation releases listed above had not occurred at the cutoff. Causal explanations and valuation implications are conditional interpretations, not established forecasts.",
   "sources": [
     {
       "id": "1",
-      "name": "US Treasury · October daily par yields",
-      "date": "9 Oct 2026 observations · public snapshot refreshed at this run",
-      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"
+      "name": "Associated Press · Monday US index closes",
+      "date": "12 Oct 2026 · completed cash session",
+      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-f07713e8b2e438ac5903b50f5ce97235"
     },
     {
       "id": "2",
-      "name": "Reuters via MarketScreener · Friday oil settlements",
-      "date": "9 Oct 2026 · updated 4:15 p.m. ET",
-      "url": "https://www.marketscreener.com/news/oil-falls-as-trump-comments-on-iran-talks-ease-supply-concerns-ce785ddfdf8af722"
+      "name": "Associated Press · breadth, technology weakness and bond holiday",
+      "date": "12 Oct 2026 · closing market report",
+      "url": "https://apnews.com/article/stock-markets-oil-trump-inflation-a9a26b9706963afe9bdeda1b2eb1f51d"
     },
     {
       "id": "3",
-      "name": "Shell · Hurricane Isaias Update #5",
-      "date": "10 Oct 2026 statement · page last updated 11 Oct",
-      "url": "https://www.shell.us/about-us/news-and-insights/media/us-storm-center/shell-us-storm-updates/2026-storm-updates/hurricane-isaias-update-5.html"
+      "name": "Reuters via MarketScreener · Monday oil settlements and supply risks",
+      "date": "12 Oct 2026 · updated 15:23 ET",
+      "url": "https://www.marketscreener.com/news/oil-falls-on-hopes-russia-ukraine-energy-ceasefire-will-boost-supplies-ce785ddcdc8fff21"
     },
     {
       "id": "4",
-      "name": "US EIA · pre-landfall production shut-ins",
-      "date": "9 Oct 2026 release · crude shut-in estimate as of 8 Oct",
-      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68284"
+      "name": "US Treasury · October daily par yields",
+      "date": "9 Oct 2026 latest observation · feed retrieved 13 Oct HKT",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"
     },
     {
       "id": "5",
-      "name": "Associated Press · renewed Riyadh airport attack",
-      "date": "11 Oct 2026 reporting",
-      "url": "https://apnews.com/article/saudi-yemen-houthi-riyadh-airport-d2e0868ffb18d883c16465d7d6a87ccb"
+      "name": "JPMorganChase · third-quarter results and call schedule",
+      "date": "17 Sep 2026 issuer announcement · event scheduled 13 Oct",
+      "url": "https://jpmorganchaseco.gcs-web.com/news-releases/news-release-details/jpmorganchase-host-third-quarter-2026-earnings-call/"
+    },
+    {
+      "id": "6",
+      "name": "US Bureau of Labor Statistics · October release calendar",
+      "date": "October 2026 schedule · times stated in Eastern Time",
+      "url": "https://www.bls.gov/schedule/2026/10_sched.htm"
     }
   ]
 }
