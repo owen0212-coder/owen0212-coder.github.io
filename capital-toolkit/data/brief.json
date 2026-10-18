@@ -1,115 +1,116 @@
 {
-  "asOf": "2026-10-13T00:07:45Z",
-  "asOfLabel": "12 Oct 2026, 20:07 ET / 13 Oct 2026, 08:07 HKT",
-  "title": "A flat index hides a divided market.",
-  "deck": "My read after Monday’s close: broad participation is more encouraging than the headline index, but higher oil still threatens margins. Earnings must now show whether businesses can absorb that pressure. A bond-market holiday leaves the discount-rate side of the story unresolved.",
+  "asOf": "2026-10-18T10:46:27Z",
+  "asOfLabel": "18 Oct 2026, 06:46 ET / 18 Oct 2026, 18:46 HKT",
+  "title": "Lower yields, harder earnings questions.",
+  "deck": "My weekend assessment: newly released inflation data and a technology-led sell-off materially change the picture since the previous brief. Falling Treasury yields offer valuation support, but cannot repair weaker cash-flow expectations. A late-Friday sanctions decision adds an energy-policy uncertainty that the cash-equity close cannot resolve.",
   "facts": [
     {
       "label": "S&P 500",
-      "value": "7,807.24",
-      "context": "12 Oct cash-session close · down 4.30 points (0.1%, rounded)",
+      "value": "7,659.44",
+      "context": "16 Oct cash-session close · down 1.1% Friday and 1.9% for the week",
       "sources": [
         "1"
       ]
     },
     {
-      "label": "Brent futures",
-      "value": "$106.65",
-      "context": "USD per barrel · 12 Oct settlement · +$1.93 (+1.8%)",
+      "label": "September CPI",
+      "value": "+0.6%",
+      "context": "Month-on-month, seasonally adjusted · +3.7% year-on-year, unadjusted · released 14 Oct",
       "sources": [
         "3"
       ]
     },
     {
       "label": "10-year Treasury",
-      "value": "5.24%",
-      "context": "9 Oct official daily par yield · latest available observation, not a Monday quote",
+      "value": "5.09%",
+      "context": "16 Oct official daily par yield · 15 basis points below 9 Oct · not a Sunday quote",
       "sources": [
-        "4"
+        "5"
       ]
     }
   ],
   "sections": [
     {
-      "kind": "01 / BREADTH VERSUS THE INDEX",
-      "title": "Flat does not mean everyone stood still.",
-      "body": "Monday’s Dow rose 0.4% to 51,850.55 while the Nasdaq Composite fell 0.4% to 27,245.90. AP reports that roughly 64% of S&P 500 constituents advanced, despite weakness in large technology names. My interpretation: this looks more like uneven participation than indiscriminate selling. The counterargument is that broader gains cannot guarantee continued index strength if heavily weighted companies disappoint. One session is insufficient evidence of a durable shift in leadership. I would look for sustained participation alongside credible earnings, rather than treating a nearly flat benchmark as proof that risks have disappeared.",
+      "kind": "01 / WHAT THE SELL-OFF SAYS",
+      "title": "Cheaper discounting cannot rescue every growth story.",
+      "body": "The Nasdaq Composite ended Friday at 26,140.03, down 4.5% for the week, while the Dow gained 0.7% over the week. AP reports that 68 of the S&P 500’s 75 technology constituents fell Friday. My interpretation: this is a concentrated reassessment of growth expectations, not evidence that every business is deteriorating equally. Lower Treasury yields should help long-dated valuations in isolation, yet technology weakened. That makes future cash generation and the return on investment spending important competing explanations. The countercase is positioning: a sell-off alone cannot establish declining end-demand. I would look for weaker orders, poorer cash conversion or reduced spending guidance before declaring an enduring break in the investment cycle.",
       "sources": [
         "1",
-        "2"
-      ]
-    },
-    {
-      "kind": "02 / THE ENERGY TRANSMISSION",
-      "title": "An oil rally is not the same as a lasting margin shock.",
-      "body": "Reuters reports WTI settled at $93.74 a barrel, up $1.89, or 2%, alongside Brent’s advance. Its report links supply concerns to attacks in Saudi Arabia and shipping incidents, while also noting potential additional Russian diesel supply. My inference: the balance of risks has shifted toward more expensive inputs, but a futures settlement cannot quantify a company’s eventual fuel bill. Hedging, contracts and pricing power determine the cash-flow impact. Persistent higher realized costs without customer price increases would strengthen the margin-pressure case; secure deliveries and falling input prices would weaken it. Energy producers may gain on price while still losing output or incurring disruption costs.",
-      "sources": [
-        "3"
-      ]
-    },
-    {
-      "kind": "03 / WHAT RATES DID NOT TELL US",
-      "title": "An unchanged data date is not a vote of confidence.",
-      "body": "US bond trading was closed Monday. The refreshed official Treasury feed still ends on Friday 9 October, with two years at 4.80% and ten years at 5.24%. Their 44-basis-point difference is calculated from those same-date par yields; it is not Monday’s curve movement. My assessment: there is no fresh cash-bond signal here confirming that the oil rally is harmless for financing conditions. Equally, it would be wrong to invent a yield rise. BLS schedules September CPI for 14 October and PPI for 15 October, both at 08:30 ET / 20:30 HKT. Those releases are still ahead, not evidence already in hand.",
-      "sources": [
         "2",
-        "4",
-        "6"
+        "5"
       ]
     },
     {
-      "kind": "04 / EARNINGS AS THE CROSS-CHECK",
-      "title": "Test the cash-flow story before rewarding the multiple.",
-      "body": "JPMorganChase schedules its results for approximately 07:00 ET / 19:00 HKT on 13 October, followed by its call at 08:30 ET / 20:30 HKT. My research checklist is funding costs, credit losses and the sources of earnings growth: a strong headline profit need not establish stronger underlying borrower health. Resilient credit quality and operating income would challenge the cautious interpretation; deterioration masked by nonrecurring items would reinforce it. For nonfinancial companies in the Toolkit, test lower operating margins separately from a higher discount rate or borrowing cost. Changing both at once obscures the source of valuation sensitivity. Do not plug bank earnings directly into the industrial FCFF/EBITDA-based DCF and LBO templates: their treatment of debt and operating cash flow is not designed for banks.",
+      "kind": "02 / INFLATION IS NOW EVIDENCE",
+      "title": "Energy matters, but it is not the whole story.",
+      "body": "BLS reports September core CPI rose 0.3% month-on-month and 2.6% year-on-year; gasoline accounted for over half the headline monthly increase. Final-demand PPI rose 1.3% monthly and 6.3% annually. Excluding foods, energy and trade services, PPI still rose 0.5% monthly. Monthly changes here are seasonally adjusted; annual changes are unadjusted. My assessment: energy explains much of the pressure, but these underlying measures do not support dismissing it all as fuel noise. The counterargument is that producer prices do not pass through mechanically to consumer prices: firms can absorb costs, substitute inputs or lose demand. For company analysis, test margins and pricing power separately instead of translating PPI directly into an earnings forecast.",
+      "sources": [
+        "3",
+        "4"
+      ]
+    },
+    {
+      "kind": "03 / THE BOND-MARKET COUNTERPOINT",
+      "title": "A rally in bonds is not an inflation verdict.",
+      "body": "The official two-year Treasury par yield fell to 4.74% on 16 October from 4.80% on 9 October; the ten-year fell from 5.24% to 5.09%. My inference: the curve is not delivering a simple, uniform inflation-panic signal. Demand for safety, changing growth expectations and term-premium shifts are possible explanations, not causes established by these observations. The optimistic case is that financing pressure is easing. Against that, company credit spreads can rise while Treasury yields fall. In the DCF, do not replace WACC with the Treasury yield. In the LBO model, stress weaker margins and higher borrowing costs as separate scenarios; a sovereign-bond rally does not guarantee a cheaper acquisition loan.",
       "sources": [
         "5",
         "3",
         "4"
       ]
+    },
+    {
+      "kind": "04 / THE WEEKEND ENERGY QUESTION",
+      "title": "A policy announcement is not delivered supply.",
+      "body": "Brent settled Friday at $109.86 per barrel, up 3.7%, according to AP. Separately, AP reports that Trump paused a new Russia sanctions package in a decision posted late Friday evening. My assessment: reduced prospective restrictions could ease some supply risk, but the direction and scale depend on implementation and actual shipments. That is a conditional mechanism, not a claim that prices have already fallen. Friday’s settlement predates the late-evening announcement and cannot measure its effect. The countercase is that other disruptions overwhelm any relief. I would change the assessment only with evidence on deliveries, sustained energy prices and companies’ realized input costs—not a policy headline alone.",
+      "sources": [
+        "2",
+        "6"
+      ]
     }
   ],
   "watch": [
-    "Compare bank results with management’s funding-cost and credit-quality explanations, not just the headline earnings number. The issuer’s release and call are still upcoming at this cutoff.",
-    "When Treasury trading resumes, distinguish a genuinely new observation from Friday’s carried-forward reference point; assess it alongside the subsequent inflation releases.",
-    "Look for verified delivery disruptions and realized input costs before translating oil headlines into a permanent margin or terminal-growth downgrade."
+    "Check whether company disclosures corroborate the technology sell-off: order trends, cash conversion and returns on new capacity matter more than a single trading session.",
+    "Distinguish energy-driven price changes from persistent underlying inflation, and borrowing spreads from Treasury yields. These are separate inputs to the cash-flow and financing cases.",
+    "When trading resumes, assess the energy-policy news against verified shipments and fresh prices; this weekend brief does not invent a market reaction."
   ],
-  "caveat": "Codex’s analysis, not Owen’s personal view or investment advice. Research cutoff is the actual ET/HKT time above, not the scheduled run time. Monday 12 October is the latest completed US cash-equity session; index levels and oil settlements refer to that session, not live overnight prices. AP’s index percentage moves are rounded to one decimal place. Treasury observations remain dated 9 October because the US bond market was closed Monday; refreshing the file does not make those yields new. Par yields are indicative curve estimates, not executable quotes or company borrowing rates. Earnings and inflation releases listed above had not occurred at the cutoff. Causal explanations and valuation implications are conditional interpretations, not established forecasts.",
+  "caveat": "Codex’s original analysis, not Owen’s personal view or investment advice. The cutoff above is the actual research time, not the scheduled run time. This weekend update incorporates substantive inflation releases, market moves and policy news since the previous brief. Friday 16 October is the latest completed US cash-equity session; index moves and the oil settlement are dated observations, not live Sunday prices. Weekly comparisons are with 9 October. Treasury observations are official daily par-curve estimates, not executable quotes or corporate borrowing rates. CPI and PPI measure different baskets; the PPI exclusion also removes trade services and is not the same definition as core CPI. The sanctions account is attributed to AP; no legal determination or verified supply-volume effect is claimed. Causal explanations and scenarios are interpretations, not established forecasts.",
   "sources": [
     {
       "id": "1",
-      "name": "Associated Press · Monday US index closes",
-      "date": "12 Oct 2026 · completed cash session",
-      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-f07713e8b2e438ac5903b50f5ce97235"
+      "name": "Associated Press · Friday index closes and weekly changes",
+      "date": "16 Oct 2026 · completed cash session",
+      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-c27809783ae3230b44c26e5ee4bea056"
     },
     {
       "id": "2",
-      "name": "Associated Press · breadth, technology weakness and bond holiday",
-      "date": "12 Oct 2026 · closing market report",
-      "url": "https://apnews.com/article/stock-markets-oil-trump-inflation-a9a26b9706963afe9bdeda1b2eb1f51d"
+      "name": "Associated Press · technology breadth and Friday oil settlement",
+      "date": "16 Oct 2026 · closing market report",
+      "url": "https://apnews.com/article/stocks-markets-us-ai-oil-tech-warsh-d2655f64db7ec8ae450525d58f97b628"
     },
     {
       "id": "3",
-      "name": "Reuters via MarketScreener · Monday oil settlements and supply risks",
-      "date": "12 Oct 2026 · updated 15:23 ET",
-      "url": "https://www.marketscreener.com/news/oil-falls-on-hopes-russia-ukraine-energy-ceasefire-will-boost-supplies-ce785ddcdc8fff21"
+      "name": "US Bureau of Labor Statistics · September CPI release",
+      "date": "14 Oct 2026 · released 08:30 ET",
+      "url": "https://www.bls.gov/news.release/archives/cpi_10142026.htm"
     },
     {
       "id": "4",
-      "name": "US Treasury · October daily par yields",
-      "date": "9 Oct 2026 latest observation · feed retrieved 13 Oct HKT",
-      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"
+      "name": "US Bureau of Labor Statistics · September PPI release",
+      "date": "15 Oct 2026 · released 08:30 ET",
+      "url": "https://www.bls.gov/news.release/archives/ppi_10152026.htm"
     },
     {
       "id": "5",
-      "name": "JPMorganChase · third-quarter results and call schedule",
-      "date": "17 Sep 2026 issuer announcement · event scheduled 13 Oct",
-      "url": "https://jpmorganchaseco.gcs-web.com/news-releases/news-release-details/jpmorganchase-host-third-quarter-2026-earnings-call/"
+      "name": "US Treasury · October daily par yield curve",
+      "date": "16 Oct 2026 observations · comparison with 9 Oct",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"
     },
     {
       "id": "6",
-      "name": "US Bureau of Labor Statistics · October release calendar",
-      "date": "October 2026 schedule · times stated in Eastern Time",
-      "url": "https://www.bls.gov/schedule/2026/10_sched.htm"
+      "name": "Associated Press · pause in new Russia sanctions",
+      "date": "Decision posted late 16 Oct 2026 · report checked 18 Oct",
+      "url": "https://apnews.com/article/russia-sanctions-trump-ukraine-e50c561ab805883bb4e484c092d8fadd"
     }
   ]
 }
