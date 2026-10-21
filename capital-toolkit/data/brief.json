@@ -1,29 +1,30 @@
 {
-  "asOf": "2026-10-18T10:46:27Z",
-  "asOfLabel": "18 Oct 2026, 06:46 ET / 18 Oct 2026, 18:46 HKT",
-  "title": "Lower yields, harder earnings questions.",
-  "deck": "My weekend assessment: newly released inflation data and a technology-led sell-off materially change the picture since the previous brief. Falling Treasury yields offer valuation support, but cannot repair weaker cash-flow expectations. A late-Friday sanctions decision adds an energy-policy uncertainty that the cash-equity close cannot resolve.",
+  "asOf": "2026-10-21T15:59:53Z",
+  "asOfLabel": "21 Oct 2026, 11:59 ET / 21 Oct 2026, 23:59 HKT",
+  "title": "A better quarter is not a better forecast.",
+  "deck": "My read: the rebound has broadened beyond technology, but company results still demand a distinction between current profit, repeatable earnings and conditional future growth. Netflix’s guidance and 3M’s Amazon agreement offer practical tests of that distinction. Tuesday remains the latest completed cash session; Wednesday trading is still underway.",
   "facts": [
     {
       "label": "S&P 500",
-      "value": "7,659.44",
-      "context": "16 Oct cash-session close · down 1.1% Friday and 1.9% for the week",
+      "value": "7,712.57",
+      "context": "20 Oct cash-session close · +21.84 points (+0.28%)",
       "sources": [
-        "1"
+        "1",
+        "2"
       ]
     },
     {
-      "label": "September CPI",
-      "value": "+0.6%",
-      "context": "Month-on-month, seasonally adjusted · +3.7% year-on-year, unadjusted · released 14 Oct",
+      "label": "Netflix diluted EPS",
+      "value": "$0.87",
+      "context": "Reported Q3 2026 earnings per share · released 20 Oct · not a forecast",
       "sources": [
         "3"
       ]
     },
     {
       "label": "10-year Treasury",
-      "value": "5.09%",
-      "context": "16 Oct official daily par yield · 15 basis points below 9 Oct · not a Sunday quote",
+      "value": "5.12%",
+      "context": "20 Oct official daily par yield · down 3 basis points from 19 Oct · not a live quote",
       "sources": [
         "5"
       ]
@@ -31,86 +32,82 @@
   ],
   "sections": [
     {
-      "kind": "01 / WHAT THE SELL-OFF SAYS",
-      "title": "Cheaper discounting cannot rescue every growth story.",
-      "body": "The Nasdaq Composite ended Friday at 26,140.03, down 4.5% for the week, while the Dow gained 0.7% over the week. AP reports that 68 of the S&P 500’s 75 technology constituents fell Friday. My interpretation: this is a concentrated reassessment of growth expectations, not evidence that every business is deteriorating equally. Lower Treasury yields should help long-dated valuations in isolation, yet technology weakened. That makes future cash generation and the return on investment spending important competing explanations. The countercase is positioning: a sell-off alone cannot establish declining end-demand. I would look for weaker orders, poorer cash conversion or reduced spending guidance before declaring an enduring break in the investment cycle.",
+      "kind": "01 / PARTICIPATION, NOT A VICTORY LAP",
+      "title": "Different businesses are carrying the rebound.",
+      "body": "Tuesday’s Dow closed at 52,495.88, up 1.02%, while the Nasdaq Composite slipped to 26,424.82. Reuters reports the S&P 500 value index rose 0.9% as its growth counterpart fell 0.2%. My interpretation: this challenges the idea that recovery requires every technology leader to rally together. The countercase is that a day’s sector rotation may reflect positioning, not durable earnings leadership. Wednesday is a separate, unfinished session: AP’s 11:30 ET update reports the S&P 500 up 0.4%, with differing reactions to company results. That is an intraday snapshot, not another confirmed closing gain. Sustained participation and credible company guidance would make the recovery more persuasive.",
       "sources": [
         "1",
         "2",
-        "5"
-      ]
-    },
-    {
-      "kind": "02 / INFLATION IS NOW EVIDENCE",
-      "title": "Energy matters, but it is not the whole story.",
-      "body": "BLS reports September core CPI rose 0.3% month-on-month and 2.6% year-on-year; gasoline accounted for over half the headline monthly increase. Final-demand PPI rose 1.3% monthly and 6.3% annually. Excluding foods, energy and trade services, PPI still rose 0.5% monthly. Monthly changes here are seasonally adjusted; annual changes are unadjusted. My assessment: energy explains much of the pressure, but these underlying measures do not support dismissing it all as fuel noise. The counterargument is that producer prices do not pass through mechanically to consumer prices: firms can absorb costs, substitute inputs or lose demand. For company analysis, test margins and pricing power separately instead of translating PPI directly into an earnings forecast.",
-      "sources": [
-        "3",
-        "4"
-      ]
-    },
-    {
-      "kind": "03 / THE BOND-MARKET COUNTERPOINT",
-      "title": "A rally in bonds is not an inflation verdict.",
-      "body": "The official two-year Treasury par yield fell to 4.74% on 16 October from 4.80% on 9 October; the ten-year fell from 5.24% to 5.09%. My inference: the curve is not delivering a simple, uniform inflation-panic signal. Demand for safety, changing growth expectations and term-premium shifts are possible explanations, not causes established by these observations. The optimistic case is that financing pressure is easing. Against that, company credit spreads can rise while Treasury yields fall. In the DCF, do not replace WACC with the Treasury yield. In the LBO model, stress weaker margins and higher borrowing costs as separate scenarios; a sovereign-bond rally does not guarantee a cheaper acquisition loan.",
-      "sources": [
-        "5",
-        "3",
-        "4"
-      ]
-    },
-    {
-      "kind": "04 / THE WEEKEND ENERGY QUESTION",
-      "title": "A policy announcement is not delivered supply.",
-      "body": "Brent settled Friday at $109.86 per barrel, up 3.7%, according to AP. Separately, AP reports that Trump paused a new Russia sanctions package in a decision posted late Friday evening. My assessment: reduced prospective restrictions could ease some supply risk, but the direction and scale depend on implementation and actual shipments. That is a conditional mechanism, not a claim that prices have already fallen. Friday’s settlement predates the late-evening announcement and cannot measure its effect. The countercase is that other disruptions overwhelm any relief. I would change the assessment only with evidence on deliveries, sustained energy prices and companies’ realized input costs—not a policy headline alone.",
-      "sources": [
-        "2",
         "6"
+      ]
+    },
+    {
+      "kind": "02 / NETFLIX: NORMALIZE THE QUARTER",
+      "title": "Expense timing is not permanent margin expansion.",
+      "body": "Netflix’s shareholder letter puts Q3 operating margin at 34.6%, ahead of its forecast primarily because of expense timing. It now expects roughly $2.7 billion in full-year advertising revenue versus about $3 billion previously, citing a slower rollout of some ad capabilities. My assessment: the quarter’s profitability does not remove execution risk in the next growth channel. The counterargument is that delayed capabilities can recover rather than represent permanently lost demand; the company also reports better-than-forecast churn. I would test the ad rollout and retention evidence before extrapolating either outcome. For a DCF, normalize recurring costs instead of carrying an unusually favourable quarter’s margin into perpetuity.",
+      "sources": [
+        "3"
+      ]
+    },
+    {
+      "kind": "03 / 3M: POTENTIAL IS NOT BOOKED REVENUE",
+      "title": "Model the milestones and the shareholder cost.",
+      "body": "3M reports a warrant allowing Amazon to purchase up to 3.2 million shares, tied to $6 billion of cumulative data-center-related sales over seven years and other event milestones. My interpretation: this creates a commercial incentive and potential exposure to infrastructure demand, but the sales threshold is not guaranteed revenue or an immediately executable backlog. The countercase is that scale and a large customer can improve adoption economics. A valuation should therefore use conditional sales and margin scenarios, and examine potential dilution and warrant proceeds separately. The Toolkit’s simplified DCF does not automatically model contingent warrants; putting the entire sales threshold into the base case would overstate what the announcement establishes.",
+      "sources": [
+        "4"
+      ]
+    },
+    {
+      "kind": "04 / FINANCING REMAINS A SEPARATE TEST",
+      "title": "The curve moved, but not uniformly.",
+      "body": "On the official 20 October curve, the two-year par yield rose to 4.79% from 4.77% on Monday while the ten-year fell to 5.12% from 5.15%. My inference: describing this as an across-the-board easing in financing conditions would be too strong. Different maturities embed different expectations, and the daily curve alone cannot identify the cause. Lower long-term yields could help valuations if risk premiums and earnings expectations hold steady; weaker growth or wider credit spreads could offset that benefit. For the LBO model, test borrowing costs independently from operating improvements. For the DCF, distinguish a benchmark Treasury yield from the company’s full cost of capital.",
+      "sources": [
+        "5"
       ]
     }
   ],
   "watch": [
-    "Check whether company disclosures corroborate the technology sell-off: order trends, cash conversion and returns on new capacity matter more than a single trading session.",
-    "Distinguish energy-driven price changes from persistent underlying inflation, and borrowing spreads from Treasury yields. These are separate inputs to the cash-flow and financing cases.",
-    "When trading resumes, assess the energy-policy news against verified shipments and fresh prices; this weekend brief does not invent a market reaction."
+    "Track whether Netflix’s advertising capability rollout catches up, and whether retention and recurring margins support the growth case rather than relying on expense timing.",
+    "Treat 3M’s commercial sales milestones as conditional. Examine actual orders, realized margins and the warrant’s share-count implications before assigning full value.",
+    "Wait for Wednesday’s completed session before comparing closing performance. Keep company financing spreads separate from changes in the sovereign yield curve."
   ],
-  "caveat": "Codex’s original analysis, not Owen’s personal view or investment advice. The cutoff above is the actual research time, not the scheduled run time. This weekend update incorporates substantive inflation releases, market moves and policy news since the previous brief. Friday 16 October is the latest completed US cash-equity session; index moves and the oil settlement are dated observations, not live Sunday prices. Weekly comparisons are with 9 October. Treasury observations are official daily par-curve estimates, not executable quotes or corporate borrowing rates. CPI and PPI measure different baskets; the PPI exclusion also removes trade services and is not the same definition as core CPI. The sanctions account is attributed to AP; no legal determination or verified supply-volume effect is claimed. Causal explanations and scenarios are interpretations, not established forecasts.",
+  "caveat": "Codex’s original analysis, not Owen’s personal view or investment advice. Research cutoff is the actual ET/HKT time above, not the scheduled run time. Tuesday 20 October is the most recently completed US cash-equity session. The separately labelled Wednesday observation is AP’s 11:30 ET snapshot on 21 October, not a close or live feed. The Treasury file contains official daily par yields through 20 October; these are indicative curve estimates, not corporate loan rates. Netflix figures refer to reported Q3 2026 results or explicitly labelled management forecasts. 3M’s sales milestones are conditional warrant terms, not guaranteed revenue; no claim is made that the simplified valuation tools fully model them. Interpretations and scenario implications are conditional, and share-price moves do not establish causation.",
   "sources": [
     {
       "id": "1",
-      "name": "Associated Press · Friday index closes and weekly changes",
-      "date": "16 Oct 2026 · completed cash session",
-      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-c27809783ae3230b44c26e5ee4bea056"
+      "name": "Associated Press · Tuesday US index closes",
+      "date": "20 Oct 2026 · completed cash session",
+      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-0a5ea168499c6ae617c49e10bf48f9c6"
     },
     {
       "id": "2",
-      "name": "Associated Press · technology breadth and Friday oil settlement",
-      "date": "16 Oct 2026 · closing market report",
-      "url": "https://apnews.com/article/stocks-markets-us-ai-oil-tech-warsh-d2655f64db7ec8ae450525d58f97b628"
+      "name": "Reuters via MarketScreener · closing markets and value/growth divergence",
+      "date": "20 Oct 2026 · updated 17:16 ET",
+      "url": "https://uk.marketscreener.com/news/dow-outperforms-as-wall-street-rises-healthcare-stocks-lead-gains-ce785cd8dc8bf224"
     },
     {
       "id": "3",
-      "name": "US Bureau of Labor Statistics · September CPI release",
-      "date": "14 Oct 2026 · released 08:30 ET",
-      "url": "https://www.bls.gov/news.release/archives/cpi_10142026.htm"
+      "name": "Netflix · Q3 2026 shareholder letter",
+      "date": "20 Oct 2026 · reported results and management outlook",
+      "url": "https://ir.netflix.net/files/doc_financials/2026/q3/FINAL-Q3-26-Shareholder-Letter.pdf"
     },
     {
       "id": "4",
-      "name": "US Bureau of Labor Statistics · September PPI release",
-      "date": "15 Oct 2026 · released 08:30 ET",
-      "url": "https://www.bls.gov/news.release/archives/ppi_10152026.htm"
+      "name": "3M · Q3 2026 earnings release, Exhibit 99.1",
+      "date": "20 Oct 2026 · strategic commercial relationship and warrant milestones",
+      "url": "https://investors.3m.com/financials/sec-filings/content/0000066740-26-000308/q32026-8kerexx991.htm"
     },
     {
       "id": "5",
       "name": "US Treasury · October daily par yield curve",
-      "date": "16 Oct 2026 observations · comparison with 9 Oct",
+      "date": "20 Oct 2026 observations · comparison with 19 Oct",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"
     },
     {
       "id": "6",
-      "name": "Associated Press · pause in new Russia sanctions",
-      "date": "Decision posted late 16 Oct 2026 · report checked 18 Oct",
-      "url": "https://apnews.com/article/russia-sanctions-trump-ukraine-e50c561ab805883bb4e484c092d8fadd"
+      "name": "Associated Press · Wednesday intraday earnings reactions",
+      "date": "21 Oct 2026 · market snapshot at 11:30 ET, not the close",
+      "url": "https://apnews.com/article/stocks-markets-rates-oil-earnings-ai-4fa93685cd49e51e7ff0d840fdd38b0d"
     }
   ]
 }
