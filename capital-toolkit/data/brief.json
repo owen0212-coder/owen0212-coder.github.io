@@ -1,30 +1,29 @@
 {
-  "asOf": "2026-10-21T15:59:53Z",
-  "asOfLabel": "21 Oct 2026, 11:59 ET / 21 Oct 2026, 23:59 HKT",
-  "title": "A better quarter is not a better forecast.",
-  "deck": "My read: the rebound has broadened beyond technology, but company results still demand a distinction between current profit, repeatable earnings and conditional future growth. Netflix’s guidance and 3M’s Amazon agreement offer practical tests of that distinction. Tuesday remains the latest completed cash session; Wednesday trading is still underway.",
+  "asOf": "2026-10-22T03:02:12Z",
+  "asOfLabel": "21 Oct 2026, 23:02 ET / 22 Oct 2026, 11:02 HKT",
+  "title": "The rally still has a cash-flow test.",
+  "deck": "My assessment after Wednesday’s close: renewed enthusiasm for AI helped stocks advance, but accounting profit and cash available to investors remain different tests. Meta’s newly released results illustrate the cost of building capacity, while a separate legal judgment adds uncertainty that should not be hidden inside an adjusted earnings number.",
   "facts": [
     {
       "label": "S&P 500",
-      "value": "7,712.57",
-      "context": "20 Oct cash-session close · +21.84 points (+0.28%)",
+      "value": "7,757.17",
+      "context": "21 Oct cash-session close · +44.60 points (+0.6%, rounded)",
       "sources": [
-        "1",
-        "2"
+        "1"
       ]
     },
     {
-      "label": "Netflix diluted EPS",
-      "value": "$0.87",
-      "context": "Reported Q3 2026 earnings per share · released 20 Oct · not a forecast",
+      "label": "Meta diluted EPS",
+      "value": "$3.83",
+      "context": "Reported Q3 2026 earnings per share · results released after 21 Oct cash close",
       "sources": [
         "3"
       ]
     },
     {
       "label": "10-year Treasury",
-      "value": "5.12%",
-      "context": "20 Oct official daily par yield · down 3 basis points from 19 Oct · not a live quote",
+      "value": "5.13%",
+      "context": "21 Oct official daily par yield · 1 basis point above 20 Oct · not a live quote",
       "sources": [
         "5"
       ]
@@ -32,82 +31,78 @@
   ],
   "sections": [
     {
-      "kind": "01 / PARTICIPATION, NOT A VICTORY LAP",
-      "title": "Different businesses are carrying the rebound.",
-      "body": "Tuesday’s Dow closed at 52,495.88, up 1.02%, while the Nasdaq Composite slipped to 26,424.82. Reuters reports the S&P 500 value index rose 0.9% as its growth counterpart fell 0.2%. My interpretation: this challenges the idea that recovery requires every technology leader to rally together. The countercase is that a day’s sector rotation may reflect positioning, not durable earnings leadership. Wednesday is a separate, unfinished session: AP’s 11:30 ET update reports the S&P 500 up 0.4%, with differing reactions to company results. That is an intraday snapshot, not another confirmed closing gain. Sustained participation and credible company guidance would make the recovery more persuasive.",
+      "kind": "01 / THE COMPLETED SESSION",
+      "title": "The rebound is real; its durability is still a question.",
+      "body": "The Dow finished Wednesday at 52,856.09 and the Nasdaq Composite at 26,702.86, both higher. AP reports SpaceX gained 7.8% and Nvidia 2.5%, while Netflix lost 5.3%. My interpretation: investors are differentiating among earnings stories rather than rewarding every growth company indiscriminately. The counterargument is that a short rebound can reflect changing positioning as much as improving business prospects. I would look for cash generation and durable demand to corroborate the share-price strength. Meta’s quarterly results arrived after the cash close, so they cannot explain the earlier index gains; their implications belong to the next stage of the earnings assessment.",
       "sources": [
         "1",
         "2",
-        "6"
+        "3"
       ]
     },
     {
-      "kind": "02 / NETFLIX: NORMALIZE THE QUARTER",
-      "title": "Expense timing is not permanent margin expansion.",
-      "body": "Netflix’s shareholder letter puts Q3 operating margin at 34.6%, ahead of its forecast primarily because of expense timing. It now expects roughly $2.7 billion in full-year advertising revenue versus about $3 billion previously, citing a slower rollout of some ad capabilities. My assessment: the quarter’s profitability does not remove execution risk in the next growth channel. The counterargument is that delayed capabilities can recover rather than represent permanently lost demand; the company also reports better-than-forecast churn. I would test the ad rollout and retention evidence before extrapolating either outcome. For a DCF, normalize recurring costs instead of carrying an unusually favourable quarter’s margin into perpetuity.",
+      "kind": "02 / META’S INVESTMENT BILL",
+      "title": "Positive profit can coexist with negative free cash flow.",
+      "body": "Meta’s issuer release reports $32.79 billion of operating cash flow against $34.91 billion of capital expenditure including finance-lease principal payments, leaving negative $2.12 billion of company-defined free cash flow. Revenue grew 26% year-on-year. My assessment: strong sales do not by themselves establish adequate returns on the new capital being deployed. The positive case is that capacity investment produces future revenue and efficiency gains; the risk is that spending remains high while monetization disappoints. One quarter cannot settle that debate. The Toolkit’s DCF requires positive normalized unlevered cash flow: this reported, non-GAAP figure is not directly interchangeable with that input, and turning it positive merely to fit the calculator would conceal the investment risk.",
       "sources": [
         "3"
       ]
     },
     {
-      "kind": "03 / 3M: POTENTIAL IS NOT BOOKED REVENUE",
-      "title": "Model the milestones and the shareholder cost.",
-      "body": "3M reports a warrant allowing Amazon to purchase up to 3.2 million shares, tied to $6 billion of cumulative data-center-related sales over seven years and other event milestones. My interpretation: this creates a commercial incentive and potential exposure to infrastructure demand, but the sales threshold is not guaranteed revenue or an immediately executable backlog. The countercase is that scale and a large customer can improve adoption economics. A valuation should therefore use conditional sales and margin scenarios, and examine potential dilution and warrant proceeds separately. The Toolkit’s simplified DCF does not automatically model contingent warrants; putting the entire sales threshold into the base case would overstate what the announcement establishes.",
+      "kind": "03 / KEEP LEGAL ITEMS SEPARATE",
+      "title": "An earnings adjustment does not remove a potential cash cost.",
+      "body": "Meta’s earnings release includes a $9.89 billion charge for its earlier agreement with state attorneys general. Separately, AP reports a New Mexico judge ordered a $25 billion payment over privacy claims; Meta says it expects to prevail on appeal. My interpretation: these are distinct matters, not interchangeable descriptions of one charge. Neither a reported charge nor a contested judgment tells us that the same amount was paid in the quarter. The countercase is that the ultimate liability and timing can change. In valuation work, model conditional payment scenarios and avoid deducting an obligation twice if it is already captured in cash-flow assumptions or the equity bridge.",
       "sources": [
+        "3",
         "4"
       ]
     },
     {
-      "kind": "04 / FINANCING REMAINS A SEPARATE TEST",
-      "title": "The curve moved, but not uniformly.",
-      "body": "On the official 20 October curve, the two-year par yield rose to 4.79% from 4.77% on Monday while the ten-year fell to 5.12% from 5.15%. My inference: describing this as an across-the-board easing in financing conditions would be too strong. Different maturities embed different expectations, and the daily curve alone cannot identify the cause. Lower long-term yields could help valuations if risk premiums and earnings expectations hold steady; weaker growth or wider credit spreads could offset that benefit. For the LBO model, test borrowing costs independently from operating improvements. For the DCF, distinguish a benchmark Treasury yield from the company’s full cost of capital.",
+      "kind": "04 / NO NEW RATE TAILWIND",
+      "title": "Use the official curve consistently.",
+      "body": "The official two-year par yield rose to 4.81% on 21 October from 4.79% on Tuesday; the ten-year increased from 5.12% to 5.13%. My inference: Wednesday’s equity advance does not require a story of falling end-of-day Treasury yields. That does not establish earnings as the sole cause, and small daily moves are weak evidence of a lasting monetary shift. AP’s market wrap quotes a ten-year market yield of 5.12%; this dashboard deliberately uses the Treasury’s separately defined daily par series. For a DCF or LBO scenario, keep borrowing costs and operating performance separate: an equity rally does not automatically justify cheaper debt or a lower cost of capital.",
       "sources": [
-        "5"
+        "5",
+        "2"
       ]
     }
   ],
   "watch": [
-    "Track whether Netflix’s advertising capability rollout catches up, and whether retention and recurring margins support the growth case rather than relying on expense timing.",
-    "Treat 3M’s commercial sales milestones as conditional. Examine actual orders, realized margins and the warrant’s share-count implications before assigning full value.",
-    "Wait for Wednesday’s completed session before comparing closing performance. Keep company financing spreads separate from changes in the sovereign yield curve."
+    "Track whether operating cash generation catches up with infrastructure spending; distinguish revenue growth from returns on incremental investment.",
+    "Keep the earlier legal agreement, the new judgment and any subsequent appeal developments separate. Do not assume a fixed payment date or count an obligation twice.",
+    "Judge subsequent earnings reactions against fresh completed sessions, rather than assigning after-hours announcements as causes of earlier index moves."
   ],
-  "caveat": "Codex’s original analysis, not Owen’s personal view or investment advice. Research cutoff is the actual ET/HKT time above, not the scheduled run time. Tuesday 20 October is the most recently completed US cash-equity session. The separately labelled Wednesday observation is AP’s 11:30 ET snapshot on 21 October, not a close or live feed. The Treasury file contains official daily par yields through 20 October; these are indicative curve estimates, not corporate loan rates. Netflix figures refer to reported Q3 2026 results or explicitly labelled management forecasts. 3M’s sales milestones are conditional warrant terms, not guaranteed revenue; no claim is made that the simplified valuation tools fully model them. Interpretations and scenario implications are conditional, and share-price moves do not establish causation.",
+  "caveat": "Codex’s original analysis, not Owen’s personal view or investment advice. The research cutoff above is actual ET/HKT time, not the scheduled run time. Wednesday 21 October is the latest completed US cash-equity session. Share-price changes refer to that session; Meta’s earnings release is subsequent information. Treasury observations are official daily par estimates, not executable yields or corporate borrowing rates, and can differ from news-service market quotes. Meta figures are from its issuer-authored PRNewswire release reproduced by MarketScreener because the direct investor-relations page was unavailable. Reported EPS is not an adjusted measure; the free-cash-flow measure is issuer-defined and non-GAAP. Legal developments are attributed to AP, with no independent legal conclusion or assumed payment timing. Scenarios are conditional, not forecasts.",
   "sources": [
     {
       "id": "1",
-      "name": "Associated Press · Tuesday US index closes",
-      "date": "20 Oct 2026 · completed cash session",
-      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-0a5ea168499c6ae617c49e10bf48f9c6"
+      "name": "Associated Press · Wednesday US index closes",
+      "date": "21 Oct 2026 · completed cash session",
+      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-3ec2d8c93a390023ef8104973dea275f"
     },
     {
       "id": "2",
-      "name": "Reuters via MarketScreener · closing markets and value/growth divergence",
-      "date": "20 Oct 2026 · updated 17:16 ET",
-      "url": "https://uk.marketscreener.com/news/dow-outperforms-as-wall-street-rises-healthcare-stocks-lead-gains-ce785cd8dc8bf224"
+      "name": "Associated Press · Wednesday closing market report",
+      "date": "21 Oct 2026 · completed session, replacing the earlier intraday report",
+      "url": "https://apnews.com/article/stocks-markets-rates-oil-earnings-ai-4fa93685cd49e51e7ff0d840fdd38b0d"
     },
     {
       "id": "3",
-      "name": "Netflix · Q3 2026 shareholder letter",
-      "date": "20 Oct 2026 · reported results and management outlook",
-      "url": "https://ir.netflix.net/files/doc_financials/2026/q3/FINAL-Q3-26-Shareholder-Letter.pdf"
+      "name": "Meta · issuer earnings release via PRNewswire / MarketScreener",
+      "date": "21 Oct 2026 · 16:02 ET · Q3 results",
+      "url": "https://www.marketscreener.com/news/meta-reports-third-quarter-2026-results-ce785cd9dd8cf620"
     },
     {
       "id": "4",
-      "name": "3M · Q3 2026 earnings release, Exhibit 99.1",
-      "date": "20 Oct 2026 · strategic commercial relationship and warrant milestones",
-      "url": "https://investors.3m.com/financials/sec-filings/content/0000066740-26-000308/q32026-8kerexx991.htm"
+      "name": "Associated Press · New Mexico judgment and Meta’s appeal position",
+      "date": "21 Oct 2026 · separate privacy case",
+      "url": "https://apnews.com/article/facebook-penalty-cambridge-analytica-new-mexico-b329f82c3d3db3758a159405acbd4d0e"
     },
     {
       "id": "5",
       "name": "US Treasury · October daily par yield curve",
-      "date": "20 Oct 2026 observations · comparison with 19 Oct",
+      "date": "21 Oct 2026 observations · comparison with 20 Oct",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"
-    },
-    {
-      "id": "6",
-      "name": "Associated Press · Wednesday intraday earnings reactions",
-      "date": "21 Oct 2026 · market snapshot at 11:30 ET, not the close",
-      "url": "https://apnews.com/article/stocks-markets-rates-oil-earnings-ai-4fa93685cd49e51e7ff0d840fdd38b0d"
     }
   ]
 }
