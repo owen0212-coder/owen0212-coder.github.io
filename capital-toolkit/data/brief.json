@@ -1,108 +1,106 @@
 {
-  "asOf": "2026-10-22T03:02:12Z",
-  "asOfLabel": "21 Oct 2026, 23:02 ET / 22 Oct 2026, 11:02 HKT",
-  "title": "The rally still has a cash-flow test.",
-  "deck": "My assessment after Wednesday’s close: renewed enthusiasm for AI helped stocks advance, but accounting profit and cash available to investors remain different tests. Meta’s newly released results illustrate the cost of building capacity, while a separate legal judgment adds uncertainty that should not be hidden inside an adjusted earnings number.",
+  "asOf": "2026-10-23T10:53:05Z",
+  "asOfLabel": "23 Oct 2026, 06:53 ET / 23 Oct 2026, 18:53 HKT",
+  "title": "The index is not the whole economy.",
+  "deck": "My assessment after Thursday’s close: a concentrated technology sell-off obscured gains elsewhere, while falling Treasury yields and rising oil sent conflicting signals. Low initial unemployment claims support resilience, but continuing claims and company margins warrant a more qualified reading than either a recession alarm or an all-clear.",
   "facts": [
     {
       "label": "S&P 500",
-      "value": "7,757.17",
-      "context": "21 Oct cash-session close · +44.60 points (+0.6%, rounded)",
+      "value": "7,663.43",
+      "context": "22 Oct cash-session close · down 93.74 points (1.2%, rounded)",
       "sources": [
         "1"
       ]
     },
     {
-      "label": "Meta diluted EPS",
-      "value": "$3.83",
-      "context": "Reported Q3 2026 earnings per share · results released after 21 Oct cash close",
+      "label": "Initial jobless claims",
+      "value": "194,000",
+      "context": "Week ended 17 Oct · seasonally adjusted advance estimate · released 22 Oct",
       "sources": [
         "3"
       ]
     },
     {
       "label": "10-year Treasury",
-      "value": "5.13%",
-      "context": "21 Oct official daily par yield · 1 basis point above 20 Oct · not a live quote",
+      "value": "4.96%",
+      "context": "22 Oct official daily par yield · down 17 basis points from 21 Oct",
       "sources": [
-        "5"
+        "4"
       ]
     }
   ],
   "sections": [
     {
-      "kind": "01 / THE COMPLETED SESSION",
-      "title": "The rebound is real; its durability is still a question.",
-      "body": "The Dow finished Wednesday at 52,856.09 and the Nasdaq Composite at 26,702.86, both higher. AP reports SpaceX gained 7.8% and Nvidia 2.5%, while Netflix lost 5.3%. My interpretation: investors are differentiating among earnings stories rather than rewarding every growth company indiscriminately. The counterargument is that a short rebound can reflect changing positioning as much as improving business prospects. I would look for cash generation and durable demand to corroborate the share-price strength. Meta’s quarterly results arrived after the cash close, so they cannot explain the earlier index gains; their implications belong to the next stage of the earnings assessment.",
+      "kind": "01 / CONCENTRATION VERSUS BREADTH",
+      "title": "A falling benchmark does not mean everything fell.",
+      "body": "The Nasdaq Composite closed at 26,008.86, down 2.6%, while the Dow edged up to 52,867.98. AP reports that roughly two-thirds of S&P 500 constituents advanced. My interpretation: concentrated exposure to large growth companies can make a portfolio feel much weaker than the typical stock. That is a diversification issue, not proof that the economy suddenly contracted. The countercase is that large technology companies’ spending and financing decisions can affect suppliers well beyond their sector. I would look for deterioration in orders, credit conditions and earnings across industries before treating this as a generalized downturn; breadth alone cannot guarantee the next session will hold up.",
       "sources": [
         "1",
-        "2",
-        "3"
-      ]
-    },
-    {
-      "kind": "02 / META’S INVESTMENT BILL",
-      "title": "Positive profit can coexist with negative free cash flow.",
-      "body": "Meta’s issuer release reports $32.79 billion of operating cash flow against $34.91 billion of capital expenditure including finance-lease principal payments, leaving negative $2.12 billion of company-defined free cash flow. Revenue grew 26% year-on-year. My assessment: strong sales do not by themselves establish adequate returns on the new capital being deployed. The positive case is that capacity investment produces future revenue and efficiency gains; the risk is that spending remains high while monetization disappoints. One quarter cannot settle that debate. The Toolkit’s DCF requires positive normalized unlevered cash flow: this reported, non-GAAP figure is not directly interchangeable with that input, and turning it positive merely to fit the calculator would conceal the investment risk.",
-      "sources": [
-        "3"
-      ]
-    },
-    {
-      "kind": "03 / KEEP LEGAL ITEMS SEPARATE",
-      "title": "An earnings adjustment does not remove a potential cash cost.",
-      "body": "Meta’s earnings release includes a $9.89 billion charge for its earlier agreement with state attorneys general. Separately, AP reports a New Mexico judge ordered a $25 billion payment over privacy claims; Meta says it expects to prevail on appeal. My interpretation: these are distinct matters, not interchangeable descriptions of one charge. Neither a reported charge nor a contested judgment tells us that the same amount was paid in the quarter. The countercase is that the ultimate liability and timing can change. In valuation work, model conditional payment scenarios and avoid deducting an obligation twice if it is already captured in cash-flow assumptions or the equity bridge.",
-      "sources": [
-        "3",
-        "4"
-      ]
-    },
-    {
-      "kind": "04 / NO NEW RATE TAILWIND",
-      "title": "Use the official curve consistently.",
-      "body": "The official two-year par yield rose to 4.81% on 21 October from 4.79% on Tuesday; the ten-year increased from 5.12% to 5.13%. My inference: Wednesday’s equity advance does not require a story of falling end-of-day Treasury yields. That does not establish earnings as the sole cause, and small daily moves are weak evidence of a lasting monetary shift. AP’s market wrap quotes a ten-year market yield of 5.12%; this dashboard deliberately uses the Treasury’s separately defined daily par series. For a DCF or LBO scenario, keep borrowing costs and operating performance separate: an equity rally does not automatically justify cheaper debt or a lower cost of capital.",
-      "sources": [
-        "5",
         "2"
+      ]
+    },
+    {
+      "kind": "02 / THE LABOUR-MARKET CROSS-CHECK",
+      "title": "Few new claims do not prove easy hiring.",
+      "body": "The Labor Department reports initial claims fell by 6,000 from a revised 200,000; their four-week average was 197,750. Separately, seasonally adjusted continuing claims rose by 25,000 to 1,728,000 for the week ended 10 October. My assessment: limited new benefit applications are consistent with restrained layoffs, but the continuing-claims increase cautions against assuming displaced workers immediately find jobs. The counterargument is that weekly figures are noisy and revised, and benefit eligibility is not the same as employment status. These series cover different weeks and cannot be added into a unique count of unemployed people. Sustained improvement across both, supported by broader hiring data, would strengthen the resilience case.",
+      "sources": [
+        "3"
+      ]
+    },
+    {
+      "kind": "03 / CHEAPER TREASURIES, DEARER ENERGY",
+      "title": "Do not improve every valuation input at once.",
+      "body": "The official two-year par yield fell from 4.81% to 4.65%, alongside the ten-year’s decline. Yet AP reports Brent settled at $113.17 per barrel, up 4%. My inference: safe-asset demand and energy-supply risk can coexist; the observations do not establish a single cause for the bond rally. Lower benchmark yields could help financing, but wider company credit spreads or higher operating costs could offset the benefit. Conversely, a sustained energy reversal would weaken the margin-pressure case. In the Toolkit, test the discount rate or debt cost separately from operating margins. A lower Treasury yield is neither a company’s full borrowing rate nor evidence that inflation has been resolved.",
+      "sources": [
+        "4",
+        "2"
+      ]
+    },
+    {
+      "kind": "04 / P&G’S MARGIN REALITY CHECK",
+      "title": "Revenue resilience still has a cost.",
+      "body": "P&G’s fiscal first-quarter release reports $23.3 billion of sales, up 4%, and diluted EPS of $1.97, up 1%; its $2.00 core EPS is a separate non-GAAP measure. Reported operating margin fell 70 basis points. Management maintained organic-sales guidance while updating total-sales guidance for the Thorne acquisition. My interpretation: this supports resilient demand, but not the assumption that revenue growth automatically expands margins. The constructive countercase is that productivity and product mix can absorb cost pressure over time. For a DCF or LBO exercise, separate organic growth from acquired revenue, then stress margins independently. Do not treat an acquisition-related increase in reported-sales guidance as proof of stronger underlying demand.",
+      "sources": [
+        "5"
       ]
     }
   ],
   "watch": [
-    "Track whether operating cash generation catches up with infrastructure spending; distinguish revenue growth from returns on incremental investment.",
-    "Keep the earlier legal agreement, the new judgment and any subsequent appeal developments separate. Do not assume a fixed payment date or count an obligation twice.",
-    "Judge subsequent earnings reactions against fresh completed sessions, rather than assigning after-hours announcements as causes of earlier index moves."
+    "Check whether weakness spreads from large AI-related companies into supplier orders and financing conditions, or remains concentrated despite broader participation.",
+    "Read subsequent claims revisions and continuing claims alongside hiring measures; low initial filings alone are not a complete labour-market diagnosis.",
+    "Compare pricing, volume, productivity and input costs in new company releases. Keep acquisition-driven growth distinct from organic demand and avoid double-counting financing relief."
   ],
-  "caveat": "Codex’s original analysis, not Owen’s personal view or investment advice. The research cutoff above is actual ET/HKT time, not the scheduled run time. Wednesday 21 October is the latest completed US cash-equity session. Share-price changes refer to that session; Meta’s earnings release is subsequent information. Treasury observations are official daily par estimates, not executable yields or corporate borrowing rates, and can differ from news-service market quotes. Meta figures are from its issuer-authored PRNewswire release reproduced by MarketScreener because the direct investor-relations page was unavailable. Reported EPS is not an adjusted measure; the free-cash-flow measure is issuer-defined and non-GAAP. Legal developments are attributed to AP, with no independent legal conclusion or assumed payment timing. Scenarios are conditional, not forecasts.",
+  "caveat": "Codex’s original analysis, not Owen’s personal view or investment advice. The cutoff is the actual ET/HKT research time above, not the scheduled run time. Thursday 22 October is the latest completed US cash-equity session; market moves and Brent’s settlement refer to that session, not live Friday trading. Treasury data is the official daily par series, distinct from executable market quotes. Initial and continuing unemployment claims are advance seasonally adjusted estimates for different reference weeks, with prior observations revised. The Labor Department PDF is a rolling link; the release examined is dated 22 October 2026. P&G’s fiscal Q1 2027 covers July–September 2026; GAAP diluted EPS and non-GAAP core EPS are kept separate. Company guidance is not a realized outcome. Interpretations and scenarios are conditional.",
   "sources": [
     {
       "id": "1",
-      "name": "Associated Press · Wednesday US index closes",
-      "date": "21 Oct 2026 · completed cash session",
-      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-3ec2d8c93a390023ef8104973dea275f"
+      "name": "Associated Press · Thursday US index closes",
+      "date": "22 Oct 2026 · completed cash session",
+      "url": "https://apnews.com/article/stocks-wall-street-nasdaq-dow-1970e79d013cbddcae89c53b4b98f384"
     },
     {
       "id": "2",
-      "name": "Associated Press · Wednesday closing market report",
-      "date": "21 Oct 2026 · completed session, replacing the earlier intraday report",
-      "url": "https://apnews.com/article/stocks-markets-rates-oil-earnings-ai-4fa93685cd49e51e7ff0d840fdd38b0d"
+      "name": "Associated Press · market breadth and oil settlement",
+      "date": "22 Oct 2026 · closing market report",
+      "url": "https://apnews.com/article/stocks-markets-rates-earnings-oil-33767691a4a0730b96d6f0c5100ea9b2"
     },
     {
       "id": "3",
-      "name": "Meta · issuer earnings release via PRNewswire / MarketScreener",
-      "date": "21 Oct 2026 · 16:02 ET · Q3 results",
-      "url": "https://www.marketscreener.com/news/meta-reports-third-quarter-2026-results-ce785cd9dd8cf620"
+      "name": "US Department of Labor · Unemployment Insurance Weekly Claims",
+      "date": "22 Oct 2026 release · initial claims through 17 Oct; continuing claims through 10 Oct",
+      "url": "https://www.dol.gov/ui/data.pdf"
     },
     {
       "id": "4",
-      "name": "Associated Press · New Mexico judgment and Meta’s appeal position",
-      "date": "21 Oct 2026 · separate privacy case",
-      "url": "https://apnews.com/article/facebook-penalty-cambridge-analytica-new-mexico-b329f82c3d3db3758a159405acbd4d0e"
+      "name": "US Treasury · October daily par yield curve",
+      "date": "22 Oct 2026 observations · comparison with 21 Oct",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"
     },
     {
       "id": "5",
-      "name": "US Treasury · October daily par yield curve",
-      "date": "21 Oct 2026 observations · comparison with 20 Oct",
-      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"
+      "name": "Procter & Gamble · fiscal Q1 2027 results",
+      "date": "22 Oct 2026 · quarter ended 30 Sep 2026",
+      "url": "https://www.pginvestor.com/news/news-details/2026/PG-Announces-Fiscal-Year-2027-First-Quarter-Results/default.aspx"
     }
   ]
 }
